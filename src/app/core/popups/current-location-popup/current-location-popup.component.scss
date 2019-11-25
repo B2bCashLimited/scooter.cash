@@ -1,0 +1,300 @@
+@import "src/app/styles/variables";
+
+:host {
+  position: relative;
+  display: flex;
+  width: 270px;
+  height: 170px;
+  flex-flow: column;
+  justify-content: space-between;
+
+  ::ng-deep.mat-dialog-actions{
+    margin-bottom: 0;
+    padding: 0;
+
+    &.row{
+      margin-left: -5px;
+      margin-right: -5px;
+
+      .col,
+      .col-auto{
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+    }
+  }
+
+  ::ng-deep.mat-dialog-content{
+    margin: 0 0 0;
+    padding: 0;
+    overflow: visible;
+
+  }
+
+  .ng-select-wrap {
+    width: 100%;
+    position: relative;
+    margin-bottom: 15px;
+
+    ::ng-deep.ng-select {
+      padding-bottom: 0;
+
+      ::ng-deep.ng-placeholder {
+        transform: none;
+        transition: none;
+        font-size: .75rem;
+        color: #4F4F4F;
+      }
+
+      .ng-has-value,
+      &.ng-select-opened {
+        .ng-placeholder {
+          display: none;
+        }
+      }
+
+      &.ng-select-focused {
+        .ng-placeholder {
+          display: none;
+        }
+      }
+
+      &.ng-select-multiple {
+        .ng-value-container {
+          padding-top: 0;
+          padding-left: 7px;
+          flex-wrap: nowrap;
+          width: 170px;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+
+          .ng-value {
+            font-size: .75rem;
+            color: #000000;
+            margin-bottom: 0;
+            background-color: transparent;
+            border-radius: 0;
+            margin-right: 5px;
+            padding: 0;
+
+            .ng-value-icon {
+              display: inline-block;
+              padding: 0px 2px;
+              color: #000000;
+            }
+
+            .ng-value-label {
+              display: inline-block;
+              padding: 0px 2px;
+              color: #000000;
+              font-size: .75rem;
+            }
+          }
+        }
+
+        .ng-clear-wrapper,
+        .ng-arrow-wrapper {
+          border-top: 0 !important;
+        }
+      }
+    }
+
+    ::ng-deep.ng-arrow-wrapper {
+      bottom: auto !important;
+      align-self: center !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .ng-arrow {
+        color: rgba(0, 0, 0, 0.54) !important;
+
+        &:after {
+          display: none !important;
+        }
+      }
+    }
+
+    ::ng-deep.ng-clear-wrapper {
+      bottom: 0 !important;
+      width: 16px !important;
+      min-width: 16px;
+      height: 100%;
+      border-top: 0 !important;
+
+      .ng-clear {
+        color: #ffffff;
+        position: relative;
+        height: 100%;
+
+        &:after {
+          content: '\e5cd';
+          font-family: 'Material Icons';
+          color: #828282;
+          font-size: 1rem;
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
+          align-items: center;
+          -webkit-box-pack: center;
+          -ms-flex-pack: center;
+          justify-content: center;
+          width: 14px;
+          height: 14px;
+          position: absolute;
+          top: 50%;
+          margin-top: -9px;
+        }
+      }
+    }
+
+    ::ng-deep.ng-select-container {
+      background-color: #ffffff;
+      border-radius: 3px;
+      border: 1px solid #D0D0D0;
+      height: 40px;
+      align-items: center;
+      min-height: 40px;
+
+      &:after {
+        display: none;
+      }
+    }
+
+    ::ng-deep.ng-value-container {
+      align-items: center;
+      padding: 0 0 0 10px;
+      border-top: none;
+
+      .ng-input {
+        top: 5px;
+        left: 0;
+        padding-left: 10px;
+        padding-right: 50px;
+        font-size: .8125rem;
+        color: #000000;
+
+        >input {
+          padding-top: 4px;
+        }
+      }
+
+      .ng-value {
+        font-size: .8125rem;
+        color: #000000;
+        // text-transform: lowercase;
+
+        .ng-value-label {
+          position: relative;
+          top: -1px;
+        }
+      }
+    }
+
+    ::ng-deep.ng-dropdown-panel {
+      &.ng-select-bottom {
+        top: 100%;
+        margin-top: -1px;
+        border: 1px solid #ccc;
+        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+        border-bottom-right-radius: 3px;
+        border-bottom-left-radius: 3px;
+      }
+
+      .ng-dropdown-panel-items {
+        max-height: 100px;
+
+        .ng-option {
+          padding: 5px 10px;
+          line-height: 1;
+          min-height: 2rem;
+          color: #4F4F4F;
+          font-size: .875rem;
+          white-space: normal;
+          display: flex;
+          align-items: center;
+
+          &.ng-option-selected {
+            background: rgba(0, 0, 0, 0.07);
+            color: #000000;
+          }
+        }
+      }
+    }
+  }
+
+  button {
+    background: $color-default;
+    box-shadow: 2px 10px 20px rgba(154, 38, 2, 0.25);
+    border-radius: 3px;
+    font-family: $default-font-family;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1;
+    font-size: 1.0625rem;
+    text-align: center;
+    color: #FFFFFF;
+    height: 40px;
+    width: 100%;
+
+    &::ng-deep.mat-button-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    &.btn-gray{
+      background: #F2F2F2;
+      box-shadow: none !important;
+      font-size: .9375rem;
+      color: #544F4A;
+
+      &:hover{
+        background: #F2F2F2;
+      }
+    }
+  }
+
+  .popup-close {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    cursor: pointer;
+
+    i {
+      color: #3C4858;
+      font-size: 30px;
+    }
+  }
+}
+
+.popup-title {
+  font-family: $default-font-family;
+  font-style: normal;
+  font-weight: bold;
+  font-size: .875rem;
+  line-height: normal;
+  color: #212529;
+  margin-bottom: 10px;
+}
+
+.popup-text {
+  font-family: $default-font-family;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1.25rem;
+  line-height: normal;
+  color: #212529;
+}
+
+@media only screen and (max-width: 479px) {
+  :host {
+    max-width: 100%;
+    min-width: 100%;
+  }
+}

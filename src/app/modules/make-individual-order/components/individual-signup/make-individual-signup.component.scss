@@ -1,0 +1,235 @@
+@import "src/app/styles/variables";
+@import "src/app/styles/mixins";
+
+.b-signup{
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus
+  input:-webkit-autofill,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover
+  textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus {
+    border: 1px solid transparent;
+    -webkit-text-fill-color: #2c2c2b;
+    box-shadow: 0 0 0px 1000px #ffffff inset;
+    transition: background-color 5000s ease-in-out 0s;
+    font-size: .875rem;
+  }
+
+  .row{
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+
+  [class*="col-"],
+  col{
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .checkbox-wrap{
+    ::ng-deep.mat-checkbox-inner-container{
+      margin: 0 18px 0 0;
+    }
+
+    ::ng-deep.mat-checkbox-layout{
+      white-space: normal;
+      font-size: .875rem;
+      color: #3c4858;
+      align-items: flex-start;
+    }
+
+    &--text{
+      display: inline-block;
+      margin-right: 5px;
+    }
+
+    &--text-wrap{
+      line-height: 1.1;
+      letter-spacing: -.6px;
+    }
+  }
+
+  ::ng-deep app-country{
+    ::ng-deep.mat-form-field{
+      font-size: .875rem;
+      margin-top: 7px;
+      width: 100%;
+    }
+
+    ::ng-deep.mat-form-field-invalid{
+      input.mat-input-element{
+        color: #f44336;
+      }
+    }
+
+    ::ng-deep.mat-form-field-infix{
+      width: 100%;
+    }
+
+    &.ng-invalid.ng-touched {
+      border: none;
+    }
+  }
+
+  .signup-field {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+
+    ::ng-deep .mat-form-field{
+      border: 1px solid #EEEEEE;
+      height: 50px;
+      width: 150px;
+      border-radius: 3px;
+
+      &.mat-focused{
+        border: 1px solid $color-default;
+        width: 100%;
+      }
+
+      &.mat-form-field-invalid{
+        border: 1px solid #FF0000;
+
+        ::ng-deep .mat-form-field-label{
+          color: #FF0000;
+        }
+        input{
+          color: #FF0000;
+        }
+      }
+    }
+
+    ::ng-deep .mat-form-field-underline{
+      display: none;
+    }
+
+    ::ng-deep .mat-form-field-infix{
+      padding: 0;
+      border: none;
+      width: 100%;
+    }
+
+    ::ng-deep .mat-form-field-label-wrapper {
+      top: 0;
+      padding-top: 0;
+    }
+    ::ng-deep .mat-form-field-label{
+      @include rem(15);
+      line-height: 16px;
+      color: #828282;
+      padding-left: 20px;
+      top: 16px;
+    }
+
+    ::ng-deep .mat-form-field-wrapper{
+      padding-bottom: 0;
+    }
+
+    input{
+      height: 48px;
+      padding-left: 20px;
+      padding-right: 10px;
+      font-style: normal;
+      font-weight: normal;
+      @include rem(15);
+      line-height: 16px;
+      color: #333333;
+      background-color: #ffffff !important;
+      margin-top: 0;
+      border-radius: 3px;
+    }
+
+    ::ng-deep.mat-error {
+      margin-top: 15px;
+    }
+  }
+
+  .ng-select-wrap{
+    width: 120px;
+    margin-right: 20px;
+    min-width: 120px;
+  }
+
+}
+.mat-checkbox.ng-invalid {
+  /deep/ .mat-checkbox-frame {
+    border-color: red;
+  }
+}
+
+.select-phone-code{
+  font-size: .875rem;
+  width: 100px;
+  min-width: 100px;
+  margin-top: 3px;
+  margin-right: 15px;
+
+  ::ng-deep.ng-dropdown-panel{
+    width: 300px;
+  }
+
+  ::ng-deep.ng-placeholder{
+    bottom: 9px;
+  }
+
+  ::ng-deep.ng-value-container{
+    padding-bottom: 5px;
+  }
+  ::ng-deep.ng-select-container{
+    min-height: 48.5px;
+    &:after{
+      bottom: 6px;
+    }
+  }
+
+  &.ng-select-focused{
+    ::ng-deep.ng-select-container{
+      &:after{
+        border-color: $color-default;
+      }
+
+      ::ng-deep.ng-placeholder,
+      ::ng-deep.ng-arrow{
+        color: $default-color-text;
+      }
+    }
+  }
+}
+
+.signup-btn{
+  height: 50px;
+  min-width: 175px;
+  margin: 0 3px;
+  box-shadow: none !important;
+  border-radius: 3px;
+  font-weight: 500;
+  line-height: 1;
+  font-size: 17px;
+
+  color: #FFFFFF;
+  &::ng-deep.mat-button-wrapper {
+    height: 100%;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+}
+
+@media only screen and (max-width: 575px){
+  .b-signup{
+    .ng-select-wrap{
+      margin-right: 10px;
+    }
+  }
+}

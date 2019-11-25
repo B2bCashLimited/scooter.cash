@@ -1,0 +1,85 @@
+<div class="b-container">
+  <div class="b-inner d-block">
+    <div class="d-flex justify-content-start b-top-nav">
+      <div class="col-auto pl-0">
+        <button (click)="handleClickBack()" class="btn-back">
+          <i class="bb bb-mat-arrow"></i>
+          <span>{{'productDetail.back' | translate}}</span>
+        </button>
+      </div>
+      <div class="col-auto pl-0">
+        <h1>{{'global.compareProducts' | translate}}</h1>
+      </div>
+    </div>
+    <!-- <div class="b-breadcrumbs-wrap mb-4">
+      <div class="b-breadcrumbs">
+        <ul>
+          <li>
+            <a href="">Каталог</a>
+          </li>
+          <li>
+            <a href="">Спортивные товары</a>
+          </li>
+          <li>
+            <a href="">Активный спорт</a>
+          </li>
+          <li>
+            <a href="">Велосипеды</a>
+          </li>
+          <li>
+            <span>Сравнение товаров</span>
+          </li>
+        </ul>
+      </div>
+    </div> -->
+
+    <div class="b-compare">
+      <div class="b-compare--sidebar">
+        <div class="b-compare--item">{{'products.name' | translate}}</div>
+        <div class="b-compare--item">{{'products.price' | translate}}</div>
+        <div class="b-compare--item">{{'products.brand' | translate}}</div>
+        <div class="b-compare--item">{{'products.country' | translate}}</div>
+        <div class="b-compare--item" *ngFor="let prop of categoryProperties">{{prop[config.name]}}</div>
+      </div>
+      <div class="b-compare--content">
+        <div class="b-compare-slider">
+          <div class="b-slider--arrow">
+            <div class="swiper-button-prev slider-prev">
+              <span><i class=""></i></span>
+            </div>
+            <div class="swiper-button-next slider-next">
+              <span><i class=""></i></span>
+            </div>
+          </div>
+          <swiper class="w-100" [config]="cardsSwiperConfig">
+            <ng-container
+              *ngFor="let prod of products"
+              [ngTemplateOutlet]="prodTemp"
+              [ngTemplateOutletContext]="{item: prod}"
+            ></ng-container>
+          </swiper>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #prodTemp let-item="item">
+  <div class="b-compare-slider--item">
+    <div class="b-compare-card">
+      <div (click)="deleteProd(item)" class="b-close">
+        <i class="bb bb-clear-black"></i>
+      </div>
+      <div class="b-image">
+        <img alt="" [src]="item.imgSrc">
+      </div>
+      <div class="b-item not-bg">{{item[config.name]}}</div>
+      <div class="b-item">{{item.price}} {{item.currency[config.name]}}</div>
+      <div class="b-item">{{item.manufacturer[config.name]}}</div>
+      <div class="b-item">{{item.country[config.name]}}</div>
+      <div class="b-item" *ngFor="let prop of categoryProperties">
+        {{getPropValue(prop, item.properties)?.value || '-'}} {{getPropValue(prop, item.properties)?.unit || ''}}
+      </div>
+    </div>
+  </div>
+</ng-template>

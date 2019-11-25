@@ -1,0 +1,27 @@
+<h5 class="mb-5">
+  <mat-icon>notifications</mat-icon> {{'notifications.notifications' | translate}}
+</h5>
+
+<section *ngIf="counter.myCounter?.total && counter.myCounter?.total > 0">
+  <h6>{{'notifications.myOrder' | translate}}</h6>
+  <ul class="list-unstyled counters">
+    <li *ngIf="counter.myCounter?.afterCalcPartner.total">
+      <span class="count">{{counter.myCounter.afterCalcPartner.total > 99 ? '99+' : counter.myCounter.afterCalcPartner.total}}</span>
+      <button class="btn-link" (click)="openProfile()" mat-dialog-close>
+        {{'notifications.ordersAfterMiscalculation' | translate}} ({{'notifications.fromPartners' | translate}})
+      </button>
+    </li>
+    <li *ngIf="counter.myCounter?.afterCalcPortal.total">
+      <span class="count">{{counter.myCounter.afterCalcPortal.total > 99 ? '99+' : counter.myCounter.afterCalcPortal.total}}</span>
+      <button class="btn-link" mat-dialog-close>
+        {{'notifications.ordersAfterMiscalculation' | translate}} ({{'notifications.fromPlatform' | translate}})
+      </button>
+    </li>
+    <li *ngIf="counter.myCounter?.confirmed.total">
+      <span class="count">{{counter.myCounter.confirmed.total > 99 ? '99+' : counter.myCounter.confirmed.total}}</span>
+      <button class="btn-link" mat-dialog-close>
+        {{'notifications.confirmedOrdersOffers' | translate}}
+      </button>
+    </li>
+  </ul>
+</section>

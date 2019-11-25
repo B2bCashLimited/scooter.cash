@@ -1,0 +1,61 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "outDir": "./dist/out-tsc",
+    "paths": {
+      "@b2b/environments/*": [
+        "environments/*"
+      ],
+      "@b2b/services": [
+        "app/core/services/index"
+      ],
+      "@b2b/directives/*": [
+        "app/core/directives/*"
+      ],
+      "@b2b/components/*": [
+        "app/components/*"
+      ],
+      "@b2b/shared/*": [
+        "app/shared/*"
+      ],
+      "@b2b/models": [
+        "app/core/models/index"
+      ],
+      "@b2b/modules/*": [
+        "app/modules/*"
+      ],
+      "@b2b/helpers/*": [
+        "app/core/helpers/*"
+      ],
+      "@b2b/guards": [
+        "app/core/guards/index"
+      ],
+      "@b2b/constants": [
+        "app/core/constants/index"
+      ],
+      "@b2b/pipes": [
+        "app/core/pipes/index"
+      ],
+      "@b2b/popups/*": [
+        "app/core/popups/*"
+      ]
+    },
+    "sourceMap": true,
+    "declaration": false,
+    "module": "esNext",
+    "resolveJsonModule": true,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es5",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2018",
+      "dom"
+    ]
+  }
+}

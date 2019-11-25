@@ -1,0 +1,149 @@
+@import "src/app/styles/variables";
+@import "src/app/styles/mixins";
+
+.b-price-info{
+  padding-top: 66px;
+
+  &--title{
+    font-style: normal;
+    font-weight: bold;
+    @include rem(14);
+    line-height: 16px;
+    color: #000000;
+    margin-bottom: 15px;
+  }
+
+  &--text{
+    font-style: normal;
+    font-weight: 500;
+    @include rem(14);
+    line-height: 16px;
+    color: #333333;
+
+    span{
+      font-weight: 300;
+    }
+  }
+
+  &--btn{
+    height: 24px;
+    padding: 0 16px;
+    background: #FFFFFF;
+    border: 1px solid rgba(36, 64, 156, 0.33);
+    border-radius: 3px;
+    font-style: normal;
+    font-weight: 500;
+    @include rem(13);
+    line-height: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $default-color-text;
+    cursor: pointer;
+    transition: .25s ease-out;
+
+    &:hover{
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  &--section{
+    border: 1px solid #EEEEEE;
+    padding: 16px 20px 5px;
+    border-radius: 5px;
+
+    .row{
+      margin-bottom: 9px;
+    }
+  }
+}
+
+.b-pagination{
+  padding-top: 20px;
+  padding-left: 0;
+
+  &.row{
+    margin-left: -6px;
+    margin-right: -6px;
+
+    .col{
+      padding-left: 6px;
+      padding-right: 6px;
+    }
+  }
+
+  ::ng-deep.ngx-pagination{
+    padding: 0;
+    display: flex;
+    justify-content: center;
+
+    li{
+      list-style: none;
+      padding: 0 3px;
+
+      a{
+        color: $default-color-text;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 14px;
+        font-size: 1.0625rem;
+        text-align: center;
+        height: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 4px;
+        min-width: 28px;
+
+        &:hover{
+          background: transparent;
+          text-decoration: none;
+        }
+      }
+
+      &.small-screen{
+        display: none;
+      }
+
+      &.pagination-previous,
+      &.pagination-next{
+        font-size: 1.0625rem;
+        a{
+          min-width: 20px;
+        }
+      }
+
+      &.current {
+        background-color: #ffffff;
+
+        span{
+          font-style: normal;
+          font-weight: 500;
+          line-height: 14px;
+          font-size: 1.0625rem;
+          text-align: center;
+          height: 25px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0 4px;
+          border: 1px solid #F2F0F0;
+          color: #4F4F4F;
+          min-width: 28px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .b-price-info {
+    padding-top: 64px;
+  }
+}
+
+@media only screen and (max-width: 479px) {
+  .b-price-info{
+    padding-top: 45px;
+  }
+}

@@ -1,0 +1,78 @@
+@import "src/app/styles/variables";
+@import "src/app/styles/mixins";
+
+.rating-star-component {
+  display: inline-block;
+  position: relative;
+  color: black;
+  font-size: 0.9rem;
+  width: 100%;
+}
+
+.rating-popup {
+  position: absolute;
+  z-index: 50;
+  top: 1.8rem;
+  background: white;
+  width: 100%;
+  box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+  text-align: left;
+  padding: 8px 5px;
+}
+
+.orient-right {
+  left: 0;
+}
+
+.orient-left {
+  right: 0;
+}
+
+.stars {
+  color: $default-color-text;
+}
+
+.result {
+  font-weight: bold;
+}
+
+
+.spinner {
+  top: calc(50% - 50px);
+  bottom: 0;
+  left: calc(50% - 50px);
+  right: 0;
+  position: relative;
+}
+
+::ng-deep .product-cards{
+  .rating-popup{
+    left: 0 !important;
+    right: auto !important;
+  }
+}
+
+@media only screen and (max-width: 1199px){
+  .rating-popup{
+    left: 0 !important;
+  }
+}
+
+@media only screen and (max-width: 575px){
+  .rating-popup{
+    width: 270px;
+  }
+
+  ::ng-deep .product-cards{
+    .rating-popup{
+      left: -74px !important;
+    }
+  }
+}
+
+@media only screen and (max-width: 390px){
+  .rating-popup{
+    width: calc(100vw - 34px);
+    left: -84px !important;
+  }
+}

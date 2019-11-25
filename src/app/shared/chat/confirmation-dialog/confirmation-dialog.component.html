@@ -1,0 +1,20 @@
+<div class="b-confirmation-dialog">
+  <div class="row">
+    <div class="col">
+      <h3 mat-dialog-title>{{data.question}}</h3>
+    </div>
+  </div>
+  <div class="row justify-content-between">
+    <div class="col-auto">
+      <button class="btn-fill"
+              mat-raised-button
+              [mat-dialog-close]="data.no.value"
+              cdkFocusInitial>{{data.no.text}}</button>
+    </div>
+    <div class="col-auto">
+      <button class=" btn-border"
+              mat-raised-button
+              [mat-dialog-close]="data.yes.value">{{data.yes.text}}</button>
+    </div>
+  </div>
+</div>

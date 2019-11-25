@@ -1,0 +1,151 @@
+image: php:7.3
+
+# Select what we should cache between builds
+cache:
+  paths:
+  - vendor/
+
+stages:
+#  - test
+  - deploy
+
+#before_script:
+#- apt-get update -yqq
+#- apt-get install -yqq git libmcrypt-dev libpq-dev libcurl4-gnutls-dev libicu-dev libvpx-dev libjpeg-dev libpng-dev libxpm-dev zlib1g-dev libfreetype6-dev libxml2-dev libexpat1-dev libbz2-dev libgmp3-dev libldap2-dev unixodbc-dev libsqlite3-dev libaspell-dev libsnmp-dev libpcre3-dev libtidy-dev
+# Install PHP extensions
+#- docker-php-ext-install mbstring mcrypt pdo_pgsql curl json intl gd xml zip bz2 opcache
+# Install & enable Xdebug for code coverage reports
+#- pecl install xdebug
+#- docker-php-ext-enable xdebug
+# Install and run Composer
+#- curl -sS https://getcomposer.org/installer | php
+#- php composer.phar install
+
+# Bring in any services we need http://docs.gitlab.com/ee/ci/docker/using_docker_images.html#what-is-a-service
+# See http://docs.gitlab.com/ce/ci/services/README.html for examples.
+#services:
+#  - mysql:5.7
+
+# Set any variables we need
+#variables:
+  # Configure mysql environment variables (https://hub.docker.com/r/_/mysql/)
+#  MYSQL_DATABASE: mysql_database
+#  MYSQL_ROOT_PASSWORD: mysql_strong_password
+
+# Run our tests
+# If Xdebug was installed you can generate a coverage report and see code coverage metrics.
+#test:
+#  script:
+#  - vendor/bin/phpunit --configuration phpunit.xml --coverage-text --colors=never
+
+deploy_test:
+  stage: deploy
+  script:
+    - ln -fs /usr/share/zoneinfo/Europe/Moscow /etc/localtime &&
+        dpkg-reconfigure -f noninteractive tzdata &&
+        apt-get update &&
+        apt-get install -y --no-install-recommends rsync openssh-client
+    - export NEW="test.scooter.cash-$(date +%Y-%m-%d_%H-%M-%S)"
+      DIR="/var/www/test.scooter.cash"
+      SRV="www-data@192.168.0.104"
+    - ssh $SRV
+       'set -o errexit;
+        NEW="'$NEW'"; DIR="'$DIR'"; SRV="'$SRV'";
+        mkdir -p $DIR;
+        cd $DIR;
+        IN_PROGRESS_RM=$(realpath --canonicalize-existing in_progress) || true;
+        ((${#IN_PROGRESS_RM} > 30)) &&
+          [[ "$IN_PROGRESS_RM" != "$(realpath --canonicalize-existing current)" ]] &&
+          rm -r $IN_PROGRESS_RM || true;
+        ln -sfn -v $NEW in_progress;
+        if [[ -d "$DIR/current" ]]; then rsync -aAXHx --delete $DIR/current/ $DIR/$NEW/; fi;'
+    - rsync -aXHxz --no-perms --no-g --chmod=ugo=rwX --omit-dir-times --delete
+        --exclude "/dist"
+        --exclude "/node_modules"
+        ./ $SRV:$DIR/$NEW/
+    - ssh $SRV
+       'set -o errexit;
+        NEW="'$NEW'"; DIR="'$DIR'"; SRV="'$SRV'";
+        cd $DIR/$NEW;
+        echo "=== "$(date --rfc-3339=ns)". npm install";
+        npm i;
+        echo "=== "$(date --rfc-3339=ns)". npm build";
+        npm run build:ssr-test;
+
+        pm2 delete /^test\.scooter\.cash/ || true;
+        pm2 start --name $NEW npm -- run serve:ssr;
+        pm2 dump;
+
+        echo "=== "$(date --rfc-3339=ns)". Switch \"current\" symlink";
+        cd ..;
+        CURRENT=$(readlink current) && CURRENT_RM=$(realpath -e current) || true;
+        PREVIOUS=$(readlink previous) && PREVIOUS_RM=$(realpath -e previous) || true;
+        PREVIOUS2=$(readlink previous2) && PREVIOUS2_RM=$(realpath -e previous2) || true;
+        ln -sfn -v $NEW current_new;
+        mv -T current_new current;
+
+        ((${#PREVIOUS2_RM} > 30)) && rm -r $PREVIOUS2_RM || true;
+        ((${#PREVIOUS} > 10)) && ln -sfn -v $PREVIOUS previous2;
+        ((${#CURRENT} > 10)) && ln -sfn -v $CURRENT previous;
+        rm in_progress;'
+  environment:
+    name: test
+    url: http://test.scooter.cash
+  only:
+    - develop
+
+deploy_production:
+  stage: deploy
+  script:
+    - ln -fs /usr/share/zoneinfo/Europe/Moscow /etc/localtime &&
+        dpkg-reconfigure -f noninteractive tzdata &&
+        apt-get update &&
+        apt-get install -y --no-install-recommends rsync openssh-client
+    - export NEW="scooter.cash-$(date +%Y-%m-%d_%H-%M-%S)"
+      DIR="/var/www/scooter.cash"
+      SRV="www-data@89.108.121.139"
+    - ssh $SRV
+       'set -o errexit;
+        NEW="'$NEW'"; DIR="'$DIR'"; SRV="'$SRV'";
+        mkdir -p $DIR;
+        cd $DIR;
+        IN_PROGRESS_RM=$(realpath --canonicalize-existing in_progress) || true;
+        ((${#IN_PROGRESS_RM} > 30)) &&
+          [[ "$IN_PROGRESS_RM" != "$(realpath --canonicalize-existing current)" ]] &&
+          rm -r $IN_PROGRESS_RM || true;
+        ln -sfn -v $NEW in_progress;
+        if [[ -d "$DIR/current" ]]; then rsync -aAXHx --delete $DIR/current/ $DIR/$NEW/; fi;'
+    - rsync -aXHxz --no-perms --no-g --chmod=ugo=rwX --omit-dir-times --delete
+        --exclude "/dist"
+        --exclude "/node_modules"
+        ./ $SRV:$DIR/$NEW/
+    - ssh $SRV
+       'set -o errexit;
+        NEW="'$NEW'"; DIR="'$DIR'"; SRV="'$SRV'";
+        cd $DIR/$NEW;
+        echo "=== "$(date --rfc-3339=ns)". npm install";
+        npm i;
+        echo "=== "$(date --rfc-3339=ns)". npm build";
+        npm run build:ssr-live;
+
+        pm2 delete /^scooter\.cash/ || true;
+        pm2 start --name $NEW npm -- run serve:ssr;
+        pm2 dump;
+
+        echo "=== "$(date --rfc-3339=ns)". Switch \"current\" symlink";
+        cd ..;
+        CURRENT=$(readlink current) && CURRENT_RM=$(realpath -e current) || true;
+        PREVIOUS=$(readlink previous) && PREVIOUS_RM=$(realpath -e previous) || true;
+        PREVIOUS2=$(readlink previous2) && PREVIOUS2_RM=$(realpath -e previous2) || true;
+        ln -sfn -v $NEW current_new;
+        mv -T current_new current;
+
+        ((${#PREVIOUS2_RM} > 30)) && rm -r $PREVIOUS2_RM || true;
+        ((${#PREVIOUS} > 10)) && ln -sfn -v $PREVIOUS previous2;
+        ((${#CURRENT} > 10)) && ln -sfn -v $CURRENT previous;
+        rm in_progress;'
+  environment:
+    name: production
+    url: https://scooter.cash
+  only:
+    - master

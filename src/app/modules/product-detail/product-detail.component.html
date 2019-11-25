@@ -1,0 +1,363 @@
+<div class="b-container">
+  <div *ngIf="product" class="b-inner">
+    <div class="d-flex justify-content-between b-top-nav">
+      <div class="col-auto pl-0">
+        <button (click)="handleClickBack()" class="btn-back">
+          <i class="bb bb-mat-arrow"></i>
+          <span>{{'productDetail.back' | translate}}</span>
+        </button>
+      </div>
+      <div class="col-auto pr-0">
+        <a href="#" class="btn-print">
+          <i class="bb bb-print-2"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="b-card-info">
+      <div class="b-card-info--top">
+        <section>
+          <div class="b-ngx-gallery">
+            <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+          </div>
+        </section>
+        <section>
+          <div class="b-card-info--title">
+            <h1>{{seoH1 || product[config.name]}}</h1>
+          </div>
+          <div *ngIf="product.showcase" class="b-card-info--subtitle">
+            {{product.showcase?.company[config.name]}}
+          </div>
+          <div class="row align-items-center b-card-info--input-wrap" style="display: none !important;">
+            <div class="col-auto">
+              <div class="b-card-info--input input-narrow">
+                <input placeholder="{{'supplier.count' | translate}}">
+              </div>
+            </div>
+            <div class="col">
+              <div class="b-card-info--input">
+                <input placeholder="{{'supplier.yourPrice' | translate}}">
+              </div>
+            </div>
+          </div>
+
+          <!-- цена поставщика -->
+          <div class="row align-items-center mb-padding" >
+            <div class="col-auto col-narrow">
+              <div class="b-card-info--small-text">
+                {{'productDetail.supplierPrice' | translate}}. <br/>
+                {{'productDetail.minimalOrder' | translate}}:&nbsp;{{product.minimal_amount}}&nbsp;{{priceFor[config.name]}}
+              </div>
+            </div>
+            <div class="col">
+              <div class="b-card-info--price">
+                {{product.price}}&nbsp;<span>{{currency[config.name]}}/{{priceFor[config.name]}}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- кнопки купить сейчас и корзина -->
+          <div class="row btn-wrap">
+            <div class="col-auto">
+              <button class="btn-fill w-100"
+                      [appYandexReachGoal]="'buy-now'"
+                      [appGoogleEvent]="'buy-now'"
+                      (click)="makeOrder()"
+                      mat-raised-button>
+                <i class="bb bb-finger-touch"></i>
+                {{'oneClick.buyNow' | translate}}
+              </button>
+            </div>
+            <div class="col-auto">
+              <button mat-raised-button
+                      [appYandexReachGoal]="'cart'"
+                      [appGoogleEvent]="'cart'"
+                      [disabled]="isAddedToOrder || differentCurrencies"
+                      (click)="addToCart()"
+                      class="btn-fill">
+                <i class="bb bb-basket-new"></i>
+                {{'bestPriceInYourCity.addCart' | translate}}
+              </button>
+            </div>
+          </div>
+
+          <app-suppliers-city-list [product]="product"></app-suppliers-city-list>
+        </section>
+      </div>
+    </div>
+
+    <div *ngIf="similarProducts && similarProducts.length > 0" class="b-card-add">
+      <div class="b-card-add--title">
+        {{'productDetail.withThisProductBuy' | translate}}&nbsp;<span>{{'productDetail.unite' | translate}}</span>&nbsp;{{'productDetail.toOneOrder' | translate}}:
+      </div>
+      <!--  при открытии добавить класс open -->
+      <div class="b-wrap-cards">
+        <div class="table-wrap">
+          <table>
+            <tr>
+              <td>
+                <div class="b-image">
+                  <img  alt="" src="http://test.b2b.cash:9900/data/images/7ca108e9265221a15e15d3f222207f17TURANZAER33-primary-300Wx300H.jpg">
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="b-title">
+                  PIRELLI WINTER 270 SOTTOZERO SERIE II - 245/35
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="b-label">Производитель</div>
+                <div class="b-text">
+                  YOKOHAMA
+                  asfqwerqwerwqerqwerqwr
+                  fasdfsdfaasdfaa
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="b-label">Страна</div>
+                <div class="b-text">Япония</div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="b-label">Размер</div>
+                <div class="b-text">185/60 R15 85Q</div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="b-label">Диаметр</div>
+                <div class="b-text">15</div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="b-label">Ширина профиля</div>
+                <div class="b-text">60</div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="b-label">Сезонность</div>
+                <div class="b-text">зима</div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="b-label">Высота профиля</div>
+                <div class="b-text">185</div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="b-label">Нетто</div>
+                <div class="b-text">8.7</div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="b-label">Брутто</div>
+                <div class="b-text">9.7</div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="b-label">Количество клиента</div>
+                <div class="b-text">1 шт.</div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <section>
+                  <div class="b-text">Торг возможен</div>
+                </section>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="b-label">Цена клиента 2 500 RUB/шт.</div>
+                <div class="b-text color-orange">2 500 RUB</div>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <!-- при клике на кнопку к b-wrap-cards - добавить/убрать класс open -->
+        <div class="b-wrap-cards--btn">
+          <span class="t-1">Раскрыть</span>
+          <span class="t-2">Свернуть </span>
+          <i class="bb bb-angle-double-down"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="b-tab-info">
+      <mat-tab-group [selectedIndex]="0">
+        <mat-tab label="{{'productDetail.tabs.characteristics' | translate}}">
+          <div class="b-tab-info--body">
+            <div class="b-feature">
+              <div class="b-feature--item">
+                <section>
+                  <div class="row ">
+                    <div class="col-6">
+                      <div class="title-item">{{'productDetail.manufacturer' | translate}}</div>
+                    </div>
+                    <div class="col-6">
+                      <div class="value-item">{{product.productManufacturerData && product.productManufacturerData[config.name] || ''}}</div>
+                    </div>
+                  </div>
+                  <div class="row ">
+                    <div class="col-6">
+                      <div class="title-item">{{'productDetail.country' | translate}}</div>
+                    </div>
+                    <div class="col-6">
+                      <div class="value-item">{{product.countryData && product.countryData[config.name] || ''}}</div>
+                    </div>
+                  </div>
+                  <div class="row ">
+                    <div class="col-6">
+                      <div class="title-item">{{'productDetail.net' | translate}}</div>
+                    </div>
+                    <div class="col-6">
+                      <div class="value-item">{{product.net}}&nbsp;{{weight && weight[config.name] || ''}}</div>
+                    </div>
+                  </div>
+                  <div class="row ">
+                    <div class="col-6">
+                      <div class="title-item">{{'productDetail.gross' | translate}}</div>
+                    </div>
+                    <div class="col-6">
+                      <div class="value-item">{{product.gross}}&nbsp;{{weight && weight[config.name] || ''}}</div>
+                    </div>
+                  </div>
+                  <div class="row ">
+                    <div class="col-6">
+                      <div class="title-item">{{'productDetail.volume' | translate}}</div>
+                    </div>
+                    <div class="col-6">
+                      <div class="value-item">{{product.volume}}&nbsp;{{volume && volume[config.name] || ''}}</div>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="b-feature--item">
+                <section>
+                  <ng-container *ngFor="let prop of product.productProperties">
+                    <div *ngIf="prop['value' + config.locale]" class="row">
+                      <div class="col-6">
+                        <div class="title-item">{{prop.categoryProperty[config.name]}}</div>
+                      </div>
+                      <div class="col-6">
+                        <div class="value-item">{{prop['value' + config.locale]}}</div>
+                      </div>
+                    </div>
+                  </ng-container>
+                </section>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+
+        <mat-tab *ngIf="seoTxt" label="{{'productDetail.tabs.description' | translate}}">
+          <div class="b-tab-info--body">
+            <h3>{{'productDetail.tabs.description' | translate}}</h3>
+            <p [innerHTML]="seoTxt || ('productDetail.notSpecified' | translate)"></p>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="{{'productDetail.tabs.delivery' | translate}}">
+          <div class="b-tab-info--body m-delivery">
+            <div class="row">
+              <div class="col-lg-8">
+                <h6>
+                  {{'productDetail.tab2.title' | translate}}
+                </h6>
+                <p innerHtml="{{'productDetail.tab2.text1' | translate}}"></p>
+                <p>{{'productDetail.tab2.text2' | translate}}</p>
+              </div>
+              <div class="col-lg-4">
+                <div class="row h-100 wrap-icons">
+                  <div class="col-12 d-flex justify-content-center align-items-center">
+                    <img src="/assets/img/svg-icons/new-icons/delivery.svg" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="{{'productDetail.tabs.selfPickUp' | translate}}"
+                 *ngIf="mapClusterSuppliers && mapClusterSuppliers.length > 0 && lat && lng">
+          <div class="b-tab-info--body">
+            <h3>{{'productDetail.tabs.selfPickUp' | translate}}</h3>
+            <h5>{{'productDetail.tab3.pointsOfIssue' | translate}}</h5>
+            <agm-map [latitude]="lat"
+                     [longitude]="lng"
+                     [zoom]="zoom"
+                     [disableDefaultUI]="false"
+                     [zoomControl]="true">
+              <agm-marker
+                *ngFor="let m of mapClusterSuppliers; index as i"
+                (markerClick)="clickedMarker(m.label, i)"
+                [latitude]="m.lat"
+                [longitude]="m.lng"
+                [label]="m.label">
+                <agm-info-window>
+                  <table class="point-data w-100">
+                    <tr class="sprt" *ngFor="let sup of m.suppliers">
+                      <td>
+                        <table class=" w-100">
+                          <tr>
+                            <td class="w-50"><strong>{{sup.name}}</strong></td>
+                            <td class="w-50" rowspan="2">
+                              <strong>
+                                {{sup.product.price}}
+                                {{currency[config.name]}}
+                                {{priceFor[config.name]}}
+                              </strong>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td><app-b2b-rating-star [rating]="sup.rating"></app-b2b-rating-star></td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </agm-info-window>
+              </agm-marker>
+            </agm-map>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="{{'productDetail.tabs.payment' | translate}}">
+          <div class="b-tab-info--body">
+            <div class="row">
+              <div class="col-lg-8">
+                <h3>{{'productDetail.tabs.payment' | translate}}</h3>
+
+                <p>{{'productDetail.individualFull' | translate}}</p>
+                <p>{{'productDetail.tab4.text1' | translate}}</p>
+                <p>{{'productDetail.tab4.text2' | translate}}</p>
+              </div>
+              <div class="col-lg-4">
+                <div class="row h-100">
+                  <div class="col-12 d-flex justify-content-center align-items-center">
+                    <img src="/assets/img/svg-icons/new-icons/payment.svg" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>
+
+

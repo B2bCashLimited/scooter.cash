@@ -1,0 +1,100 @@
+:root {
+  --primary: #ff8f00;
+  --accent: #ff6f00;
+  --warn: #f44336;
+}
+
+.color-primary {
+  color: var(--primary) !important;
+}
+
+.color-accent {
+  color: var(--accent) !important;
+}
+
+.color-warn {
+  color: var(--warn) !important;
+}
+
+// if urp == home
+.map {
+  background-color: #cccccc;
+  background-image: url('assets/img/map-home.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: top center;
+}
+
+//======================================================================================================================
+body {
+  // background-color: #e4e4e4;
+  background-color: white;
+}
+
+//======================================================================================================================
+.b2b {
+  &-title {
+    &-a {
+      font-weight: 100;
+      font-size: 36px;
+    }
+    &-b {
+      font-weight: 100;
+      font-size: 26px;
+    }
+    &-c {
+      margin-bottom: 2.5rem;
+      color: #3c4858;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 400;
+    }
+  }
+  &-box {
+    &-a {
+      position: relative;
+      background: #f9f9f9;
+      border: 1px solid #ececec;
+      padding: 1.5rem;
+      width: 100%;
+    }
+    &-b {
+      background: #fff;
+      padding: 10px 1.5rem;
+    }
+  }
+  &-btn {
+    &-add {
+      display: inline-block;
+      vertical-align: middle;
+      cursor: pointer;
+      color: var(--primary);
+      font-size: 14px;
+      i,
+      span {
+        display: inline-block;
+        vertical-align: middle;
+      }
+      &:hover {
+        color: var(--accent);
+        text-decoration: none;
+      }
+    }
+  }
+  &-pop {
+    &-loading {
+      md-dialog-container {
+        box-shadow: none;
+        background: none;
+      }
+    }
+  }
+}
+
+//======================================================================================================================
+.carousel-item-wrapper {
+  display: table-cell !important;
+  white-space: normal !important;
+  box-sizing: content-box !important;
+  vertical-align: middle;
+  text-align: left;
+}

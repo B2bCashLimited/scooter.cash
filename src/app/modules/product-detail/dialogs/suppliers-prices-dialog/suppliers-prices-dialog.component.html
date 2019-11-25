@@ -1,0 +1,22 @@
+<div class="prices-dialog-popup">
+  <div class="popup-close" (click)="onClose()">
+    <i class="bb bb-clear-black"></i>
+  </div>
+
+  <h2>Все предложения</h2>
+  <table class="table">
+    <tr *ngFor="let item of data.prices; let i = index">
+      <td>
+        <div class="supplier-name">
+          {{item.supplier. fullName}}
+        </div>
+        <app-b2b-rating-star [rating]="item.supplier.rating"></app-b2b-rating-star>
+      </td>
+      <td>{{item.price}} <span *ngIf="assocUnits">{{assocUnits[data.currency][config.name]}}</span></td>
+    </tr>
+  </table>
+
+  <div class="d-flex justify-content-center">
+    <button class="b2b-btn" mat-raised-button (click)="onClose()">Закрыть</button>
+  </div>
+</div>

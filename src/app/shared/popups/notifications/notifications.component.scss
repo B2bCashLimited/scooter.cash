@@ -1,0 +1,45 @@
+@import "src/app/styles/variables";
+@import "src/app/styles/mixins";
+
+.bold {
+  font-weight: bold;
+}
+
+.counters {
+  font-size: 14px;
+
+  > li {
+    margin-bottom: 7px;
+    display: flex;
+    align-items: center;
+  }
+
+  button {
+    color: $default-color-text;
+    text-align: left;
+    border: none;
+    padding: 0;
+    line-height: 1.2;
+  }
+}
+
+.count {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: bold;
+  height: 25px;
+  width: 25px;
+  min-width: 25px;
+  background: #212529;
+  color: #fff;
+  line-height: 25px;
+  text-align: center;
+  border-radius: 50%;
+  margin-right: 12px;
+}
+
+h5 {
+  mat-icon {
+    vertical-align: text-bottom;
+  }
+}

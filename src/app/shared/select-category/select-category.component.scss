@@ -1,0 +1,54 @@
+@import "src/app/styles/variables";
+@import "src/app/styles/mixins";
+
+:host {
+  display: flex;
+  align-self: start;
+  flex-grow: 1;
+}
+
+.b2b-category-btn {
+  height: 40px;
+  width: 100%;
+  position: relative;
+  box-shadow: none;
+  background: #FFFFFF;
+  border: 1px solid #EEEEEE;
+  border-radius: 5px;
+
+  &:hover{
+    background: #ffffff;
+  }
+
+  ::ng-deep.mat-button-focus-overlay,
+  ::ng-deep.mat-button-ripple.mat-ripple{
+    display: none;
+  }
+
+  ::ng-deep.mat-button-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100%;
+    white-space: normal;
+    padding-right: 14px;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    font-size: 14px;
+    color: #000000;
+  }
+
+  &:after {
+    content: "\E928";
+    font-family: 'b2bcash';
+    color: $default-color-text;
+    font-size: 1.375rem;
+    position: absolute;
+    right: 1px;
+    top: 50%;
+    margin-top: -17px;
+    bottom: 0;
+  }
+}

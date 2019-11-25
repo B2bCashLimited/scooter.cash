@@ -1,0 +1,24 @@
+<form class="signup-form">
+  <div class="e-input-find">
+    <mat-form-field floatLabel="auto"
+                    class="w-100 signup-field"
+                    [ngClass]="{'mat-warn mat-form-field-invalid': (validator && locationsCtrl.value === '')}">
+      <input matInput
+             placeholder="{{_placeholder}}"
+             [ngClass]="{'mat-form-field-autofill-control ng-untouched ng-pristine ng-invalid': (validator && locationsCtrl.value === '')}"
+             aria-label="State"
+             [matAutocomplete]="auto"
+             [formControl]="locationsCtrl">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let location of filteredLocations | async"
+                    [value]="location.name"
+                    (onSelectionChange)="onSelect($event, location)">
+          <span *ngIf="currentLang === 'Ru'">{{location.nameRu}}</span>
+          <span *ngIf="currentLang === 'En'">{{location.nameEn}}</span>
+          <span *ngIf="currentLang === 'Cn'">{{location.nameCn}}</span>
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
+
+</form>

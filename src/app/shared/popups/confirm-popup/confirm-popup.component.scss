@@ -1,0 +1,44 @@
+@import "src/app/styles/variables";
+@import "src/app/styles/mixins";
+
+.b-confirm-popup{
+  width: 100%;
+  max-width: 380px;
+  position: relative;
+  max-height: 80vh;
+
+  .ic-block{
+    font-size: 70px;
+    color: $default-color-text;
+    margin-bottom: 20px;
+  }
+
+  .modal-title {
+    font-family: Roboto;
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.2;
+    color: #2c2c2b;
+    margin-bottom: 20px;
+  }
+
+  .btn-fill{
+    height: 40px;
+  }
+}
+
+
+@media only screen and (max-width: 479px){
+  .b-confirm-popup{
+    max-width: 100%;
+
+    .ic-block{
+      font-size: 50px;
+      margin-bottom: 15px;
+    }
+
+    .modal-title {
+      font-size: 1rem;
+    }
+  }
+}

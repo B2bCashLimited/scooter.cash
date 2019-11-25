@@ -1,0 +1,113 @@
+.b-cons-pos {
+  position: fixed;
+  bottom: 95px;
+  right: 20px;
+  z-index: 2;
+}
+
+.b-cons-label {
+  cursor: pointer;
+  width: 80px;
+
+  .ic-btn {
+    width: 72px;
+    height: 72px;
+    background: #1C8F2E;
+    border-radius: 50%;
+
+    i {
+      font-size: 2rem;
+      color: #ffffff;
+    }
+  }
+
+  .e-text {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    line-height: normal;
+    font-size: 0.75rem;
+    color: #1C8F2E;
+  }
+}
+
+::ng-deep app-widget-chat {
+  ::ng-deep app-chat-contacts {
+    .b2b-chat-btn {
+      width: 40px !important;
+      height: 40px !important;
+      font-size: 1.75rem !important;
+
+      &.bb-pencil {
+        width: 33px !important;
+        height: 33px !important;
+        font-size: 1.2rem !important;
+      }
+    }
+
+    .chat__contacts--top {
+      height: 68px;
+    }
+
+    .card-route-img {
+      width: 40px !important;
+      height: 40px !important;
+      min-width: 40px;
+    }
+
+    .company_name {
+      padding-left: 10px !important;
+
+      &.bb {
+        padding-left: 0 !important;
+      }
+
+      + .company_name {
+        padding-left: 0 !important;
+      }
+
+      &.width-name {
+        @media only screen and (max-width: 1300px) {
+          width: 100px !important;
+        }
+
+        @media only screen and (max-width: 1199px) {
+          width: 100px !important;
+        }
+
+        @media only screen and (max-width: 991px) {
+          width: 95px !important;
+        }
+
+        @media only screen and (max-width: 767px) {
+          width: auto !important;
+        }
+
+        @media only screen and (max-width: 575px) {
+          width: 100% !important;
+          margin-right: 0 !important;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .b-cons-pos {
+    bottom: 10px;
+  }
+}
+
+@media only screen and (max-width: 479px) {
+  .b-cons-pos {
+    bottom: 30px;
+  }
+
+  .b-cons-label {
+
+    .ic-btn {
+      width: 60px;
+      height: 60px;
+    }
+  }
+}

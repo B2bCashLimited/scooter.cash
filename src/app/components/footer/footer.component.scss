@@ -1,0 +1,318 @@
+@import "src/app/styles/variables";
+@import "src/app/styles/mixins";
+
+:host {
+  flex: 0 0 auto;
+  display: block;
+}
+
+
+.footer {
+  padding: 42px 40px 46px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-flow: wrap;
+  background-color: #ffffff;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+
+  &--item-1{
+    display: flex;
+    margin-bottom: 36px;
+    flex: 0 0 60%;
+
+    .footer--link{
+      margin: 0 20px;
+    }
+  }
+
+  &--item-2{
+    display: flex;
+    margin-bottom: 36px;
+    flex: 0 0 40%;
+    justify-content: flex-end;
+  }
+
+  &--item-3{
+    flex: 0 0 60%;
+  }
+
+  &--item-4{
+    display: flex;
+    align-items: center;
+    flex: 0 0 40%;
+    justify-content: flex-end;
+
+    a{
+      display: inline-flex;
+      margin: 0 20px;
+      text-decoration: none !important;
+      i{
+        color: #CCCCCC;
+        font-size: 22px;
+        line-height: 22px;
+
+        &.fa-youtube-play{
+          font-size: 24px;
+          line-height: 24px;
+        }
+        &.fa-vk{
+          font-size: 24px;
+          line-height: 24px;
+        }
+        &.fa-odnoklassniki{
+          font-size: 24px;
+          line-height: 24px;
+        }
+        &.fa-instagram{
+          font-size: 26px;
+          line-height: 26px;
+        }
+      }
+    }
+  }
+
+  &--link{
+    font-style: normal;
+    font-weight: normal;
+    @include rem(13);
+    line-height: normal;
+    color: $default-color-text;
+    text-decoration: none !important;
+  }
+
+  &--phone{
+    display: flex;
+    align-items: center;
+
+    i{
+      color: #999999;
+      margin-right: 13px;
+      @include rem(14);
+      position: relative;
+      top: -1px;
+    }
+
+    div{
+      font-style: normal;
+      font-weight: normal;
+      @include rem(16);
+      line-height: normal;
+      color: #000000;
+    }
+  }
+
+  &--email{
+    margin-left: 62px;
+    display: flex;
+    align-items: center;
+
+    i{
+      color: #C4C4C4;
+      margin-right: 13px;
+      @include rem(11);
+      position: relative;
+      top: -1px;
+    }
+
+    a{
+      font-style: normal;
+      font-weight: normal;
+      @include rem(16);
+      line-height: normal;
+      text-decoration-line: none !important;
+      color: $default-color-text;
+    }
+  }
+
+  &--text{
+    font-style: normal;
+    font-weight: normal;
+    @include rem(14);
+    line-height: 16px;
+    color: #CCCCCC;
+
+    span{
+      font-weight: bold;
+    }
+  }
+
+}
+
+.b2b-ui-languages {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 11px;
+
+  .e-flag{
+    width: 28px;
+    min-width: 28px;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
+    border-radius: 1px;
+
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  ::ng-deep {
+    &.mat-button-toggle-focus-overlay {
+      display: none;
+    }
+    &.mat-button-toggle-group {
+      box-shadow: none;
+    }
+
+    &.mat-button-toggle {
+      margin: 0 4px;
+      span.e-flag {
+        opacity: .5;
+      }
+      &.mat-button-toggle-checked {
+        background-color: transparent;
+        span.e-flag {
+          opacity: 1;
+        }
+      }
+    }
+    &.mat-button-toggle-label {
+      margin-bottom: 0;
+    }
+    &.mat-button-toggle-label-content {
+      padding: 0;
+    }
+  }
+
+  ::ng-deep.mat-select{
+    width: auto;
+  }
+
+  ::ng-deep.mat-form-field-wrapper{
+    padding: 0;
+    height: 20px;
+  }
+
+  ::ng-deep.mat-form-field-underline,
+  ::ng-deep.mat-select-value{
+    display: none;
+  }
+  ::ng-deep.mat-form-field-infix{
+    padding: 0;
+    border: 0;
+    width: 51px;
+    display: flex;
+    align-items: center;
+  }
+
+  ::ng-deep.mat-select-arrow{
+    position: relative;
+    width: 14px;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    border: none;
+    height: 8px;
+    margin: 0 7px;
+
+    &:before{
+      font-family: b2bcash;
+      content: "\e928";
+      position: absolute;
+      position: absolute;
+      color: #CCCCCC;
+      font-size: 15px;
+    }
+  }
+}
+
+@media only screen and (max-width: 1199px){
+  .footer {
+    padding: 38px 20px 38px 20px;
+
+    &--item-1{
+      order: 1;
+      margin-bottom: 36px;
+      flex: 0 0 100%;
+      justify-content: center;
+    }
+
+    &--item-2{
+      order: 2;
+      margin-bottom: 44px;
+      flex: 0 0 100%;
+      justify-content: center;
+    }
+
+    &--item-3{
+      flex: 0 0 100%;
+      order: 4;
+    }
+
+    &--item-4{
+      order: 3;
+      flex: 0 0 100%;
+      justify-content: center;
+      margin-bottom: 38px;
+    }
+
+    &--text{
+      text-align: center;
+    }
+
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .footer {
+    padding: 30px 20px 36px 20px;
+
+    &--wrap-link{
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+    }
+
+    &--item-1{
+      flex-flow: wrap;
+      margin-bottom: 38px;
+
+      .footer--link{
+        margin: 0 0 20px;
+      }
+    }
+
+    &--item-2{
+      margin-bottom: 50px;
+      flex-flow: column;
+    }
+
+    &--phone{
+      justify-content: center;
+      margin-left: 0;
+      margin-bottom: 10px;
+    }
+
+    &--email{
+      margin-left: 0;
+      justify-content: center;
+    }
+
+    &--item-4{
+
+      a{
+        margin: 0 13px;
+      }
+    }
+  }
+
+  .b2b-ui-languages{
+    flex: 0 0 100%;
+    margin: 0 0 29px;
+    justify-content: center;
+  }
+}

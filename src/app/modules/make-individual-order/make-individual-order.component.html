@@ -1,0 +1,162 @@
+<div class="b-container">
+  <div class="b-inner d-block">
+    <div class="d-flex justify-content-start b-top-nav">
+      <div class="col-auto pl-0">
+        <button (click)="handleClickBack()" class="btn-back">
+          <i class="bb bb-mat-arrow"></i>
+          <span>{{'productDetail.back' | translate}}</span>
+        </button>
+      </div>
+      <div class="col-auto pl-0">
+        <h1 class="pt-2">{{'orders.checkoutTitle' | translate}}</h1>
+      </div>
+    </div>
+
+    <div class="b-wrap">
+      <div class="coll-1">
+        <section class="section-bg">
+          <div class="row section-bg--top">
+            <div class="col-auto">
+              <h2>{{'header.cart' | translate}}</h2>
+            </div>
+            <div class="col-auto">
+              <div (click)="deleteAllItems()" class="delete-all">
+                {{'global.deleteAllItems' | translate}}
+                <i class="bb bb-subtract-delete"></i>
+              </div>
+            </div>
+          </div>
+          <div class="b-cart-order">
+            <ul>
+              <li *ngFor="let prod of cartedProducts">
+                <div class="row list-products">
+                  <div class="col-auto">
+                    <div class="b-img-wrap">
+                      <a [routerLink]="['/product', prod.id]">
+                        <span class="b-img-wrap--icon"><i class="bb bb-info-circle"></i></span>
+                        <img matTooltip="" matTooltipPosition="above"
+                          [src]="prod.imgSrc">
+                      </a>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="e-name w-100">
+                      <a [routerLink]="['/product', prod.id]">{{prod[config.name]}}</a>
+                    </div>
+                    <div class="e-manufacturer w-100">{{prod.manufacturer && prod.manufacturer[config.name]}}</div>
+                  </div>
+                  <div (click)="deleteItem(prod)" class="col-auto align-items-start">
+                    <i class="bb bb-subtract-delete btn-delete"></i>
+                  </div>
+                </div>
+                <div *ngIf="isBuyNow"
+                     class="row align-items-end wrap-pseudo-btn">
+                  <div class="col-sm-auto mb-sm-0 mb-2">
+                    <div class="pseudo-btn"
+                         (click)="prod.showWings = true"
+                         *ngIf="!prod.showWings">
+                      <div class="e-button">
+                        <i class="bb bb-minus"></i>
+                      </div>
+                      <div class="pseudo-btn--text">
+                        {{prod.count}}
+                        <span matSuffix>{{(prod.countUnit) ? ('measures.numb' | translate) : (prod.priceFor && prod.priceFor[config.name] || '')}}</span>
+                      </div>
+                      <div class="e-button"><i class="bb bb-plus-small"></i></div>
+                    </div>
+                    <div class="input-btn"
+                         *ngIf="prod.showWings">
+                      <mat-form-field class="w-100"
+                                      floatPlaceholder="never"  floatLabel="never">
+                <span class="e-button"
+                      (click)="subAdd(false)"
+                      matPrefix>
+                  <i class="bb bb-minus"></i>
+                </span>
+                        <!-- <span class="e-button" matPrefix *ngIf="prod.count === 1"><i class="bb bb-subtract-delete btn-delete" (click)="deleteFormCart(item)"></i></span> -->
+                <input class="w-100" matInput
+                        [(ngModel)]="prod.count"
+                        [value]="1"
+                        autocomplete="off"
+                        type="number"> <!--(change)="onCountInputChange($event, item)"-->
+              <span class="text-small"
+                    matSuffix>{{(prod.countUnit) ? ('measures.numb' | translate) : prod.priceFor[config.name]}}</span>
+              <span class="e-button"
+                    (click)="subAdd(true)"
+                    matSuffix><i class="bb bb-plus-small"></i></span>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="col text-total">
+                    {{prod.price | number:'1.0-2':config.locale}} {{currency && currency[config.name]}}
+                  </div>
+                </div>
+                <div class="b-divider mb-3"></div>
+              </li>
+            </ul>
+
+            <div class="row">
+              <div class="col-12 text-total">
+                {{'productFormCart.total' | translate}}: {{totalPrice | number:'1.0-2':config.locale}} {{currency && currency[config.name]}}
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="coll-2">
+        <section class="section-bg">
+          <h2>{{'orders.registration' | translate}}</h2>
+
+          <div class="b-cart-registration">
+            <!--форма регистрации-->
+            <div class="row mb-3"
+                 *ngIf="!isLoggedIn">
+              <div class="col-12">
+                <app-make-individual-signup
+                  (userRegistered)="registrationComplete($event)"
+                  [noCountryMode]="true"
+                  [noButtonMode]="true"
+                  [individual]="true">
+                </app-make-individual-signup>
+              </div>
+            </div>
+          </div>
+
+          <div class="row align-items-end">
+            <div class="col-xl col-lg-12 col-md mb-xl-0 mb-lg-3 mb-md-0 mb-3">
+              <table>
+                <tr *ngIf="false">
+                  <td>{{'orders.totalPrice' | translate}}</td>
+                  <td>{{totalPrice | number:'1.0-2':config.locale}} {{currency && currency[config.name]}}</td>
+                </tr>
+                <tr *ngIf="false">
+                  <td>{{'orders.deliveryPrice' | translate}}</td>
+                  <td>{{'global.unspecified' | translate}}</td>
+                </tr>
+                <tr>
+                  <td>
+                    {{'orders.totalWithoutDelivery' | translate}}
+                  </td>
+                  <td>{{totalPrice | number:'1.0-2':config.locale}} {{currency && currency[config.name]}}</td>
+                </tr>
+              </table>
+            </div>
+
+            <div class="col-xl-auto col-lg-12 col-md-auto">
+              <button mat-raised-button
+                      [appYandexReachGoal]="'buy'"
+                      [appGoogleEvent]="'buy'"
+                      (click)="makeOrder()"
+                      class="btn-fill w-100"
+                      matTooltip="{{'orders.checkout' | translate}}"
+                      matTooltipPosition="above"
+                      id="submit">
+                {{'orders.checkout' | translate}}
+              </button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>

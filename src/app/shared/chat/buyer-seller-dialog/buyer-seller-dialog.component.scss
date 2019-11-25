@@ -1,0 +1,33 @@
+.b2b-chat-btn {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  border-radius: 4px;
+  font-size: 2rem;
+  color: #ff7600;
+  border: 1px solid #ee6d06;
+  position: relative;
+  cursor: pointer;
+
+  &:before {
+    font-size: 90px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &.inverted {
+    color: white;
+    border: 1px solid white;
+    background-color: #ff7600;
+  }
+
+  &.bb-pencil {
+    width: 33px;
+    height: 33px;
+    border: none;
+    font-size: 1.3rem;
+    margin: auto 0;
+  }
+}

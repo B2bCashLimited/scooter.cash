@@ -1,0 +1,617 @@
+@import "src/app/styles/variables";
+@import "src/app/styles/mixins";
+
+:host {
+  display: block;
+  height: calc(100% - 140px);
+
+  .b-inner{
+    padding-top: 25px;
+  }
+
+  h2{
+    font-style: normal;
+    font-weight: bold;
+    @include rem(21);
+    line-height: 25px;
+    color: #333333;
+    margin: 0;
+  }
+}
+
+.b-top-nav{
+  align-items: center;
+  margin-bottom: 20px;
+  flex-flow: wrap;
+}
+
+.wrap-section{
+
+  &.row {
+    margin-left: -10px;
+    margin-right: -10px;
+
+    >.col,
+    >[class*="col-"] {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+
+  .coll-1{
+
+  }
+
+  .coll-2{
+    max-width: 300px;
+  }
+}
+
+.product-form-cart {
+  width: 100%;
+  position: relative;
+  padding: 0;
+
+  .btn-delete {
+    cursor: pointer;
+    color: #CCCCCC;
+    transition: .25s ease-out;
+
+    &:hover {
+      color: #FF0000;
+    }
+  }
+
+  .b-img-wrap {
+    width: 70px;
+    height: 70px;
+    overflow: hidden;
+    border-radius: 3px;
+    position: relative;
+    border: 1px solid #cccccc;
+    cursor: pointer;
+    transition: .25s ease-out;
+
+    &:before {
+      content: "";
+      width: 70px;
+      height: 70px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: rgba(32, 67, 181, 0.5);
+      border-radius: 3px;
+      z-index: 1;
+      display: none;
+    }
+
+    i {
+      display: none;
+      z-index: 2;
+    }
+
+    &:hover {
+      &:before {
+        display: block;
+      }
+
+      i {
+        position: absolute;
+        top: 50%;
+        right: auto;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #ffffff;
+        font-size: 10px;
+        width: 10px;
+        height: 10px;
+        display: block;
+      }
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: relative;
+      z-index: 0;
+    }
+  }
+
+  .list-products {
+    align-items: flex-start;
+
+    &--select {
+      max-width: 120px;
+    }
+
+    .row {
+      margin-left: -10px;
+      margin-right: -10px;
+
+      .col,
+      [class*="col-"] {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+    }
+
+    .b-cell {
+      font-weight: 500;
+      line-height: 1;
+      @include rem(16);
+      color: #333333;
+      word-break: break-word;
+      padding-right: 15px;
+
+      a {
+        color: #000000;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      &--small {
+        font-size: .8125rem;
+        color: #828282;
+        padding-top: 12px;
+      }
+    }
+
+    .col-price {
+      width: 125px;
+      margin-left: auto;
+    }
+  }
+
+  .b-mat-list {
+    padding: 0 20px;
+
+    .mat-list-item {
+      padding: 0;
+      height: auto;
+    }
+
+    ::ng-deep.mat-list-item-content {
+      display: block !important;
+      padding: 0;
+    }
+
+    .b-list-item{
+      + .b-list-item{
+        border-top: 1px solid #F8F8F8;
+      }
+    }
+  }
+
+  .bb-subtract-delete {
+    color: #828282;
+    font-size: .9375rem;
+    cursor: pointer;
+  }
+
+  .b2b-btn {
+    height: 50px;
+    width: 100%;
+
+    ::ng-deep.mat-button-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  ::ng-deep app-prices-list {
+    position: absolute;
+    top: 12px;
+    left: 20px;
+    right: 20px;
+    z-index: 2;
+    background-color: #ffffff;
+    box-shadow: 0 10px 30px rgba(58, 68, 88, 0.27);
+    border-radius: 5px;
+  }
+}
+
+.products-inner{
+  padding: 20px 0;
+}
+
+.section-bg{
+  background: #F8F8F8;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.text-btn {
+  font-weight: normal;
+  line-height: 16px;
+  @include rem(15);
+  color: #828282;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  text-align: right;
+  margin-right: 0;
+
+  i{
+    color: #CCCCCC;
+    @include rem(20);
+    margin-left: 20px;
+  }
+}
+
+.quantity {
+  margin-bottom: 20px;
+  padding: 15px 20px;
+  background: #FFFFFF;
+  border-radius: 5px;
+
+  &.row {
+    margin-left: -5px;
+    margin-right: -5px;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    .col,
+    [class*="col-"] {
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+  }
+
+  .subtitle {
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    font-size: .9375rem;
+    color: #333333;
+
+    span {
+      font-weight: 300;
+      line-height: 45px;
+      font-size: 2.9375rem;
+    }
+  }
+}
+
+.products-wrap {
+  padding: 0;
+  background: #FFFFFF;
+  border-radius: 5px;
+
+  .row {
+    margin-left: -5px;
+    margin-right: -5px;
+
+    [class*="col-"],
+    .col {
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+  }
+
+  .button-small {
+    box-shadow: none !important;
+    height: 30px;
+    @include rem(11);
+    border-radius: 5px;
+    background: #ffffff;
+    padding: 0 16px;
+    color: $default-color-text;
+    border: 1px solid $color-default;
+    transition: 0.25s cubic-bezier(0.4, 0, 1, 1);
+
+    ::ng-deep.mat-button-wrapper {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &:hover{
+      box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15) !important;
+    }
+  }
+
+  .e-select {
+    max-width: 130px;
+
+    ::ng-deep.mat-select {
+      background-color: #ffffff;
+      border: 1px solid #ffffff;
+    }
+
+    ::ng-deep.mat-select-placeholder {
+      font-style: normal;
+      font-weight: normal;
+      line-height: normal;
+      font-size: .75rem;
+      color: #000000;
+    }
+
+    ::ng-deep.mat-select-value-text {
+      font-size: .75rem;
+      color: #000000;
+    }
+
+    ::ng-deep.mat-select-arrow {
+      color: transparent;
+      border-left: 0;
+      border-right: 0;
+      border-top: 0;
+      margin: 0;
+      position: relative;
+      width: 18px;
+      height: 100%;
+
+      &:before {
+        content: '\e313';
+        font-family: 'Material Icons';
+        color: $default-color-text;
+        position: absolute;
+        font-size: 20px;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+
+  .e-price {
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1;
+    @include rem(16);
+    text-align: right;
+    color: #333333;
+    width: 100%;
+    display: block;
+  }
+
+  .coll-1 {
+    width: 100%;
+    flex: 0 0 100%;
+    position: relative;
+    min-height: 26px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+
+    section {
+      z-index: 1;
+    }
+  }
+
+  ::ng-deep.mat-divider {
+    margin: 10px 0 0 0 !important;
+    position: relative !important;
+  }
+}
+
+.button-bottom-wrap {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding: 0;
+}
+
+.pseudo-btn {
+  width: 150px;
+  height: 40px;
+  border: 1px solid #ffffff;
+  background: #FFFFFF;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  justify-content: space-between;
+  cursor: pointer;
+  text-transform: lowercase;
+
+  .e-button {
+    background: #F5F5F8;
+    border: 1px solid #F5F5F8;
+    border-radius: 3px;
+    width: 39px;
+    min-width: 39px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: .25s ease-out;
+
+    i {
+      color: #BDBDBD;
+      font-size: 14px;
+      min-height: 0;
+
+      &.bb-plus-small {
+        font-size: 14px;
+        color: $default-color-text;
+      }
+
+      &.bb-minus {
+        font-size: 3px;
+        color: $default-color-text;
+      }
+    }
+
+    &:hover{
+      border-color: $color-default;
+    }
+  }
+
+  &--text {
+    font-weight: 500;
+    line-height: 1;
+    @include rem(15);
+    color: #000000;
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    span {
+      font-size: 12px;
+      padding-bottom: 2px;
+    }
+  }
+}
+
+.input-btn {
+  width: 150px;
+  height: 40px;
+  border: 1px solid #ffffff;
+  background: #FFFFFF;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+
+  ::ng-deep.mat-form-field-suffix {
+    display: flex;
+    align-items: center;
+  }
+
+  ::ng-deep.mat-form-field-infix {
+    border-top: none;
+  }
+
+  ::ng-deep.mat-form-field-underline {
+    display: none;
+  }
+
+  ::ng-deep.mat-form-field-wrapper {
+    padding-bottom: 0;
+    height: 100%;
+  }
+
+  ::ng-deep.mat-form-field-flex {
+    height: 38px;
+    position: relative;
+    align-items: center;
+  }
+
+  ::ng-deep.mat-input-suffix {
+    font-weight: 500;
+    line-height: 1;
+    font-size: 12px;
+    color: #000000;
+    display: flex;
+    align-items: center;
+  }
+
+  ::ng-deep.mat-input-element {
+    padding-left: 10px;
+    color: #000000;
+    font-weight: 500;
+    caret-color: $default-color-text;
+  }
+
+  ::ng-deep.mat-form-field-label-wrapper {
+    padding-left: 20px;
+  }
+
+  ::ng-deep.mat-form-field {
+    height: 38px;
+    width: 100%;
+  }
+
+  .e-button {
+    background: #F5F5F8;
+    border-radius: 3px;
+    width: 39px;
+    min-width: 39px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+
+    i {
+      color: #BDBDBD;
+      font-size: 14px;
+      min-height: 0;
+
+      &.bb-plus-small {
+        font-size: 14px;
+        color: $default-color-text;
+      }
+
+      &.bb-minus {
+        font-size: 3px;
+        color: $default-color-text;
+      }
+    }
+  }
+
+  .text-small {
+    font-weight: 500;
+    line-height: normal;
+    font-size: 12px;
+    color: #000000;
+    padding-right: 10px;
+    text-transform: lowercase;
+  }
+}
+
+.total-price{
+  font-style: normal;
+  font-weight: bold;
+  line-height: 1;
+  @include rem(17);
+  color: #333333;
+}
+
+@media only screen and (max-width: 1199px){
+  .wrap-section{
+
+    .coll-2{
+      max-width: 100%;
+      margin-top: 20px;
+    }
+  }
+}
+
+@media only screen and (max-width: 767px){
+  :host{
+    height: auto;
+  }
+}
+
+@media only screen and (max-width: 479px) {
+  .product-form-cart {
+    .list-products {
+      .col-price {
+        width: auto;
+      }
+    }
+
+    .b-mat-list {
+      padding: 0 10px;
+    }
+  }
+
+  .products-inner{
+    padding: 10px 0;
+  }
+
+  .section-bg{
+    padding: 10px;
+  }
+}
+
+@media only screen and (max-width: 376px) {
+  .button-small{
+    margin-bottom: 10px;
+  }
+}

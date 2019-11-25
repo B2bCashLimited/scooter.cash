@@ -1,0 +1,177 @@
+@import "src/app/styles/variables";
+
+:host {
+  display: flex;
+  width: inherit;
+  justify-content: flex-start;
+}
+
+.width-inherit{
+  width: inherit;
+}
+
+.min-w-130{
+  min-width: 130px;
+}
+
+.lh-1{
+  line-height: 1;
+}
+
+.b2b-activities {
+  overflow-y: auto;
+  width: inherit;
+  overflow-x: auto;
+  padding-top: 12px;
+  padding-right: 10px;
+}
+
+.b2b-activity {
+  margin: 0 5px;
+
+  &__label {
+    font-weight: 400;
+    line-height: 1;
+    font-size: .625rem;
+    color: #544f4a;
+  }
+}
+
+.b2b-activity-names {
+  border-top: 1px solid #000;
+}
+
+.b2b-activity-label {
+  font-weight: 400;
+  font-size: 10px;
+  text-align: center;
+  color: #544f4a;
+  margin-top: 6px;
+  white-space: nowrap;
+}
+
+.b2b-activity-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #b5a89c;
+  background-color: #fff;
+  position: relative;
+  padding: 0;
+  cursor: pointer;
+  > img {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    float: left;
+    object-fit: cover;
+  }
+  &:before {
+    position: absolute;
+    font-family: 'b2bcash';
+    color: #B5A89C;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  &.activity-name {
+    opacity: .6;
+  }
+  &.activity-name.active {
+    background-color: #fff;
+    opacity: 1;
+  }
+  &.active {
+    background: #FF7600;
+    border-color: #FF7600;
+    &:before {
+      color: #ffffff;
+    }
+  }
+  &.provider:before {
+    content: '\e95d';
+    font-size: 1.75rem;
+  }
+  &.manufactory:before {
+    content: '\e951';
+    font-size: 1.438rem;
+  }
+  &.history:before {
+    content: '\e99b';
+    font-size: 1.438rem;
+  }
+  &.lorry-world:before {
+    content: '\e94e';
+    font-size: 1.813rem;
+  }
+  &.lorry-country:before {
+    content: '\e94f';
+    font-size: 1.188rem;
+  }
+  &.plane-country:before {
+    content: '\e947';
+    font-size: 1.813rem;
+  }
+  &.plane-world:before {
+    content: '\e948';
+    font-size: 2.312rem;
+  }
+  &.ship-river:before {
+    content: '\e950';
+    font-size: 1.125rem;
+  }
+  &.ship-sea:before {
+    content: '\e949';
+    font-size: 1.438rem;
+  }
+  &.rails-country:before {
+    content: '\e94a';
+    font-size: 1.438rem;
+  }
+  &.rails-world:before {
+    content: '\e94b';
+    font-size: 2rem;
+  }
+  &.customs-license:before {
+    content: '\e901';
+    font-size: 2rem;
+  }
+  &.customs:before {
+    content: '\e900';
+    font-size: 2rem;
+  }
+  &.warehouse-rent:before {
+    content: '\e95e';
+    font-size: 1.563rem;
+  }
+  &.warehouse-security:before {
+    content: '\e904';
+    font-size: 1.625rem;
+  }
+
+}
+
+.relative{
+  position: relative;
+}
+
+.overflow-visible{
+  overflow: visible !important;
+}
+
+.activity-counter{
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background: #3C4858;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  font-family: $default-font-family;
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: .8125rem;
+  text-align: center;
+  color: #FFFFFF;
+}

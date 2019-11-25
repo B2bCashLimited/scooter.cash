@@ -1,0 +1,80 @@
+.b-confirmation-dialog{
+  max-width: 270px;
+  margin-left: -10px;
+  margin-right: -10px;
+
+  .btn-fill {
+    color: #FF6F00;
+    background: #fff;
+    box-shadow: none !important;
+    border: 1px solid #FF6F00;
+    box-sizing: border-box;
+    border-radius: 3px;
+    transition: .2s ease-out;
+    height: 40px;
+    min-width: 115px;
+    font-weight: bold;
+
+    ::ng-deep.mat-button-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      line-height: 1;
+      white-space: normal;
+    }
+
+    &:hover{
+      background: #E86703;
+      color: #ffffff;
+    }
+  }
+
+  .btn-border{
+    color: #ffffff;
+    background: #FF6F00;
+    box-shadow: none !important;
+    border: 1px solid #FF6F00;
+    box-sizing: border-box;
+    border-radius: 3px;
+    transition: .2s ease-out;
+    height: 40px;
+    min-width: 115px;
+    font-weight: bold;
+
+    ::ng-deep.mat-button-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      line-height: 1;
+      white-space: normal;
+    }
+
+    &:hover{
+      background: #E86703;
+    }
+  }
+
+  h3{
+    font-weight: normal;
+    line-height: 1;
+    font-size: 1.25rem;
+    text-align: center;
+    color: #000000;
+    margin-bottom: 36px;
+  }
+
+  .row{
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+
+  [class*="col-"],
+  .col{
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}

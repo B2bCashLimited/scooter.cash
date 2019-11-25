@@ -1,0 +1,46 @@
+<div class="b-container">
+  <div class="b-inner d-block">
+    <h1>{{'contacts.contactInformation' | translate}}</h1>
+    <div class="position-relative w-100">
+
+      <div class="b-map-info">
+        <mat-tab-group>
+          <mat-tab label="{{'contacts.contacts' | translate}}">
+            <div class="b-map-info--body">
+              <p>{{'contacts.phone' | translate}}:&nbsp;8 800 551-15-10</p>
+              <p>{{'contacts.email' | translate}}:&nbsp;<a href="mailto:mailbox@support@scooter.cash">support@scooter.cash</a></p>
+              <p>{{'contacts.address' | translate}}:&nbsp;117519, Россия, Москва, Варшавское шоссе, 133</p>
+            </div>
+          </mat-tab>
+          <mat-tab label="{{'contacts.companyRequisites' | translate}}">
+            <div class="b-map-info--body">
+              <h3>ООО «Б2Б.КЭШ ЛИМИТЕД»</h3>
+              <p>Юридический адрес: 117519, Россия, Москва, Варшавское шоссе, 133</p>
+              <p>ОГРН: 1187746514218</p>
+              <p>ИНН/КПП: 7726432476/772601001</p>
+              <p>Расчетный счет: 30101810945250000297</p>
+              <p>Корр. счет: 40702810268000047919</p>
+              <p>Банк: ПАО «ФК ОТКРЫТИЕ» г. Москва</p>
+              <p>БИК: 044525297</p>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+
+      <div class="map">
+        <agm-map [latitude]="55.6036995"
+                 [longitude]="37.6074782"
+                 [zoom]="17"
+                 [disableDefaultUI]="false"
+                 [zoomControl]="true">
+          <agm-marker
+            [latitude]="55.6036995"
+            [longitude]="37.6074782"
+            label="117519, Россия, Москва, Варшавское шоссе, 133">
+            <agm-info-window>117519, Россия, Москва, Варшавское шоссе, 133</agm-info-window>
+          </agm-marker>
+        </agm-map>
+      </div>
+    </div>
+  </div>
+</div>

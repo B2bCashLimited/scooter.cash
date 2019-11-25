@@ -1,0 +1,28 @@
+<div class="popup-inner">
+  <div class="popup-close" (click)="close()">
+    <i class="material-icons">clear</i>
+  </div>
+  <div class="popup-title text-left">
+    {{'chat.groupMembers' | translate}}
+  </div>
+  <div class="list-wrap">
+    <mat-list>
+      <mat-list-item class="b-list-item" *ngFor="let company of chat.relations; let i = index;">
+        <i *ngIf="!isAdmin(company.userId) && userId !== company.userId && chat.relations.length > 2" class="material-icons clear" (click)="delete(chat.id, company.id)">clear</i>
+        <img class="list_photo" [src]="getCompanyLogoUrl(company.companyLogo)" alt="{{company.companyName}}" />
+        <div class="d-flex flex-wrap name-wrap">
+          <div class="e-name">
+            {{company.companyName}}
+          </div>
+          <span class="w-100 d-inline-flex align-items-center"><i *ngIf="company.activityKey" class="{{OCCUPATION_CLASS[fixActivity(company.activityKey)]}}" matTooltip="{{activityName(company.activityKey)}}" matTooltipPosition="above"></i>{{company.activityName}}</span>
+          <span class="w-100 d-inline-flex align-items-center"><i class="material-icons icon-person color-{{i+1}}">person</i> {{company.userName}} {{company.userSurname}}</span>
+        </div>
+      </mat-list-item>
+    </mat-list>
+  </div>
+  <div class="popup-btn-wrap">
+    <button mat-raised-button class="popup-btn w-100" (click)="close()">
+      {{'chat.saveMembers' | translate}}
+    </button>
+  </div>
+</div>

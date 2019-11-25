@@ -1,0 +1,81 @@
+<div class="b-card">
+  <div class="b-card--badges-free" style="display: none;">
+    <div class="item-1">доставка</div>
+    <div class="item-2">БЕСПЛАТНО</div>
+  </div>
+  <div class="b-card--badges-discount" style="display: none;">
+    <div class="item-1">скидка</div>
+    <div class="item-2">20%</div>
+  </div>
+  <div class="b-card--badges-present" style="display: none;">
+    Подарок
+  </div>
+
+  <div class="b-ic-switches">
+    <!-- при клике к b-ic-switches--item добавлять класс  select-->
+    <div (click)="toggleCompare()" class="b-ic-switches--item ic-libra" [class.select]="forCompare">
+      <i class="bb bb-libra"></i>
+    </div>
+    <div style="display: none !important" (click)="toggleFavorite()" class="b-ic-switches--item ic-heart" [class.select]="isFavorite">
+      <i class="bb bb-heart-border"></i>
+    </div>
+  </div>
+
+  <div class="b-card--img">
+    <a [routerLink]="'/product/' + product.id">
+      <img alt=""
+           [src]="config.serverUrl + product.photos">
+    </a>
+  </div>
+
+  <div class="b-card--info">
+    <a [routerLink]="'/product/' + product.id" class="b-card--subtitle"
+       *ngIf="product.manufacturer">{{product.manufacturer[config.name]}}</a>
+    <a [routerLink]="'/product/' + product.id" class="b-card--title">
+      {{product[config.name]}}&nbsp;{{product.model && product.model[config.name] || ''}}
+    </a>
+    <div class="row align-items-end">
+      <div class="col-auto">
+        <div class="b-card--small-text">
+          <span *ngIf="product.productPrices"
+                class="d-block">
+            {{product.productPrices.length}}&nbsp;
+            {{product.productPrices.length === 1 ? ('oneClick.supplier1' | translate) : product.productPrices.length > 1 && product.productPrices.length <= 4 ? ('oneClick.supplier2' | translate) : ('oneClick.suppliers' | translate)}}</span>
+          {{'oneClick.readyToSell' | translate}} {{'oneClick.from' | translate}}
+        </div>
+      </div>
+      <div class="col">
+        <div class="b-card--price">
+
+          <span>
+            {{product.price}}&nbsp;
+            <em>{{product.currency && product.currency[config.name] || ''}}</em>
+          </span>
+          <i *ngIf="product.currency">/</i>
+          <span *ngIf="product.priceFor">{{product.priceFor[config.name]}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="row btn-wrap">
+      <div class="col">
+        <button class="btn-fill btn-fill--large w-100"
+                [appYandexReachGoal]="'buy-now'"
+                [appGoogleEvent]="'buy-now'"
+                mat-raised-button
+                (click)="makeOrder()">
+          {{'oneClick.buyNow' | translate}}
+        </button>
+      </div>
+      <div class="col-auto">
+        <button mat-raised-button
+                [appYandexReachGoal]="'cart'"
+                [appGoogleEvent]="'cart'"
+                (click)="productChecked()"
+                class="btn-basket">
+          <i class="bb bb-basket-new"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+

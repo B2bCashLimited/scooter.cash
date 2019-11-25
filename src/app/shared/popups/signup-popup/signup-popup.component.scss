@@ -1,0 +1,85 @@
+@import "src/app/styles/variables";
+
+:host {
+  padding: 15px;
+  display: block;
+  max-width: 600px;
+  min-width: 280px;
+  text-align: center;
+
+  button {
+    box-shadow: none !important;
+    font-family: $default-font-family;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 1;
+    font-size: 1.0625rem;
+    text-align: center;
+    color: #FFFFFF;
+    min-height: 45px;
+    max-width: 210px;
+    background-color: #2043B5;
+
+    &::ng-deep.mat-button-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      white-space: normal;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .popup-icon {
+    height: 75px;
+    margin-bottom: 30px;
+
+    .bb-ic-check {
+      color: #3FC120;
+      font-size: 75px;
+      margin: 0 auto;
+      display: block;
+      width: 150px;
+      @media only screen and (max-width: 767px) {
+        font-size: 80px;
+      }
+    }
+  }
+}
+
+.popup-title {
+  font-family: $default-font-family;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  font-size: 1.25rem;
+  text-align: center;
+  color: #000000;
+}
+
+.popup-text {
+  font-family: $default-font-family;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 21px;
+  font-size: .9375rem;
+  text-align: center;
+  color: #3C4858;
+}
+
+@media only screen and (max-width: 479px) {
+  :host {
+    padding: 0 0 15px 0;
+    max-width: 100%;
+    min-width: 100%;
+
+    .popup-icon {
+      height: 60px;
+      margin-bottom: 10px;
+
+      .bb-ic-check {
+        font-size: 60px;
+      }
+    }
+  }
+}

@@ -1,0 +1,2342 @@
+$icomoon-font-path: "assets/fonts/b2bcash" !default;
+
+$bb-chart-bar: "\ea76";
+$bb-focus-weak: "\ea77";
+$bb-list-checks: "\ea78";
+$bb-power: "\ea79";
+$bb-wrench: "\ea7a";
+$bb-plane-country-3: "\ea74";
+$bb-plane-world-3: "\ea75";
+$bb-boxes: "\ea67";
+$bb-comments: "\ea64";
+$bb-menu-notification: "\ea65";
+$bb-sign-out-alt: "\ea66";
+$bb-arrow-top-right: "\ea73";
+$bb-angle-double-down: "\ea5e";
+$bb-calendar-alt: "\ea5f";
+$bb-credit-card: "\ea60";
+$bb-money-bill: "\ea61";
+$bb-print-2: "\ea62";
+$bb-trash-alt: "\ea63";
+$bb-search-routes: "\ea6a";
+$bb-search-orders: "\ea6b";
+$bb-search-customs: "\ea6c";
+$bb-products: "\ea6d";
+$bb-customs-services: "\ea6e";
+$bb-carriage-2: "\ea6f";
+$bb-not-done: "\ea5c";
+$bb-work-done: "\ea5d";
+$bb-basket-new: "\ea5b";
+$bb-arrow-right: "\ea69";
+$bb-sort-amount-down: "\ea51";
+$bb-earth-mark-2: "\ea50";
+$bb-envelope-2: "\ea52";
+$bb-finger-touch: "\ea53";
+$bb-location-arrow: "\ea54";
+$bb-menu1: "\ea55";
+$bb-musica-searcher: "\ea56";
+$bb-phone-2: "\ea57";
+$bb-registry: "\ea58";
+$bb-star: "\ea59";
+$bb-rails-world-3: "\ea4f";
+$bb-heart-border: "\ea80";
+$bb-heart: "\ea7f";
+$bb-comment-fill: "\ea7d";
+$bb-add-partner-2: "\ea7b";
+$bb-pdf: "\ea7c";
+$bb-override: "\ea70";
+$bb-delete-value: "\ea71";
+$bb-combine: "\ea72";
+$bb-user: "\ea5a";
+$bb-lorry-world-4: "\ea4e";
+$bb-libra: "\ea7e";
+$bb-comment-alt: "\ea68";
+$bb-any-kind: "\ea4b";
+$bb-customs: "\e900";
+$bb-customs-license: "\e901";
+$bb-check-bold: "\e902";
+$bb-warehouse-rent1: "\e903";
+$bb-warehouse-security: "\e904";
+$bb-hat-calls: "\e905";
+$bb-add-partner: "\e906";
+$bb-ready: "\e907";
+$bb-bargain: "\e908";
+$bb-ready-circle: "\e909";
+$bb-add-basket: "\e90a";
+$bb-plus: "\e90b";
+$bb-prev: "\e90c";
+$bb-next: "\e90d";
+$bb-add-factory: "\e90e";
+$bb-alarm-on: "\e90f";
+$bb-check: "\e910";
+$bb-clock: "\e911";
+$bb-contact-list: "\e912";
+$bb-aircraft: "\e913";
+$bb-alert: "\e914";
+$bb-arithmetic-symbols: "\e915";
+$bb-boat-anchor: "\e916";
+$bb-boxes-rounded: "\e917";
+$bb-box-on-boxes: "\e918";
+$bb-captain: "\e919";
+$bb-cargo: "\e91a";
+$bb-cargo-big-ship: "\e91b";
+$bb-cargo-ship: "\e91c";
+$bb-case: "\e91d";
+$bb-certificates: "\e91e";
+$bb-coin: "\e91f";
+$bb-earth-in-tv: "\e920";
+$bb-earth-mark: "\e921";
+$bb-factory: "\e922";
+$bb-factory-rounded: "\e923";
+$bb-loader-machine: "\e924";
+$bb-man-in-box: "\e925";
+$bb-man-official: "\e926";
+$bb-market: "\e927";
+$bb-mat-arrow: "\e928";
+$bb-mat-carstransport: "\e929";
+$bb-mat-chat: "\e92a";
+$bb-mat-data: "\e92b";
+$bb-mat-docs: "\e92c";
+$bb-mat-edit: "\e92d";
+$bb-mat-factory: "\e92e";
+$bb-mat-find: "\e92f";
+$bb-mat-kinds: "\e930";
+$bb-mat-partners: "\e931";
+$bb-mat-plane: "\e932";
+$bb-mat-provider: "\e933";
+$bb-mat-rails: "\e934";
+$bb-mat-rivers-seas: "\e935";
+$bb-mat-support: "\e936";
+$bb-mat-tam: "\e937";
+$bb-mat-trad: "\e938";
+$bb-moscow-metro-logo: "\e939";
+$bb-open-box: "\e93a";
+$bb-plane: "\e93b";
+$bb-plant: "\e93c";
+$bb-provider-box: "\e93d";
+$bb-railway: "\e93e";
+$bb-rus-map: "\e93f";
+$bb-rus-map-rounded: "\e940";
+$bb-ship: "\e941";
+$bb-ship-in-water: "\e942";
+$bb-train: "\e943";
+$bb-truck: "\e944";
+$bb-truck-big: "\e945";
+$bb-zoom-plane: "\e946";
+$bb-plane-country: "\e947";
+$bb-plane-world: "\e948";
+$bb-ship-sea: "\e949";
+$bb-rails-country: "\e94a";
+$bb-rails-world: "\e94b";
+$bb-dollar: "\e94c";
+$bb-menu: "\e94d";
+$bb-lorry-world: "\e94e";
+$bb-lorry-country: "\e94f";
+$bb-ship-river: "\e950";
+$bb-manufactory: "\e951";
+$bb-actions: "\e952";
+$bb-no: "\e953";
+$bb-people: "\e954";
+$bb-read-deal: "\e955";
+$bb-shipper: "\e956";
+$bb-sum: "\e957";
+$bb-info: "\e958";
+$bb-place: "\e959";
+$bb-jpen: "\e95a";
+$bb-load: "\e95b";
+$bb-net: "\e95c";
+$bb-provider: "\e95d";
+$bb-warehouse-rent: "\e95e";
+$bb-amount: "\e95f";
+$bb-qustion: "\e960";
+$bb-arrow: "\e961";
+$bb-back: "\e962";
+$bb-cancel: "\e963";
+$bb-date: "\e964";
+$bb-dollar-bg: "\e965";
+$bb-number: "\e966";
+$bb-quantity: "\e967";
+$bb-sheet-filter: "\e968";
+$bb-status: "\e969";
+$bb-box-product: "\e96a";
+$bb-time: "\e96b";
+$bb-top: "\e96c";
+$bb-view-route: "\e96d";
+$bb-sq-check: "\e96e";
+$bb-ic_delete_black_24px: "\e96f";
+$bb-search: "\e970";
+$bb-info-bg: "\e971";
+$bb-cancel-bold: "\e972";
+$bb-list-price: "\e973";
+$bb-calc: "\e974";
+$bb-choice: "\e975";
+$bb-claim: "\e976";
+$bb-delete-factory: "\e977";
+$bb-envelope: "\e978";
+$bb-list: "\e979";
+$bb-send: "\e97a";
+$bb-check-circle: "\e97b";
+$bb-a: "\e97c";
+$bb-order-delete: "\e97d";
+$bb-print: "\e97e";
+$bb-handshake: "\e97f";
+$bb-route: "\e980";
+$bb-unloading: "\e981";
+$bb-loading: "\e982";
+$bb-arrow-short: "\e983";
+$bb-delete: "\e984";
+$bb-sq-factory: "\e985";
+$bb-amount-units: "\e986";
+$bb-call: "\e987";
+$bb-calendar: "\e988";
+$bb-sq-delete: "\e989";
+$bb-date_range: "\e98a";
+$bb-move-circle: "\e98b";
+$bb-hide-prop-this: "\e98c";
+$bb-del-circle: "\e98d";
+$bb-complaint: "\e98e";
+$bb-hide-prop-company: "\e98f";
+$bb-phone: "\e990";
+$bb-sms: "\e991";
+$bb-rumpo: "\e992";
+$bb-container: "\e993";
+$bb-add-circle: "\e994";
+$bb-bigboat: "\e995";
+$bb-speed-train: "\e996";
+$bb-airplane: "\e997";
+$bb-triangle-arrow: "\e998";
+$bb-info-circle: "\e999";
+$bb-asterisk: "\e99a";
+$bb-book: "\e99b";
+$bb-long-arrow: "\e99c";
+$bb-customer-price-status: "\e99d";
+$bb-my-price-status: "\e99e";
+$bb-clear-black: "\e99f";
+$bb-content-copy: "\e9a0";
+$bb-ic-create: "\e9a1";
+$bb-rating-quarter: "\e9a2";
+$bb-rating-three-quarter: "\e9a3";
+$bb-rating-full: "\e9a4";
+$bb-rating-half: "\e9a5";
+$bb-rating-empty: "\e9a6";
+$bb-add-plus: "\e9a7";
+$bb-compare: "\e9a8";
+$bb-pencil: "\e9a9";
+$bb-ic-category: "\e9aa";
+$bb-ic-list: "\e9ab";
+$bb-cart-del: "\e9ac";
+$bb-add-partners: "\e9ad";
+$bb-hide-company-orders: "\e9ae";
+$bb-briefcase: "\e9af";
+$bb-information-variant: "\e9b0";
+$bb-video: "\e9b1";
+$bb-person: "\e9b2";
+$bb-file-document-box: "\e9b3";
+$bb-representative: "\e9b4";
+$bb-cube-outline: "\e9b5";
+$bb-weight: "\e9b6";
+$bb-cash: "\e9b7";
+$bb-chart-areaspline: "\e9b8";
+$bb-clipboard-account: "\e9b9";
+$bb-currency-usd: "\e9ba";
+$bb-emoticon-dead: "\e9bb";
+$bb-emoticon-excited: "\e9bc";
+$bb-emoticon-neutral: "\e9bd";
+$bb-key: "\e9be";
+$bb-link: "\e9bf";
+$bb-square-edit-outline: "\e9c0";
+$bb-trophy: "\e9c1";
+$bb-account-card-details: "\e9c2";
+$bb-alert-outline: "\e9c3";
+$bb-cancel-circle: "\e9c4";
+$bb-image-plus: "\e9c5";
+$bb-coin2: "\e9c6";
+$bb-union: "\e9c7";
+$bb-timer-sand: "\e9c8";
+$bb-upload: "\e9c9";
+$bb-calculator: "\e9ca";
+$bb-help: "\e9cb";
+$bb-diamond: "\e9cc";
+$bb-arrow-down: "\e9cd";
+$bb-arrow-expand-down: "\e9ce";
+$bb-train-circle: "\e9cf";
+$bb-air-circle: "\e9d0";
+$bb-officer: "\e9d1";
+$bb-package-closed: "\e9d2";
+$bb-plane-shield: "\e9d3";
+$bb-boat-circle: "\e9d4";
+$bb-logo: "\e9d5";
+$bb-truck-circle: "\e9d6";
+$bb-office-building: "\e9d7";
+$bb-shape: "\e9d8";
+$bb-outline: "\e9d9";
+$bb-search-web: "\e9da";
+$bb-arrow-triangle: "\e9db";
+$bb-hands: "\e9dc";
+$bb-chart-arc: "\e9dd";
+$bb-finance: "\e9de";
+$bb-percent: "\e9df";
+$bb-outline-visibility: "\e9e0";
+$bb-okok: "\e9e1";
+$bb-inbox: "\e9e2";
+$bb-razm_predl: "\e9e3";
+$bb-podtv_predl: "\e9e4";
+$bb-clients: "\e9e5";
+$bb-contract: "\e9e6";
+$bb-contract-check: "\e9e7";
+$bb-file: "\e9e8";
+$bb-finance-calculation: "\e9e9";
+$bb-carriage: "\e9ea";
+$bb-validate-search: "\e9eb";
+$bb-no-video: "\e9ec";
+$bb-new-search: "\e9ed";
+$bb-video-camera: "\e9ee";
+$bb-wagon: "\e9ef";
+$bb-caution-sign: "\e9f0";
+$bb-modern-buildings: "\e9f1";
+$bb-home: "\e9f2";
+$bb-file-document: "\e9f3";
+$bb-tune-vertical: "\e9f4";
+$bb-ic-check: "\e9f5";
+$bb-new-factory: "\e9f6";
+$bb-plus-circle: "\e9f7";
+$bb-list-invoice: "\e9f8";
+$bb-documents: "\e9f9";
+$bb-new-list: "\e9fa";
+$bb-bell: "\e9fb";
+$bb-invoice: "\e9fc";
+$bb-formula: "\e9fd";
+$bb-csv: "\e9fe";
+$bb-down: "\e9ff";
+$bb-up: "\ea00";
+$bb-autorenew: "\ea01";
+$bb-compound: "\ea02";
+$bb-view_module: "\ea03";
+$bb-view_list: "\ea04";
+$bb-access_time: "\ea05";
+$bb-delivery: "\ea06";
+$bb-discount: "\ea07";
+$bb-surface: "\ea08";
+$bb-atom: "\ea09";
+$bb-suitcase: "\ea0a";
+$bb-basket: "\ea0b";
+$bb-subtract: "\ea0c";
+$bb-trolley: "\ea0d";
+$bb-subtract-delete: "\ea0e";
+$bb-arrow-wide: "\ea0f";
+$bb-pyramid: "\ea10";
+$bb-arrow-narrow: "\ea11";
+$bb-input: "\ea12";
+$bb-link-ship-river: "\ea13";
+$bb-link-ship-sea: "\ea14";
+$bb-link-lorry-country: "\ea15";
+$bb-link-rails-world: "\ea16";
+$bb-link-rails-country: "\ea17";
+$bb-link-plane-world: "\ea18";
+$bb-link-plane-country: "\ea19";
+$bb-link-lorry-world: "\ea1a";
+$bb-link-customs-license-delivery: "\ea1b";
+$bb-link-trolley: "\ea1c";
+$bb-link-trolley-china: "\ea1d";
+$bb-link-customs-license: "\ea1e";
+$bb-link-search-routes: "\ea1f";
+$bb-link-customs-clearance: "\ea20";
+$bb-link-customs-clearance-delivery: "\ea21";
+$bb-link-customs-order-delivery: "\ea22";
+$bb-link-freight-order: "\ea23";
+$bb-link-order-goods: "\ea24";
+$bb-link-product-search: "\ea25";
+$bb-minus: "\ea26";
+$bb-plus-small: "\ea27";
+$bb-link-lorry-world-2: "\ea28";
+$bb-link-plane-country-2: "\ea29";
+$bb-link-customs-license-delivery-2: "\ea2a";
+$bb-lorry-world-2: "\ea2b";
+$bb-customs-2: "\ea2c";
+$bb-link-plane-world-2: "\ea2d";
+$bb-link-ship-river-2: "\ea2e";
+$bb-link-basket: "\ea2f";
+$bb-link-lorry-country-2: "\ea30";
+$bb-link-rails-world-2: "\ea31";
+$bb-link-ship-sea-2: "\ea32";
+$bb-link-rails-country-2: "\ea33";
+$bb-link-order: "\ea34";
+$bb-world-view: "\ea35";
+$bb-box-search: "\ea36";
+$bb-plane-2: "\ea37";
+$bb-schoolbag: "\ea38";
+$bb-customs-3: "\ea39";
+$bb-delivery-package: "\ea3a";
+$bb-customs-plane: "\ea3b";
+$bb-ship-sea-2: "\ea3c";
+$bb-rails-world-2: "\ea3d";
+$bb-plane-world-2: "\ea3e";
+$bb-lorry-world-3: "\ea3f";
+$bb-destination: "\ea40";
+$bb-clients-2: "\ea41";
+$bb-link-customs-license-2: "\ea42";
+$bb-link-customs-order-delivery-2: "\ea43";
+$bb-home-1: "\ea44";
+$bb-link-order-goods-2: "\ea45";
+$bb-link-customs-license-delivery-3: "\ea46";
+$bb-list-ul: "\ea47";
+$bb-plus-1: "\ea48";
+$bb-arrow-down-2: "\ea49";
+$bb-download-arrow-2: "\ea4a";
+$bb-arrow-3: "\ea4c";
+$bb-eye: "\ea4d";
+
+@font-face {
+  font-family: 'b2bcash';
+  font-display: swap;
+  src:  url('#{$icomoon-font-path}/b2bcash.eot?f4av9b');
+  src:  url('#{$icomoon-font-path}/b2bcash.eot?f4av9b#iefix') format('embedded-opentype'),
+  url('#{$icomoon-font-path}/b2bcash.ttf?f4av9b') format('truetype'),
+  url('#{$icomoon-font-path}/b2bcash.woff?f4av9b') format('woff'),
+  url('#{$icomoon-font-path}/b2bcash.svg?f4av9b#b2bcash') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.bb {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'b2bcash' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+.bb-chart-bar {
+  &:before {
+    content: $bb-chart-bar;
+  }
+}
+.bb-focus-weak {
+  &:before {
+    content: $bb-focus-weak;
+  }
+}
+.bb-list-checks {
+  &:before {
+    content: $bb-list-checks;
+  }
+}
+.bb-power {
+  &:before {
+    content: $bb-power;
+  }
+}
+.bb-wrench {
+  &:before {
+    content: $bb-wrench;
+  }
+}
+.bb-plane-country-3 {
+  &:before {
+    content: $bb-plane-country-3;
+  }
+}
+.bb-plane-world-3 {
+  &:before {
+    content: $bb-plane-world-3;
+  }
+}
+.bb-boxes {
+  &:before {
+    content: $bb-boxes;
+  }
+}
+.bb-comments {
+  &:before {
+    content: $bb-comments;
+  }
+}
+.bb-menu-notification {
+  &:before {
+    content: $bb-menu-notification;
+  }
+}
+.bb-sign-out-alt {
+  &:before {
+    content: $bb-sign-out-alt;
+  }
+}
+.bb-arrow-top-right {
+  &:before {
+    content: $bb-arrow-top-right;
+  }
+}
+.bb-angle-double-down {
+  &:before {
+    content: $bb-angle-double-down;
+  }
+}
+.bb-calendar-alt {
+  &:before {
+    content: $bb-calendar-alt;
+  }
+}
+.bb-credit-card {
+  &:before {
+    content: $bb-credit-card;
+  }
+}
+.bb-money-bill {
+  &:before {
+    content: $bb-money-bill;
+  }
+}
+.bb-print-2 {
+  &:before {
+    content: $bb-print-2;
+  }
+}
+.bb-trash-alt {
+  &:before {
+    content: $bb-trash-alt;
+  }
+}
+.bb-search-routes {
+  &:before {
+    content: $bb-search-routes;
+  }
+}
+.bb-search-orders {
+  &:before {
+    content: $bb-search-orders;
+  }
+}
+.bb-search-customs {
+  &:before {
+    content: $bb-search-customs;
+  }
+}
+.bb-products {
+  &:before {
+    content: $bb-products;
+  }
+}
+.bb-customs-services {
+  &:before {
+    content: $bb-customs-services;
+  }
+}
+.bb-carriage-2 {
+  &:before {
+    content: $bb-carriage-2;
+  }
+}
+.bb-not-done {
+  &:before {
+    content: $bb-not-done;
+  }
+}
+.bb-work-done {
+  &:before {
+    content: $bb-work-done;
+  }
+}
+.bb-basket-new {
+  &:before {
+    content: $bb-basket-new;
+  }
+}
+.bb-arrow-right {
+  &:before {
+    content: $bb-arrow-right;
+  }
+}
+.bb-sort-amount-down {
+  &:before {
+    content: $bb-sort-amount-down;
+  }
+}
+.bb-earth-mark-2 {
+  &:before {
+    content: $bb-earth-mark-2;
+  }
+}
+.bb-envelope-2 {
+  &:before {
+    content: $bb-envelope-2;
+  }
+}
+.bb-finger-touch {
+  &:before {
+    content: $bb-finger-touch;
+  }
+}
+.bb-location-arrow {
+  &:before {
+    content: $bb-location-arrow;
+  }
+}
+.bb-menu1 {
+  &:before {
+    content: $bb-menu1;
+  }
+}
+.bb-musica-searcher {
+  &:before {
+    content: $bb-musica-searcher;
+  }
+}
+.bb-phone-2 {
+  &:before {
+    content: $bb-phone-2;
+  }
+}
+.bb-registry {
+  &:before {
+    content: $bb-registry;
+  }
+}
+.bb-star {
+  &:before {
+    content: $bb-star;
+  }
+}
+.bb-rails-world-3 {
+  &:before {
+    content: $bb-rails-world-3;
+  }
+}
+.bb-heart-border {
+  &:before {
+    content: $bb-heart-border;
+  }
+}
+.bb-heart {
+  &:before {
+    content: $bb-heart;
+  }
+}
+.bb-comment-fill {
+  &:before {
+    content: $bb-comment-fill;
+  }
+}
+.bb-add-partner-2 {
+  &:before {
+    content: $bb-add-partner-2;
+  }
+}
+.bb-pdf {
+  &:before {
+    content: $bb-pdf;
+  }
+}
+.bb-override {
+  &:before {
+    content: $bb-override;
+  }
+}
+.bb-delete-value {
+  &:before {
+    content: $bb-delete-value;
+  }
+}
+.bb-combine {
+  &:before {
+    content: $bb-combine;
+  }
+}
+.bb-user {
+  &:before {
+    content: $bb-user;
+  }
+}
+.bb-lorry-world-4 {
+  &:before {
+    content: $bb-lorry-world-4;
+  }
+}
+.bb-libra {
+  &:before {
+    content: $bb-libra;
+  }
+}
+.bb-comment-alt {
+  &:before {
+    content: $bb-comment-alt;
+  }
+}
+.bb-any-kind {
+  &:before {
+    content: $bb-any-kind;
+  }
+}
+.bb-customs {
+  &:before {
+    content: $bb-customs;
+  }
+}
+.bb-customs-license {
+  &:before {
+    content: $bb-customs-license;
+  }
+}
+.bb-check-bold {
+  &:before {
+    content: $bb-check-bold;
+  }
+}
+.bb-warehouse-rent1 {
+  &:before {
+    content: $bb-warehouse-rent1;
+  }
+}
+.bb-warehouse-security {
+  &:before {
+    content: $bb-warehouse-security;
+  }
+}
+.bb-hat-calls {
+  &:before {
+    content: $bb-hat-calls;
+  }
+}
+.bb-add-partner {
+  &:before {
+    content: $bb-add-partner;
+  }
+}
+.bb-ready {
+  &:before {
+    content: $bb-ready;
+  }
+}
+.bb-bargain {
+  &:before {
+    content: $bb-bargain;
+  }
+}
+.bb-ready-circle {
+  &:before {
+    content: $bb-ready-circle;
+  }
+}
+.bb-add-basket {
+  &:before {
+    content: $bb-add-basket;
+  }
+}
+.bb-plus {
+  &:before {
+    content: $bb-plus;
+  }
+}
+.bb-prev {
+  &:before {
+    content: $bb-prev;
+  }
+}
+.bb-next {
+  &:before {
+    content: $bb-next;
+  }
+}
+.bb-add-factory {
+  &:before {
+    content: $bb-add-factory;
+  }
+}
+.bb-alarm-on {
+  &:before {
+    content: $bb-alarm-on;
+  }
+}
+.bb-check {
+  &:before {
+    content: $bb-check;
+  }
+}
+.bb-clock {
+  &:before {
+    content: $bb-clock;
+  }
+}
+.bb-contact-list {
+  &:before {
+    content: $bb-contact-list;
+  }
+}
+.bb-aircraft {
+  &:before {
+    content: $bb-aircraft;
+  }
+}
+.bb-alert {
+  &:before {
+    content: $bb-alert;
+  }
+}
+.bb-arithmetic-symbols {
+  &:before {
+    content: $bb-arithmetic-symbols;
+  }
+}
+.bb-boat-anchor {
+  &:before {
+    content: $bb-boat-anchor;
+  }
+}
+.bb-boxes-rounded {
+  &:before {
+    content: $bb-boxes-rounded;
+  }
+}
+.bb-box-on-boxes {
+  &:before {
+    content: $bb-box-on-boxes;
+  }
+}
+.bb-captain {
+  &:before {
+    content: $bb-captain;
+  }
+}
+.bb-cargo {
+  &:before {
+    content: $bb-cargo;
+  }
+}
+.bb-cargo-big-ship {
+  &:before {
+    content: $bb-cargo-big-ship;
+  }
+}
+.bb-cargo-ship {
+  &:before {
+    content: $bb-cargo-ship;
+  }
+}
+.bb-case {
+  &:before {
+    content: $bb-case;
+  }
+}
+.bb-certificates {
+  &:before {
+    content: $bb-certificates;
+  }
+}
+.bb-coin {
+  &:before {
+    content: $bb-coin;
+  }
+}
+.bb-earth-in-tv {
+  &:before {
+    content: $bb-earth-in-tv;
+  }
+}
+.bb-earth-mark {
+  &:before {
+    content: $bb-earth-mark;
+  }
+}
+.bb-factory {
+  &:before {
+    content: $bb-factory;
+  }
+}
+.bb-factory-rounded {
+  &:before {
+    content: $bb-factory-rounded;
+  }
+}
+.bb-loader-machine {
+  &:before {
+    content: $bb-loader-machine;
+  }
+}
+.bb-man-in-box {
+  &:before {
+    content: $bb-man-in-box;
+  }
+}
+.bb-man-official {
+  &:before {
+    content: $bb-man-official;
+  }
+}
+.bb-market {
+  &:before {
+    content: $bb-market;
+  }
+}
+.bb-mat-arrow {
+  &:before {
+    content: $bb-mat-arrow;
+  }
+}
+.bb-mat-carstransport {
+  &:before {
+    content: $bb-mat-carstransport;
+  }
+}
+.bb-mat-chat {
+  &:before {
+    content: $bb-mat-chat;
+  }
+}
+.bb-mat-data {
+  &:before {
+    content: $bb-mat-data;
+  }
+}
+.bb-mat-docs {
+  &:before {
+    content: $bb-mat-docs;
+  }
+}
+.bb-mat-edit {
+  &:before {
+    content: $bb-mat-edit;
+  }
+}
+.bb-mat-factory {
+  &:before {
+    content: $bb-mat-factory;
+  }
+}
+.bb-mat-find {
+  &:before {
+    content: $bb-mat-find;
+  }
+}
+.bb-mat-kinds {
+  &:before {
+    content: $bb-mat-kinds;
+  }
+}
+.bb-mat-partners {
+  &:before {
+    content: $bb-mat-partners;
+  }
+}
+.bb-mat-plane {
+  &:before {
+    content: $bb-mat-plane;
+  }
+}
+.bb-mat-provider {
+  &:before {
+    content: $bb-mat-provider;
+  }
+}
+.bb-mat-rails {
+  &:before {
+    content: $bb-mat-rails;
+  }
+}
+.bb-mat-rivers-seas {
+  &:before {
+    content: $bb-mat-rivers-seas;
+  }
+}
+.bb-mat-support {
+  &:before {
+    content: $bb-mat-support;
+  }
+}
+.bb-mat-tam {
+  &:before {
+    content: $bb-mat-tam;
+  }
+}
+.bb-mat-trad {
+  &:before {
+    content: $bb-mat-trad;
+  }
+}
+.bb-moscow-metro-logo {
+  &:before {
+    content: $bb-moscow-metro-logo;
+  }
+}
+.bb-open-box {
+  &:before {
+    content: $bb-open-box;
+  }
+}
+.bb-plane {
+  &:before {
+    content: $bb-plane;
+  }
+}
+.bb-plant {
+  &:before {
+    content: $bb-plant;
+  }
+}
+.bb-provider-box {
+  &:before {
+    content: $bb-provider-box;
+  }
+}
+.bb-railway {
+  &:before {
+    content: $bb-railway;
+  }
+}
+.bb-rus-map {
+  &:before {
+    content: $bb-rus-map;
+  }
+}
+.bb-rus-map-rounded {
+  &:before {
+    content: $bb-rus-map-rounded;
+  }
+}
+.bb-ship {
+  &:before {
+    content: $bb-ship;
+  }
+}
+.bb-ship-in-water {
+  &:before {
+    content: $bb-ship-in-water;
+  }
+}
+.bb-train {
+  &:before {
+    content: $bb-train;
+  }
+}
+.bb-truck {
+  &:before {
+    content: $bb-truck;
+  }
+}
+.bb-truck-big {
+  &:before {
+    content: $bb-truck-big;
+  }
+}
+.bb-zoom-plane {
+  &:before {
+    content: $bb-zoom-plane;
+  }
+}
+.bb-plane-country {
+  &:before {
+    content: $bb-plane-country;
+  }
+}
+.bb-plane-world {
+  &:before {
+    content: $bb-plane-world;
+  }
+}
+.bb-ship-sea {
+  &:before {
+    content: $bb-ship-sea;
+  }
+}
+.bb-rails-country {
+  &:before {
+    content: $bb-rails-country;
+  }
+}
+.bb-rails-world {
+  &:before {
+    content: $bb-rails-world;
+  }
+}
+.bb-dollar {
+  &:before {
+    content: $bb-dollar;
+  }
+}
+.bb-menu {
+  &:before {
+    content: $bb-menu;
+  }
+}
+.bb-lorry-world {
+  &:before {
+    content: $bb-lorry-world;
+  }
+}
+.bb-lorry-country {
+  &:before {
+    content: $bb-lorry-country;
+  }
+}
+.bb-ship-river {
+  &:before {
+    content: $bb-ship-river;
+  }
+}
+.bb-manufactory {
+  &:before {
+    content: $bb-manufactory;
+  }
+}
+.bb-actions {
+  &:before {
+    content: $bb-actions;
+  }
+}
+.bb-no {
+  &:before {
+    content: $bb-no;
+  }
+}
+.bb-people {
+  &:before {
+    content: $bb-people;
+  }
+}
+.bb-read-deal {
+  &:before {
+    content: $bb-read-deal;
+  }
+}
+.bb-shipper {
+  &:before {
+    content: $bb-shipper;
+  }
+}
+.bb-sum {
+  &:before {
+    content: $bb-sum;
+  }
+}
+.bb-info {
+  &:before {
+    content: $bb-info;
+  }
+}
+.bb-place {
+  &:before {
+    content: $bb-place;
+  }
+}
+.bb-jpen {
+  &:before {
+    content: $bb-jpen;
+  }
+}
+.bb-load {
+  &:before {
+    content: $bb-load;
+  }
+}
+.bb-net {
+  &:before {
+    content: $bb-net;
+  }
+}
+.bb-provider {
+  &:before {
+    content: $bb-provider;
+  }
+}
+.bb-warehouse-rent {
+  &:before {
+    content: $bb-warehouse-rent;
+  }
+}
+.bb-amount {
+  &:before {
+    content: $bb-amount;
+  }
+}
+.bb-qustion {
+  &:before {
+    content: $bb-qustion;
+  }
+}
+.bb-arrow {
+  &:before {
+    content: $bb-arrow;
+  }
+}
+.bb-back {
+  &:before {
+    content: $bb-back;
+  }
+}
+.bb-cancel {
+  &:before {
+    content: $bb-cancel;
+  }
+}
+.bb-date {
+  &:before {
+    content: $bb-date;
+  }
+}
+.bb-dollar-bg {
+  &:before {
+    content: $bb-dollar-bg;
+  }
+}
+.bb-number {
+  &:before {
+    content: $bb-number;
+  }
+}
+.bb-quantity {
+  &:before {
+    content: $bb-quantity;
+  }
+}
+.bb-sheet-filter {
+  &:before {
+    content: $bb-sheet-filter;
+  }
+}
+.bb-status {
+  &:before {
+    content: $bb-status;
+  }
+}
+.bb-box-product {
+  &:before {
+    content: $bb-box-product;
+  }
+}
+.bb-time {
+  &:before {
+    content: $bb-time;
+  }
+}
+.bb-top {
+  &:before {
+    content: $bb-top;
+  }
+}
+.bb-view-route {
+  &:before {
+    content: $bb-view-route;
+  }
+}
+.bb-sq-check {
+  &:before {
+    content: $bb-sq-check;
+  }
+}
+.bb-ic_delete_black_24px {
+  &:before {
+    content: $bb-ic_delete_black_24px;
+  }
+}
+.bb-search {
+  &:before {
+    content: $bb-search;
+  }
+}
+.bb-info-bg {
+  &:before {
+    content: $bb-info-bg;
+  }
+}
+.bb-cancel-bold {
+  &:before {
+    content: $bb-cancel-bold;
+  }
+}
+.bb-list-price {
+  &:before {
+    content: $bb-list-price;
+  }
+}
+.bb-calc {
+  &:before {
+    content: $bb-calc;
+  }
+}
+.bb-choice {
+  &:before {
+    content: $bb-choice;
+  }
+}
+.bb-claim {
+  &:before {
+    content: $bb-claim;
+  }
+}
+.bb-delete-factory {
+  &:before {
+    content: $bb-delete-factory;
+  }
+}
+.bb-envelope {
+  &:before {
+    content: $bb-envelope;
+  }
+}
+.bb-list {
+  &:before {
+    content: $bb-list;
+  }
+}
+.bb-send {
+  &:before {
+    content: $bb-send;
+  }
+}
+.bb-check-circle {
+  &:before {
+    content: $bb-check-circle;
+  }
+}
+.bb-a {
+  &:before {
+    content: $bb-a;
+  }
+}
+.bb-order-delete {
+  &:before {
+    content: $bb-order-delete;
+  }
+}
+.bb-print {
+  &:before {
+    content: $bb-print;
+  }
+}
+.bb-handshake {
+  &:before {
+    content: $bb-handshake;
+  }
+}
+.bb-route {
+  &:before {
+    content: $bb-route;
+  }
+}
+.bb-unloading {
+  &:before {
+    content: $bb-unloading;
+  }
+}
+.bb-loading {
+  &:before {
+    content: $bb-loading;
+  }
+}
+.bb-arrow-short {
+  &:before {
+    content: $bb-arrow-short;
+  }
+}
+.bb-delete {
+  &:before {
+    content: $bb-delete;
+  }
+}
+.bb-sq-factory {
+  &:before {
+    content: $bb-sq-factory;
+  }
+}
+.bb-amount-units {
+  &:before {
+    content: $bb-amount-units;
+  }
+}
+.bb-call {
+  &:before {
+    content: $bb-call;
+  }
+}
+.bb-calendar {
+  &:before {
+    content: $bb-calendar;
+  }
+}
+.bb-sq-delete {
+  &:before {
+    content: $bb-sq-delete;
+  }
+}
+.bb-date_range {
+  &:before {
+    content: $bb-date_range;
+  }
+}
+.bb-move-circle {
+  &:before {
+    content: $bb-move-circle;
+  }
+}
+.bb-hide-prop-this {
+  &:before {
+    content: $bb-hide-prop-this;
+  }
+}
+.bb-del-circle {
+  &:before {
+    content: $bb-del-circle;
+  }
+}
+.bb-complaint {
+  &:before {
+    content: $bb-complaint;
+  }
+}
+.bb-hide-prop-company {
+  &:before {
+    content: $bb-hide-prop-company;
+  }
+}
+.bb-phone {
+  &:before {
+    content: $bb-phone;
+  }
+}
+.bb-sms {
+  &:before {
+    content: $bb-sms;
+  }
+}
+.bb-rumpo {
+  &:before {
+    content: $bb-rumpo;
+  }
+}
+.bb-container {
+  &:before {
+    content: $bb-container;
+  }
+}
+.bb-add-circle {
+  &:before {
+    content: $bb-add-circle;
+  }
+}
+.bb-bigboat {
+  &:before {
+    content: $bb-bigboat;
+  }
+}
+.bb-speed-train {
+  &:before {
+    content: $bb-speed-train;
+  }
+}
+.bb-airplane {
+  &:before {
+    content: $bb-airplane;
+  }
+}
+.bb-triangle-arrow {
+  &:before {
+    content: $bb-triangle-arrow;
+  }
+}
+.bb-info-circle {
+  &:before {
+    content: $bb-info-circle;
+  }
+}
+.bb-asterisk {
+  &:before {
+    content: $bb-asterisk;
+  }
+}
+.bb-book {
+  &:before {
+    content: $bb-book;
+  }
+}
+.bb-long-arrow {
+  &:before {
+    content: $bb-long-arrow;
+  }
+}
+.bb-customer-price-status {
+  &:before {
+    content: $bb-customer-price-status;
+  }
+}
+.bb-my-price-status {
+  &:before {
+    content: $bb-my-price-status;
+  }
+}
+.bb-clear-black {
+  &:before {
+    content: $bb-clear-black;
+  }
+}
+.bb-content-copy {
+  &:before {
+    content: $bb-content-copy;
+  }
+}
+.bb-ic-create {
+  &:before {
+    content: $bb-ic-create;
+  }
+}
+.bb-rating-quarter {
+  &:before {
+    content: $bb-rating-quarter;
+  }
+}
+.bb-rating-three-quarter {
+  &:before {
+    content: $bb-rating-three-quarter;
+  }
+}
+.bb-rating-full {
+  &:before {
+    content: $bb-rating-full;
+  }
+}
+.bb-rating-half {
+  &:before {
+    content: $bb-rating-half;
+  }
+}
+.bb-rating-empty {
+  &:before {
+    content: $bb-rating-empty;
+  }
+}
+.bb-add-plus {
+  &:before {
+    content: $bb-add-plus;
+  }
+}
+.bb-compare {
+  &:before {
+    content: $bb-compare;
+  }
+}
+.bb-pencil {
+  &:before {
+    content: $bb-pencil;
+  }
+}
+.bb-ic-category {
+  &:before {
+    content: $bb-ic-category;
+  }
+}
+.bb-ic-list {
+  &:before {
+    content: $bb-ic-list;
+  }
+}
+.bb-cart-del {
+  &:before {
+    content: $bb-cart-del;
+  }
+}
+.bb-add-partners {
+  &:before {
+    content: $bb-add-partners;
+  }
+}
+.bb-hide-company-orders {
+  &:before {
+    content: $bb-hide-company-orders;
+  }
+}
+.bb-briefcase {
+  &:before {
+    content: $bb-briefcase;
+  }
+}
+.bb-information-variant {
+  &:before {
+    content: $bb-information-variant;
+  }
+}
+.bb-video {
+  &:before {
+    content: $bb-video;
+  }
+}
+.bb-person {
+  &:before {
+    content: $bb-person;
+  }
+}
+.bb-file-document-box {
+  &:before {
+    content: $bb-file-document-box;
+  }
+}
+.bb-representative {
+  &:before {
+    content: $bb-representative;
+  }
+}
+.bb-cube-outline {
+  &:before {
+    content: $bb-cube-outline;
+  }
+}
+.bb-weight {
+  &:before {
+    content: $bb-weight;
+  }
+}
+.bb-cash {
+  &:before {
+    content: $bb-cash;
+  }
+}
+.bb-chart-areaspline {
+  &:before {
+    content: $bb-chart-areaspline;
+  }
+}
+.bb-clipboard-account {
+  &:before {
+    content: $bb-clipboard-account;
+  }
+}
+.bb-currency-usd {
+  &:before {
+    content: $bb-currency-usd;
+  }
+}
+.bb-emoticon-dead {
+  &:before {
+    content: $bb-emoticon-dead;
+  }
+}
+.bb-emoticon-excited {
+  &:before {
+    content: $bb-emoticon-excited;
+  }
+}
+.bb-emoticon-neutral {
+  &:before {
+    content: $bb-emoticon-neutral;
+  }
+}
+.bb-key {
+  &:before {
+    content: $bb-key;
+  }
+}
+.bb-link {
+  &:before {
+    content: $bb-link;
+  }
+}
+.bb-square-edit-outline {
+  &:before {
+    content: $bb-square-edit-outline;
+  }
+}
+.bb-trophy {
+  &:before {
+    content: $bb-trophy;
+  }
+}
+.bb-account-card-details {
+  &:before {
+    content: $bb-account-card-details;
+  }
+}
+.bb-alert-outline {
+  &:before {
+    content: $bb-alert-outline;
+  }
+}
+.bb-cancel-circle {
+  &:before {
+    content: $bb-cancel-circle;
+  }
+}
+.bb-image-plus {
+  &:before {
+    content: $bb-image-plus;
+  }
+}
+.bb-coin2 {
+  &:before {
+    content: $bb-coin2;
+  }
+}
+.bb-union {
+  &:before {
+    content: $bb-union;
+  }
+}
+.bb-timer-sand {
+  &:before {
+    content: $bb-timer-sand;
+  }
+}
+.bb-upload {
+  &:before {
+    content: $bb-upload;
+  }
+}
+.bb-calculator {
+  &:before {
+    content: $bb-calculator;
+  }
+}
+.bb-help {
+  &:before {
+    content: $bb-help;
+  }
+}
+.bb-diamond {
+  &:before {
+    content: $bb-diamond;
+  }
+}
+.bb-arrow-down {
+  &:before {
+    content: $bb-arrow-down;
+  }
+}
+.bb-arrow-expand-down {
+  &:before {
+    content: $bb-arrow-expand-down;
+  }
+}
+.bb-train-circle {
+  &:before {
+    content: $bb-train-circle;
+  }
+}
+.bb-air-circle {
+  &:before {
+    content: $bb-air-circle;
+  }
+}
+.bb-officer {
+  &:before {
+    content: $bb-officer;
+  }
+}
+.bb-package-closed {
+  &:before {
+    content: $bb-package-closed;
+  }
+}
+.bb-plane-shield {
+  &:before {
+    content: $bb-plane-shield;
+  }
+}
+.bb-boat-circle {
+  &:before {
+    content: $bb-boat-circle;
+  }
+}
+.bb-logo {
+  &:before {
+    content: $bb-logo;
+  }
+}
+.bb-truck-circle {
+  &:before {
+    content: $bb-truck-circle;
+  }
+}
+.bb-office-building {
+  &:before {
+    content: $bb-office-building;
+  }
+}
+.bb-shape {
+  &:before {
+    content: $bb-shape;
+  }
+}
+.bb-outline {
+  &:before {
+    content: $bb-outline;
+  }
+}
+.bb-search-web {
+  &:before {
+    content: $bb-search-web;
+  }
+}
+.bb-arrow-triangle {
+  &:before {
+    content: $bb-arrow-triangle;
+  }
+}
+.bb-hands {
+  &:before {
+    content: $bb-hands;
+  }
+}
+.bb-chart-arc {
+  &:before {
+    content: $bb-chart-arc;
+  }
+}
+.bb-finance {
+  &:before {
+    content: $bb-finance;
+  }
+}
+.bb-percent {
+  &:before {
+    content: $bb-percent;
+  }
+}
+.bb-outline-visibility {
+  &:before {
+    content: $bb-outline-visibility;
+  }
+}
+.bb-okok {
+  &:before {
+    content: $bb-okok;
+  }
+}
+.bb-inbox {
+  &:before {
+    content: $bb-inbox;
+  }
+}
+.bb-razm_predl {
+  &:before {
+    content: $bb-razm_predl;
+  }
+}
+.bb-podtv_predl {
+  &:before {
+    content: $bb-podtv_predl;
+  }
+}
+.bb-clients {
+  &:before {
+    content: $bb-clients;
+  }
+}
+.bb-contract {
+  &:before {
+    content: $bb-contract;
+  }
+}
+.bb-contract-check {
+  &:before {
+    content: $bb-contract-check;
+  }
+}
+.bb-file {
+  &:before {
+    content: $bb-file;
+  }
+}
+.bb-finance-calculation {
+  &:before {
+    content: $bb-finance-calculation;
+  }
+}
+.bb-carriage {
+  &:before {
+    content: $bb-carriage;
+  }
+}
+.bb-validate-search {
+  &:before {
+    content: $bb-validate-search;
+  }
+}
+.bb-no-video {
+  &:before {
+    content: $bb-no-video;
+  }
+}
+.bb-new-search {
+  &:before {
+    content: $bb-new-search;
+  }
+}
+.bb-video-camera {
+  &:before {
+    content: $bb-video-camera;
+  }
+}
+.bb-wagon {
+  &:before {
+    content: $bb-wagon;
+  }
+}
+.bb-caution-sign {
+  &:before {
+    content: $bb-caution-sign;
+  }
+}
+.bb-modern-buildings {
+  &:before {
+    content: $bb-modern-buildings;
+  }
+}
+.bb-home {
+  &:before {
+    content: $bb-home;
+  }
+}
+.bb-file-document {
+  &:before {
+    content: $bb-file-document;
+  }
+}
+.bb-tune-vertical {
+  &:before {
+    content: $bb-tune-vertical;
+  }
+}
+.bb-ic-check {
+  &:before {
+    content: $bb-ic-check;
+  }
+}
+.bb-new-factory {
+  &:before {
+    content: $bb-new-factory;
+  }
+}
+.bb-plus-circle {
+  &:before {
+    content: $bb-plus-circle;
+  }
+}
+.bb-list-invoice {
+  &:before {
+    content: $bb-list-invoice;
+  }
+}
+.bb-documents {
+  &:before {
+    content: $bb-documents;
+  }
+}
+.bb-new-list {
+  &:before {
+    content: $bb-new-list;
+  }
+}
+.bb-bell {
+  &:before {
+    content: $bb-bell;
+  }
+}
+.bb-invoice {
+  &:before {
+    content: $bb-invoice;
+  }
+}
+.bb-formula {
+  &:before {
+    content: $bb-formula;
+  }
+}
+.bb-csv {
+  &:before {
+    content: $bb-csv;
+  }
+}
+.bb-down {
+  &:before {
+    content: $bb-down;
+  }
+}
+.bb-up {
+  &:before {
+    content: $bb-up;
+  }
+}
+.bb-autorenew {
+  &:before {
+    content: $bb-autorenew;
+  }
+}
+.bb-compound {
+  &:before {
+    content: $bb-compound;
+  }
+}
+.bb-view_module {
+  &:before {
+    content: $bb-view_module;
+  }
+}
+.bb-view_list {
+  &:before {
+    content: $bb-view_list;
+  }
+}
+.bb-access_time {
+  &:before {
+    content: $bb-access_time;
+  }
+}
+.bb-delivery {
+  &:before {
+    content: $bb-delivery;
+  }
+}
+.bb-discount {
+  &:before {
+    content: $bb-discount;
+  }
+}
+.bb-surface {
+  &:before {
+    content: $bb-surface;
+  }
+}
+.bb-atom {
+  &:before {
+    content: $bb-atom;
+  }
+}
+.bb-suitcase {
+  &:before {
+    content: $bb-suitcase;
+  }
+}
+.bb-basket {
+  &:before {
+    content: $bb-basket;
+  }
+}
+.bb-subtract {
+  &:before {
+    content: $bb-subtract;
+  }
+}
+.bb-trolley {
+  &:before {
+    content: $bb-trolley;
+  }
+}
+.bb-subtract-delete {
+  &:before {
+    content: $bb-subtract-delete;
+  }
+}
+.bb-arrow-wide {
+  &:before {
+    content: $bb-arrow-wide;
+  }
+}
+.bb-pyramid {
+  &:before {
+    content: $bb-pyramid;
+  }
+}
+.bb-arrow-narrow {
+  &:before {
+    content: $bb-arrow-narrow;
+  }
+}
+.bb-input {
+  &:before {
+    content: $bb-input;
+  }
+}
+.bb-link-ship-river {
+  &:before {
+    content: $bb-link-ship-river;
+  }
+}
+.bb-link-ship-sea {
+  &:before {
+    content: $bb-link-ship-sea;
+  }
+}
+.bb-link-lorry-country {
+  &:before {
+    content: $bb-link-lorry-country;
+  }
+}
+.bb-link-rails-world {
+  &:before {
+    content: $bb-link-rails-world;
+  }
+}
+.bb-link-rails-country {
+  &:before {
+    content: $bb-link-rails-country;
+  }
+}
+.bb-link-plane-world {
+  &:before {
+    content: $bb-link-plane-world;
+  }
+}
+.bb-link-plane-country {
+  &:before {
+    content: $bb-link-plane-country;
+  }
+}
+.bb-link-lorry-world {
+  &:before {
+    content: $bb-link-lorry-world;
+  }
+}
+.bb-link-customs-license-delivery {
+  &:before {
+    content: $bb-link-customs-license-delivery;
+  }
+}
+.bb-link-trolley {
+  &:before {
+    content: $bb-link-trolley;
+  }
+}
+.bb-link-trolley-china {
+  &:before {
+    content: $bb-link-trolley-china;
+  }
+}
+.bb-link-customs-license {
+  &:before {
+    content: $bb-link-customs-license;
+  }
+}
+.bb-link-search-routes {
+  &:before {
+    content: $bb-link-search-routes;
+  }
+}
+.bb-link-customs-clearance {
+  &:before {
+    content: $bb-link-customs-clearance;
+  }
+}
+.bb-link-customs-clearance-delivery {
+  &:before {
+    content: $bb-link-customs-clearance-delivery;
+  }
+}
+.bb-link-customs-order-delivery {
+  &:before {
+    content: $bb-link-customs-order-delivery;
+  }
+}
+.bb-link-freight-order {
+  &:before {
+    content: $bb-link-freight-order;
+  }
+}
+.bb-link-order-goods {
+  &:before {
+    content: $bb-link-order-goods;
+  }
+}
+.bb-link-product-search {
+  &:before {
+    content: $bb-link-product-search;
+  }
+}
+.bb-minus {
+  &:before {
+    content: $bb-minus;
+  }
+}
+.bb-plus-small {
+  &:before {
+    content: $bb-plus-small;
+  }
+}
+.bb-link-lorry-world-2 {
+  &:before {
+    content: $bb-link-lorry-world-2;
+  }
+}
+.bb-link-plane-country-2 {
+  &:before {
+    content: $bb-link-plane-country-2;
+  }
+}
+.bb-link-customs-license-delivery-2 {
+  &:before {
+    content: $bb-link-customs-license-delivery-2;
+  }
+}
+.bb-lorry-world-2 {
+  &:before {
+    content: $bb-lorry-world-2;
+  }
+}
+.bb-customs-2 {
+  &:before {
+    content: $bb-customs-2;
+  }
+}
+.bb-link-plane-world-2 {
+  &:before {
+    content: $bb-link-plane-world-2;
+  }
+}
+.bb-link-ship-river-2 {
+  &:before {
+    content: $bb-link-ship-river-2;
+  }
+}
+.bb-link-basket {
+  &:before {
+    content: $bb-link-basket;
+  }
+}
+.bb-link-lorry-country-2 {
+  &:before {
+    content: $bb-link-lorry-country-2;
+  }
+}
+.bb-link-rails-world-2 {
+  &:before {
+    content: $bb-link-rails-world-2;
+  }
+}
+.bb-link-ship-sea-2 {
+  &:before {
+    content: $bb-link-ship-sea-2;
+  }
+}
+.bb-link-rails-country-2 {
+  &:before {
+    content: $bb-link-rails-country-2;
+  }
+}
+.bb-link-order {
+  &:before {
+    content: $bb-link-order;
+  }
+}
+.bb-world-view {
+  &:before {
+    content: $bb-world-view;
+  }
+}
+.bb-box-search {
+  &:before {
+    content: $bb-box-search;
+  }
+}
+.bb-plane-2 {
+  &:before {
+    content: $bb-plane-2;
+  }
+}
+.bb-schoolbag {
+  &:before {
+    content: $bb-schoolbag;
+  }
+}
+.bb-customs-3 {
+  &:before {
+    content: $bb-customs-3;
+  }
+}
+.bb-delivery-package {
+  &:before {
+    content: $bb-delivery-package;
+  }
+}
+.bb-customs-plane {
+  &:before {
+    content: $bb-customs-plane;
+  }
+}
+.bb-ship-sea-2 {
+  &:before {
+    content: $bb-ship-sea-2;
+  }
+}
+.bb-rails-world-2 {
+  &:before {
+    content: $bb-rails-world-2;
+  }
+}
+.bb-plane-world-2 {
+  &:before {
+    content: $bb-plane-world-2;
+  }
+}
+.bb-lorry-world-3 {
+  &:before {
+    content: $bb-lorry-world-3;
+  }
+}
+.bb-destination {
+  &:before {
+    content: $bb-destination;
+  }
+}
+.bb-clients-2 {
+  &:before {
+    content: $bb-clients-2;
+  }
+}
+.bb-link-customs-license-2 {
+  &:before {
+    content: $bb-link-customs-license-2;
+  }
+}
+.bb-link-customs-order-delivery-2 {
+  &:before {
+    content: $bb-link-customs-order-delivery-2;
+  }
+}
+.bb-home-1 {
+  &:before {
+    content: $bb-home-1;
+  }
+}
+.bb-link-order-goods-2 {
+  &:before {
+    content: $bb-link-order-goods-2;
+  }
+}
+.bb-link-customs-license-delivery-3 {
+  &:before {
+    content: $bb-link-customs-license-delivery-3;
+  }
+}
+.bb-list-ul {
+  &:before {
+    content: $bb-list-ul;
+  }
+}
+.bb-plus-1 {
+  &:before {
+    content: $bb-plus-1;
+  }
+}
+.bb-arrow-down-2 {
+  &:before {
+    content: $bb-arrow-down-2;
+  }
+}
+.bb-download-arrow-2 {
+  &:before {
+    content: $bb-download-arrow-2;
+  }
+}
+.bb-arrow-3 {
+  &:before {
+    content: $bb-arrow-3;
+  }
+}
+.bb-eye {
+  &:before {
+    content: $bb-eye;
+  }
+}
+

@@ -1,0 +1,706 @@
+.mat-raised-button {
+  &.green-button {
+    color: white;
+    background-color: green;
+  }
+
+  .bb {
+    font-size: 1.5rem;
+  }
+}
+
+.flags {
+  height: 18px;
+}
+
+.z-1 {
+  z-index: 1;
+}
+
+.e-item {
+  display: inline-block;
+  vertical-align: top;
+  height: 130px;
+  line-height: 100%;
+  position: relative;
+  margin: 0 20px 20px 0;
+
+  &-img, &-file {
+    height: 130px;
+    background: #fff;
+    border: 1px dashed #d2d2d2;
+    border-radius: 4px;
+    object-fit: contain;
+  }
+
+  &-file {
+    text-align: center;
+    padding-top: 12px;
+    padding-right: 5px;
+  }
+}
+
+.divider {
+  height: 70px;
+}
+
+.chat__btn__back {
+  left: -7px !important;
+  position: relative !important;
+  float: left;
+}
+
+.chat__messages__empty .spinner {
+  position: relative !important;
+}
+
+.chat__sorting {
+  margin-bottom: 1.125rem;
+  padding: 1rem 1rem 0 0.6875rem;
+  float: left;
+  width: 320px;
+
+  &::ng-deep.mat-button-toggle-group {
+    box-shadow: none !important;
+    width: 100%;
+  }
+
+  &::ng-deep.mat-button-toggle {
+    background-color: #fcfcfc;
+    border: solid 1px #e4e4e4;
+    color: #a4abb3;
+    font-family: Roboto;
+    font-size: 0.875rem;
+    font-weight: normal;
+    width: 33.333333%;
+
+    &:nth-child(1),
+    &:nth-child(2) {
+      border-right: none;
+    }
+
+    &.mat-button-toggle-checked {
+      background-color: #fa7500;
+      color: #ffffff;
+      border-top: 1px solid #fa7500;
+      border-bottom: 1px solid #fa7500;
+    }
+  }
+
+  &::ng-deep.mat-button-toggle-label {
+    margin-bottom: 0;
+    display: flex;
+    width: 100%;
+  }
+
+  &::ng-deep.mat-button-toggle-label-content {
+    height: 30px;
+    padding: 0 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+.chat__window {
+  height: 800px;
+  background: #fff;
+  border: solid 1px #E0E0E0;
+  position: relative;
+
+  &::ng-deep.chat__window__heading {
+    width: auto;
+    background: #fcfcfc;
+    display: block;
+    line-height: 1.3rem;
+    padding: 0 1rem 0 0;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+    height: 70px;
+    border-bottom: 1px solid #E0E0E0;
+  }
+
+  &::ng-deep.chat__window__heading__link {
+    color: #4F4F4F;
+    font-size: 1.0625rem;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-bottom: 2px;
+  }
+
+  .heading-link-wrap {
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  &::ng-deep.chat__window__heading__activity {
+    font-size: .8125rem;
+    font-weight: normal;
+    color: #828282;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-flow: wrap;
+    white-space: nowrap;
+    cursor: pointer;
+    text-overflow: ellipsis;
+    padding-right: 115px;
+    margin-bottom: 0;
+
+    &.online {
+      color: #fa7500;
+    }
+
+    span {
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+      font-size: .75rem;
+      margin-bottom: 2px;
+    }
+
+    i {
+      margin-right: 6px;
+      font-size: 12px;
+      color: #C4C4C4;
+
+      &.icon-person {
+        font-size: 14px;
+        margin-right: 4px;
+      }
+    }
+  }
+
+  &::ng-deep.chat__window__heading__summary {
+    padding-top: 10px;
+
+    .fa-ico {
+      color: #fa7500;
+      font-size: 2rem;
+      line-height: 2.8rem;
+    }
+  }
+
+  &::ng-deep.chat__window__heading__avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    float: left;
+    overflow: hidden;
+    margin: 0 15px 0 15px;
+  }
+
+  &::ng-deep.chat__window__heading__avatar img {
+    width: 100%;
+    height: 100%;
+  }
+
+  &::ng-deep.chat__window__actions__buttons {
+    min-width: auto;
+    padding: 0 8px;
+  }
+
+  &__actions {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+  }
+
+  &__summary__icons {
+    color: #a4abb3;
+
+    &.active {
+      color: #fa7500;
+    }
+  }
+}
+
+.chat__messages {
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: absolute;
+  top: 70px;
+  background-color: #F1F1F1;
+  bottom: 36px;
+  right: 0;
+  left: 0;
+
+  &__preloader {
+    margin: 10px auto;
+    color: #fa7500;
+    font-size: 0.5rem;
+  }
+
+  &__empty {
+    @extend .chat__messages;
+    bottom: 0;
+    overflow: hidden;
+  }
+
+  &__empty__text {
+    text-align: center;
+    margin: 320px auto;
+  }
+}
+
+.chat__bottomPanel {
+  width: 100%;
+  background-color: #dfe3e8;
+  position: absolute;
+  bottom: 0;
+  padding: 0;
+  min-height: 40px;
+
+  &::ng-deep.chat__bottomPanel__area {
+    background-color: #fff;
+    padding: 10px 72px 10px 16px;
+    border-color: #fff;
+    resize: none;
+    height: 40px;
+    width: 100%;
+    overflow: hidden;
+    outline: none;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: block;
+    font-size: .8125rem;
+    line-height: 1;
+    color: #000000;
+  }
+
+  &__button {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    margin: 0;
+    border-radius: 0;
+    min-width: 35px;
+    outline: none;
+    padding: 0.13rem;
+    right: 0;
+    bottom: 0;
+
+    &:hover {
+      background: #fff;
+    }
+
+    ::ng-deep.mat-button-focus-overlay {
+      display: none;
+    }
+  }
+
+  &__button-send {
+    color: #f8731e;
+  }
+
+  &--add {
+    width: 30px;
+    height: 40px;
+    position: absolute;
+    right: 41px;
+    bottom: 0;
+    cursor: pointer;
+
+    i {
+      color: #828282;
+      padding-top: 5px;
+    }
+  }
+
+  &--switch {
+    width: 100px;
+    position: relative;
+    padding-bottom: 4px;
+  }
+
+  .btn-switch {
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    padding: 0.13rem;
+    background: #FFFFFF;
+    border: 1px solid #EE6D06;
+    border-radius: 5px;
+    margin: 0 3px;
+
+    ::ng-deep.mat-button-ripple,
+    ::ng-deep.mat-button-focus-overlay {
+      display: none;
+    }
+
+    &::ng-deep.mat-button-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    i {
+      color: #EE6D06;
+    }
+
+    &.select {
+      background: #EE6D06;
+
+      i {
+        color: #ffffff;
+      }
+    }
+  }
+
+  .title-switch {
+    position: absolute;
+    bottom: 45px;
+    left: 10px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    line-height: normal;
+    font-size: .8125rem;
+    color: #828282;
+    text-align: center;
+  }
+}
+
+.chat__messages__list {
+  margin: 0;
+  padding: 20px 0 0 0;
+  overflow-y: auto;
+  display: block;
+
+  & li {
+    list-style: none;
+    margin-bottom: 20px;
+    display: table;
+    max-width: 70%;
+    position: relative;
+    clear: both;
+
+    .messages-wrap {
+      padding: 7px 10px 9px;
+      line-height: 1.2rem;
+      display: block;
+      font-size: 0.875rem;
+      position: relative;
+      clear: both;
+    }
+  }
+
+  & li .messages-wrap:after,
+  & li .messages-wrap:before {
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+  }
+
+  &-name {
+    font-size: .75rem;
+    font-weight: normal;
+    color: #828282;
+    display: block;
+    position: relative;
+    padding-left: 33px;
+    line-height: 1;
+    margin-left: 20px;
+    margin-right: 5px;
+
+    i {
+      font-size: 1rem;
+      margin-right: 2px;
+      position: absolute;
+      left: 14px;
+      top: 3px;
+
+      &.icon-activities {
+        font-size: .875rem;
+        left: 0px;
+        top: -2px;
+      }
+    }
+
+    span {
+      color: #FF6F00;
+    }
+
+    .chat__messages__list-time {
+      color: #828282;
+      margin-top: 0;
+      font-size: .75rem;
+      font-weight: normal;
+    }
+  }
+
+  &-text {
+    padding-right: 60px;
+    margin: 0;
+  }
+
+  &-time {
+    color: #a5acb4;
+    float: right;
+    margin-top: -18px;
+    font-size: 0.875rem;
+    margin-bottom: 0;
+  }
+
+  &-to {
+    float: right;
+    margin-right: 20px;
+
+    .messages-wrap {
+      color: #ffffff;
+      background: #FFA45F;
+      box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.15);
+      border-radius: 5px 0px 5px 5px;
+
+      &:before {
+        display: none;
+      }
+    }
+
+    .icon-person {
+      color: #fa7500;
+      top: -2px;
+    }
+
+    .chat__messages__list-name {
+      justify-content: flex-start;
+      margin-bottom: 2px;
+      margin-left: 0;
+    }
+  }
+
+  &-from {
+    .messages-wrap {
+      background: #FFFFFF;
+      box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.15);
+      border-radius: 0px 5px 5px 5px;
+      margin-left: 20px;
+      color: #000000;
+
+      &:before {
+        display: none;
+      }
+    }
+
+    .chat__messages__list-name {
+      justify-content: flex-start;
+      margin-bottom: 2px;
+    }
+
+    .icon-person {
+      top: -2px;
+    }
+  }
+
+  &-added,
+  &-deleted,
+  &-callEnded,
+  &-callMissed {
+    margin: 0 auto;
+
+    p {
+      padding: 0;
+    }
+  }
+
+  &-callMissed {
+    background-color: #e0f9ff;
+  }
+
+  &-added {
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+
+    .messages-wrap {
+      padding: 3px 10px 6px !important;
+    }
+
+    .chat__messages__list-text {
+      color: #FFFFFF;
+      text-align: center;
+      font-size: .6875rem;
+      line-height: 1;
+    }
+
+    .chat__messages__list-name {
+      padding-top: 6px;
+      font-size: .8125rem;
+      font-weight: bold;
+      color: #FFFFFF;
+      margin-right: 16px;
+
+      span {
+        color: #FFFFFF;
+      }
+    }
+
+    .icon-activities,
+    .icon-person {
+      color: #FFFFFF;
+    }
+
+    i.icon-activities {
+      font-size: .8125rem;
+      left: -4px;
+      top: 3px;
+    }
+  }
+
+  &-deleted {
+    background-color: #e0f9ff;
+  }
+
+  &-callEnded {
+    background-color: #d9ebd5;
+  }
+
+  &-added p,
+  &-deleted p,
+  &-callEnded p,
+  &-callMissed p {
+    margin: 0;
+  }
+
+  &-notifications {
+    background-color: #d9ebd5;
+    width: 200px;
+    margin: 0 auto;
+    padding: 10px;
+    font-size: 0.875rem;
+    font-weight: normal;
+
+    p {
+      filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.3));
+    }
+
+    &-transparent_back {
+      background-color: transparent;
+      width: 200px;
+      margin: 0 auto;
+      padding: 10px;
+      font-size: 1rem;
+      font-weight: normal;
+    }
+  }
+}
+
+.spinner {
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+}
+
+.chat__messages__icons {
+  color: #F9F9F9;
+  font-size: 1rem;
+  vertical-align: middle;
+}
+
+.icon-activities {
+  color: #4A4A4A;
+}
+
+@media only screen and (max-width: 991px) {
+  .chat__messages__list {
+    & li {
+      max-width: 85%;
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .chat__window {
+    &::ng-deep.chat__window__heading__avatar {
+      width: 33px;
+      height: 33px;
+    }
+
+    &::ng-deep.chat__window__heading__activity {
+      font-size: 0.8rem;
+      line-height: 1;
+      margin: 0;
+      padding-right: 0;
+    }
+
+    &::ng-deep.chat__window__actions__buttons {
+      padding: 0 3px;
+      height: 32px;
+      width: 24px;
+
+      &.button-back {
+        width: 30px;
+      }
+
+      &::ng-deep.mat-button-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &::ng-deep.chat__window__heading {
+      padding-right: 0;
+      height: 118px;
+    }
+
+    .chat__window__heading__summary {
+      padding-left: 30px;
+
+      &.heading-1 {
+        padding-left: 0;
+      }
+    }
+
+    .chat__window__heading__link {
+      padding-right: 0;
+    }
+
+    .chat__window__heading__link,
+    .chat__window__heading__activity {
+      span {
+        overflow: hidden;
+      }
+    }
+  }
+
+  .chat__messages {
+    top: 118px;
+  }
+
+  .chat__btn__back {
+    left: 0 !important;
+    top: 10px;
+    position: absolute !important;
+    right: auto;
+  }
+
+  .chat__sorting {
+    padding-left: 8px;
+    width: 100%;
+    margin-bottom: 0;
+    padding-right: 8px;
+    padding-top: 10px;
+    float: none;
+  }
+}
+
+.grey {
+  color: #A4ABB3;
+}
+
+.orange {
+  color: #FF7600 !important;
+}

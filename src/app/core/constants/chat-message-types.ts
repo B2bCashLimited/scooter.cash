@@ -1,0 +1,18 @@
+export class ChatMessageTypes {
+  static TYPE_USER = '1';                    //  Тип сообщения "пользовательское сообщение"
+  static TYPE_SYSTEM_CALL = '2';             //  Тип сообщения "системные записи о звонках"
+  static TYPE_SYSTEM_ABOUT_USER = '3';       //  Тип сообщения "системные запись о пользователя"
+  static TYPE_SYSTEM_DELETE_USER = '4';      //  Тип сообщения "системное об удалении пользователя"
+  static TYPE_SYSTEM_ADD_USER = '5';         //  Тип сообщения "системное о добавлении пользователя"
+  static TYPE_SYSTEM_QUESTION = '6';         //  Тип сообщения "системное оценка консультанта"
+  static TYPE_FILE = '7';                    //  Тип сообщения "файл"
+  static TYPE_IMAGE = '8';                   //  Тип сообщения "изображение"
+  static TYPE_ASSESSMENT  = '9';             //  Тип сообщения "оценка"
+  static TYPE_SYSTEM_FIRST_MESSAGE = '10';  //   Тип сообщения "Первое сообщение"
+  static TYPE_OPEN_WINDOW = '11';               //   Тип сообщения системного чата "открыл окно"
+  static TYPE_CLOSE_WINDOW = '12';              //    Тип сообщения системного чата "закрыл окно"
+  static TYPE_CLIENT_CHANGE_MODE = '13';        //   Тип сообщения системного чата "клиент сменил режим"
+  static TYPE_CLIENT_CONNECTED = '14';          //   Тип сообщения системного чата "клиент подключился"
+  static TYPE_CLIENT_DISCONNECTED = '15';       //    Тип сообщения системного чата "клиент отключился"
+  static TYPE_SYSTEM_BAN  = '16';               //    Тип сообщения системного чата "клиент забанен"
+}

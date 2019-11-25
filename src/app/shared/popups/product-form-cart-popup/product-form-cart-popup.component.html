@@ -1,0 +1,262 @@
+<div [ngSwitch]="data.individualOrder">
+  <ng-template [ngSwitchCase]="true">
+    <div class="product-form-cart-popup"
+         (click)="toggleWings($event, false)">
+      <!--кнопка закрытия-->
+      <div class="popup-close"
+           (click)="submit()">
+        <i class="bb bb-clear-black"></i>
+      </div>
+
+      <div class="popup--header">
+        <div class="popup--title">
+          {{'productFormCart.myOrder' | translate}}
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-end pb-2"
+           *ngIf="cartedProducts.length">
+        <span class="text-btn"
+              (click)="clearCart()">{{'productFormCart.clearTheList' | translate}}</span>
+      </div>
+
+      <div class=" products-wrap">
+        <div class="w-100"
+             *ngIf="!cartedProducts.length">
+          <div class="b-cell w-100">{{'productFormCart.emptyBasket' | translate}}</div>
+        </div>
+        <div class="w-100"
+             *ngIf="cartedProducts.length">
+          <mat-list class="b-mat-list">
+            <mat-list-item class="p-0"
+                           *ngFor="let category of cartedCategories">
+              <mat-list class="b-mat-list">
+                <mat-list-item *ngFor="let item of getCartedProductsByCategory(category.id)">
+                  <div>
+                    <div class="row list-products">
+                      <div class="col-auto">
+                        <div class="b-img-wrap">
+                          <span class="b-img-wrap--icon"><i class="bb bb-info-circle"></i></span>
+                          <img matTooltip="{{'productFormCart.productFullInfo' | translate}}"
+                               matTooltipPosition="above"
+                               [src]="config.serverUrl + + item.photos"
+                               alt="">
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="b-cell w-100">
+                          <a href="">{{item[config.name]}}</a>
+                        </div>
+                        <div class="b-cell b-cell--small w-100">{{item?.manufacturer[config.name]}}</div>
+                      </div>
+                      <div class="col-auto align-items-start">
+                        <i class="bb bb-subtract-delete btn-delete"
+                           (click)="deleteFormCart(item)"></i>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col coll-1"
+                           [ngClass]="{china: data.fromChina}">
+                        <section>
+                          <div class="pseudo-btn"
+                               (click)="toggleWings($event, item)"
+                               *ngIf="!item.showWings">
+                            <div class="e-button">
+                              <i class="bb bb-subtract-delete btn-delete"></i>
+                            </div>
+                            <div class="pseudo-btn--text">
+                              {{item.count}}
+                              <span matSuffix>{{(item.countUnit) ? ('productFormCart.numb' | translate) : (item.priceFor && item.priceFor[config.name] || '')}}</span>
+                            </div>
+
+                            <div class="e-button"><i class="bb bb-plus-small"></i></div>
+                          </div>
+
+                          <div class="input-btn"
+                               *ngIf="item.showWings"
+                               (click)="toggleWings($event, item)">
+                            <mat-form-field class="w-100"
+                                            floatPlaceholder="never">
+                          <span class="e-button"
+                                (click)="item.count = item.count - 1;"
+                                matPrefix
+                                *ngIf="item.count > 1">
+                            <i class="bb bb-minus"></i>
+                          </span>
+                              <span class="e-button"
+                                    matPrefix
+                                    *ngIf="item.count === 1"><i class="bb bb-subtract-delete btn-delete"
+                                                                (click)="deleteFormCart(item)"></i></span>
+                              <input class="w-100"
+                                     [(ngModel)]="item.count"
+                                     matInput
+                                     [value]="1"
+                                     autocomplete="off"
+                                     type="number"
+                                     (change)="onCountInputChange($event, item)">
+                              <span class="text-small"
+                                    matSuffix>{{(item.countUnit) ? ('productFormCart.numb' | translate) : item.priceFor[config.name]}}</span>
+                              <span class="e-button"
+                                    (click)="item.count = item.count + 1;"
+                                    matSuffix><i class="bb bb-plus-small"></i></span>
+                            </mat-form-field>
+                          </div>
+                          <!--пересчет штук в м2-->
+                          <div class="e-hint text-right"
+                               *ngIf="item.countUnit"><span>1{{'productFormCart.numb' | translate}}
+                            ={{item.countUnit * item.count}}</span>
+                            <span class="color-gray">{{item.priceFor[config.name]}}</span>
+                          </div>
+                        </section>
+                      </div>
+                      <div class="col-auto coll-2">
+                        <button class="button-small"
+                                mat-raised-button
+                                (click)="onAllProposalsClick(item)"
+                                *ngIf="item.paymentOption === 1">{{'productFormCart.allProposals' | translate}}</button>
+                      </div>
+                      <div class="col coll-3">
+                        <div class="cell cell--10 d-flex flex-wrap e-select"
+                             *ngIf="!data.individualOrder">
+                          <mat-select placeholder="{{'statusBid' | translate}}"
+                                      [(ngModel)]="item.paymentOption">
+                            <mat-option [value]="1">{{'productFormCart.biddingPossible' | translate}}</mat-option>
+                            <mat-option [value]="3">{{'productFormCart.waitingOffers' | translate}}</mat-option>
+                          </mat-select>
+                        </div>
+                        <div class="e-text d-flex flex-wrap"
+                             *ngIf="data.fromChina">
+                          <span>{{'productFormCart.waitingOffers' | translate}}</span>
+                        </div>
+                      </div>
+                      <div class="col-auto coll-4 d-flex align-items-center">
+                        <span class="e-price"
+                              *ngIf="item.paymentOption === 1">
+                          {{item.price | number:'1.0-2':config.locale}} {{item.currency && item.currency[config.name]}}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <mat-divider></mat-divider>
+                </mat-list-item>
+              </mat-list>
+            </mat-list-item>
+          </mat-list>
+        </div>
+      </div>
+
+      <div class="popup--quantity">
+        <div class="row justify-content-between">
+          <div class="col-auto popup--subtitle">
+            <span>{{cartedProducts.length}} </span> {{'productFormCart.goods' | translate}}
+          </div>
+          <div class="col-auto"
+               *ngIf="cartedProducts.length">
+            <div class="total-price"
+                 *ngIf="!data.fromChina"> {{'productFormCart.total' | translate}}
+              : {{totalPrice | number:'1.0-2':config.locale}} {{cartedCurrency && cartedCurrency[config.name]}}</div>
+            <div class="total-price"
+                 *ngIf="data.fromChina"><span>{{'productFormCart.waitingOffers' | translate}}</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="button-bottom-wrap">
+        <button mat-raised-button
+                [appYandexReachGoal]="'cart-buy'"
+                [appGoogleEvent]="'cart-buy'"
+                class="b2b-btn b2b-btn--medium b2b-btn--w100"
+                (click)="submit(true)"
+                [disabled]="!cartedProducts.length">
+          {{'productFormCart.checkout' | translate}}
+        </button>
+      </div>
+
+      <app-prices-list
+        *ngIf="showPricesList"
+        [item]="currentItem"
+        (priceClicked)="showPricesList = false;"
+      ></app-prices-list>
+    </div>
+  </ng-template>
+
+  <ng-template [ngSwitchCase]="false">
+    <div class="product-form-cart-popup popup-2">
+      <!--кнопка закрытия-->
+      <div class="popup-close"
+           (click)="submit()">
+        <i class="bb bb-clear-black"></i>
+      </div>
+
+      <div class="popup--header">
+        <div class="popup--title">
+          {{'productFormCart.myOrder' | translate}}
+        </div>
+      </div>
+
+      <div class="row align-items-end popup--quantity">
+        <div class="col-auto popup--subtitle">
+          <span>{{cartedProducts.length}} </span> {{'productFormCart.goods' | translate}}
+        </div>
+        <div class="col-auto text-currency"
+             *ngIf="cartedCurrency"
+             matTooltip="{{'productFormCart.currencyOrder' | translate}}">
+          {{cartedCurrency[config.name]}}
+        </div>
+        <div class="col-auto"
+             *ngIf="cartedProducts.length">
+          <span class="text-btn"
+                (click)="clearCart()">{{'productFormCart.clearTheList' | translate}}</span>
+        </div>
+      </div>
+
+      <div class=" products-wrap">
+        <div class="w-100"
+             *ngIf="!cartedProducts.length">
+          <div class="b-cell w-100">{{'productFormCart.emptyBasket' | translate}}</div>
+        </div>
+        <div class="w-100"
+             *ngIf="cartedProducts.length">
+          <mat-list class="b-mat-list">
+            <mat-list-item *ngFor="let category of cartedCategories">
+              <h4>{{category[config.name]}}</h4>
+
+              <mat-list class="b-mat-list">
+                <mat-list-item *ngFor="let item of getCartedProductsByCategory(category.id)">
+                  <div class="row list-products">
+                    <div class="col-auto">
+                      <div class="b-img-wrap">
+                        <img matTooltip="{{'productFormCart.productFullInfo' | translate}}"
+                             matTooltipPosition="above"
+                             [src]="config.serverUrl + + item.photos"
+                             alt="">
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="b-cell w-100">{{item[config.name]}}</div>
+                      <div class="b-cell b-cell--small w-100">{{item?.manufacturer[config.name]}}</div>
+                      <div class="b-cell b-cell--small w-100">{{item?.country[config.name]}}</div>
+                    </div>
+                    <div class="col-auto align-items-start">
+                      <i class="bb bb-ic_delete_black_24px btn-delete"
+                         (click)="deleteFormCart(item)"></i>
+                    </div>
+                  </div>
+                </mat-list-item>
+              </mat-list>
+            </mat-list-item>
+          </mat-list>
+        </div>
+      </div>
+
+      <div class="button-bottom-wrap">
+        <button mat-raised-button
+                class="b2b-btn b2b-btn--medium b2b-btn--w100"
+                (click)="submit(true)"
+                [disabled]="!cartedProducts.length">
+          {{'productFormCart.continueToOrderForm' | translate}}
+        </button>
+      </div>
+    </div>
+  </ng-template>
+</div>

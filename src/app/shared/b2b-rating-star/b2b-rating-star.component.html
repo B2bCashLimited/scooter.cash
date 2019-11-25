@@ -1,0 +1,56 @@
+<div class="rating-star-component">
+  <div class="rating-popup" [hidden]="!isPopup" [ngClass]="orientationClass">
+    <ng-container *ngIf="isFetched">
+      <!-- <div *ngIf="isActivityPartVisible"> -->
+      <div>
+        <div>
+          <span>{{'rating.quantityOrders' | translate}} - </span>
+          <!-- <span>Количество заказов - </span> -->
+          <span class="result"> {{($activityResults|async)?.orders || 0}}</span>
+        </div>
+        <div>
+          <span *ngIf="($activityResults|async).deals">{{'rating.quantityDeals' | translate}} - </span>
+          <!-- <span>Количество заключенных сделок - </span> -->
+          <span class="result" *ngIf="($activityResults|async)?.deals">{{($activityResults|async)?.deals || 0}}</span>
+        </div>
+        <div>
+          <!-- <span>Количество предложений - </span> -->
+          <span *ngIf="($activityResults|async).offers">{{'rating.quantityOffers' | translate}} - </span>
+          <span class="result" *ngIf="($activityResults|async)?.offers">{{($activityResults|async)?.offers || 0}}</span>
+        </div>
+      </div>
+
+      <hr>
+
+      <div *ngIf="isQuizPartVisible">
+        <div *ngFor="let question of $questions|async; let index = index">
+          <span>{{index + 1}}) </span>
+          <span>{{question[questionLocale]}}</span> -
+          <span class="result"> {{question[answerLocale]}} </span> - <i class="fa fa-star-half-o stars"></i> {{((question.factCost / question.maxQuizCost) * 2.5).toFixed(2)}}
+        </div>
+      </div>
+
+      <div *ngIf="!isQuizPartVisible">
+        {{'rating.jurRatinUndef' | translate}}
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="isLoading">
+      <mat-spinner class="spinner" mode="indeterminate"></mat-spinner>
+    </ng-container>
+  </div>
+
+
+  <span *ngIf="format==='full'" (mouseover)="show()" (mouseout)="hide()">
+    <span class="stars" [innerHTML]="allStars"></span> <span class="number">{{rating}}</span>
+  </span>
+
+  <span *ngIf="format==='small'" (mouseover)="show()" (mouseout)="hide()">
+    <span class="stars"><i class="fa fa-star-half-o"></i> </span> <span class="number">{{rating}}</span>
+  </span>
+
+  <span *ngIf="format==='onlyfull'" (mouseover)="show()" (mouseout)="hide()">
+    <span class="stars" [innerHTML]="fullStars"></span> <span class="number">{{rating}}</span>
+  </span>
+</div>
+

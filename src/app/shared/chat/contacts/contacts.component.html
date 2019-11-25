@@ -1,0 +1,126 @@
+<div class="chat__contacts" #ListContainer>
+  <div #ListCollection>
+    <div class="d-flex ml-1 flex-nowrap position-relative chat__contacts--top">
+      <div class="d-flex flex-column align-items-center py-2 my-auto ml-2 mr-1" matTooltip="{{'chat.buyer' | translate}}"
+           matTooltipPosition="above">
+        <span class="b2b-chat-btn bb bb-person" [ngClass]="{inverted: owner === 1}"
+              (click)="switchOwner(1)"></span>
+      </div>
+      <div class="d-flex flex-column align-items-center py-2 my-auto ml-1 mr-2" matTooltip="{{'chat.seller' | translate}}"
+           matTooltipPosition="above">
+        <span class="b2b-chat-btn bb bb-briefcase" [ngClass]="{inverted: owner === 2}"
+              (click)="switchOwner(2)" [hidden]="!companyHasActivities()"></span>
+      </div>
+      <div class="d-flex flex-row align-items-center w-100">
+        <div class="company_name {{OCCUPATION_CLASS[activityKeyName(activityKey)]}} pl-0 pr-2" matTooltip="{{activityName(activityKey)}}" matTooltipPosition="above" *ngIf="owner === 2"></div>
+        <div class="card-route-img" *ngIf="owner === 1">
+          <img [src]="companyLogoUrl" [alt]="userCompany['name']"/>
+        </div>
+        <div class="company_name width-name" matTooltip="{{owner === 2 && currentActivity ? currentActivity['fullName'] : userCompany['name']}}" matTooltipPosition="above">
+          {{owner === 2 && currentActivity ? currentActivity['name'] : userCompany['shortName'] || userCompany['name']}}
+        </div>
+      </div>
+      <div class="d-flex flex-row align-items-center pr-1 float-right btn-edit-wrap" matTooltip="{{'chat.edit' | translate}}" matTooltipPosition="above"
+           (click)="switchActivity()" *ngIf="owner === 2">
+        <span class="b2b-chat-btn bb bb-pencil"></span>
+      </div>
+    </div>
+
+    <div class="chat__sorting">
+      <mat-button-toggle-group
+        #group="matButtonToggleGroup"
+        name="chatToggle"
+        [(ngModel)]="section">
+        <mat-button-toggle (click)="filter(1)" [value]="1">
+          {{'chat.system' | translate}}
+        </mat-button-toggle>
+        <mat-button-toggle (click)="filter(2)" [value]="2">
+          {{'chat.partners' | translate}}
+        </mat-button-toggle>
+        <mat-button-toggle (click)="filter(3)" [value]="3">
+          {{'chat.platform' | translate}}
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+    <div class="chat__search row m-0" *ngIf="section !== 1">
+      <div class="col-md-{{section === 3 ? '10' : '12'}} col-{{section === 3 ? '10' : '12'}} p-0">
+        <input type="text" class="chat__search-input" [formControl]="searchInput"
+               placeholder="{{'chat.find' | translate}}">
+        <i class="material-icons">&#xE8B6;</i>
+      </div>
+      <div class="col-md-2 col-2 p-0" *ngIf="section === 3">
+        <i class="material-icons center" (click)="newDialogChat()">&#xE145;</i>
+      </div>
+    </div>
+    <div class="chat__search e-radio-button">
+    </div>
+    <div class="chat__select" *ngIf="section !== 1">
+      <mat-form-field>
+        <mat-select placeholder="" [value]="activeCategoryName" floatPlaceholder="never"
+                    (selectionChange)="changeCategory($event)">
+          <mat-option value="">
+            {{'chat.allTypes' | translate}}
+          </mat-option>
+          <mat-option value="groups">
+            {{'chat.allTypesWithGroups' | translate}}
+          </mat-option>
+          <mat-option [hidden]="owner === 2" *ngFor="let category of activities" value="{{category.keyName}}">
+            {{category['name' + config.locale]}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="chat__list" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="100"
+       (scrolled)="getMore()" [scrollWindow]="false" [style.height.px]="dimensions.ListCollection">
+    <div class="d-flex h-100 justify-content-center align-items-center"
+         *ngIf="!emptyList && filtered.length == 0 && !loading">
+      <div>
+        {{'chat.noChats' | translate}}
+      </div>
+    </div>
+    <mat-list role="list">
+      <mat-list-item role="listitem" *ngFor="let contact of filtered" [ngClass]="{'opened-chat': isCurrentChat(contact)}">
+        <a (click)="openChat(contact)" class="d-flex">
+                <span class="chat__list--photo pull-left">
+                  <img class="im_dialog_photo"
+                       [src]="getContactLogoUrl(contact)">
+                </span>
+          <span class="chat__list--message d-flex flex-wrap">
+                  <span class="chat__list--message-top d-flex align-items-center justify-content-between">
+                  <span class="chat__list--name">
+                    {{contact.name ? contact.name : contact.chatNames[0]}}
+                  </span>
+                  <span class="chat__list--date d-flex">
+                    {{time(contact.activityDate ? contact.activityDate.date : contact.dateCreated.date)}}
+                  </span>
+                </span>
+                <span class="chat__list--info">
+                  <span *ngIf="contact.name">{{'chat.groupChatMarker' | translate}}</span>
+                  <span *ngIf="!contact.name">
+                    <i class="icon-activities {{OCCUPATION_CLASS[activityKeyName(contact.activityKey[0])]}}"
+                       matTooltip="{{activityName(contact.activityKey[0])}}" matTooltipPosition="above"></i>
+                    {{contact.activityName}}</span>
+                </span>
+                <span class="chat__list--text-wrap d-flex align-items-center w-100">
+                  <span class="chat__list--text">
+                    {{contact.lastMessage ? contact.lastMessage : ('chat.noMessages' | translate)}}
+                  </span>
+                  <span *ngIf="contact.countUnread > 0" class="chat__list--badge">
+                    {{contact.countUnread}}
+                  </span>
+                </span>
+                </span>
+        </a>
+      </mat-list-item>
+    </mat-list>
+    <div class="chat__list__more d-flex h-100 justify-content-center align-items-center" *ngIf="loading">
+      <div>
+        <i class="fa fa-refresh fa-spin fa-3x fa-fw fa-ico" aria-hidden="true"></i>
+        <span class="sr-only">
+          {{'chat.loading' | translate}}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

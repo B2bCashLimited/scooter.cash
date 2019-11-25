@@ -1,0 +1,57 @@
+@import "src/app/styles/variables";
+@import "src/app/styles/mixins";
+
+.ng-select-wrap {
+  margin-bottom: 10px;
+}
+
+:host{
+  h2{
+    font-style: normal;
+    font-weight: 500;
+    @include rem(17);
+    line-height: 20px;
+    color: #000000;
+    padding-top: 30px;
+    margin-bottom: 20px;
+  }
+
+  ::ng-deep app-select-category{
+    .ng-select-wrap {
+      .ng-select {
+
+        &.ng-select-opened,
+        &.ng-select-focused{
+          .ng-placeholder {
+            transform: translateY(-15px) scale(1) perspective(100px) translateZ(0.001px) !important;
+          }
+        }
+
+        .ng-arrow-wrapper {
+          .ng-arrow {
+            &:after {
+              margin-top: 14px;
+            }
+          }
+        }
+        .ng-select-container {
+          border: 2px solid $color-default;
+          height: 50px;
+          min-height: 50px;
+
+          &.ng-has-value{
+            .ng-placeholder {
+              transform: translateY(-15px) scale(1) perspective(100px) translateZ(0.001px) !important;
+            }
+          }
+        }
+        .ng-value-container {
+          .ng-value {
+            font-weight: 500;
+          }
+        }
+      }
+    }
+  }
+}
+

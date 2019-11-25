@@ -1,0 +1,85 @@
+<footer class="footer">
+  <div class="footer--item-1">
+    <div class="b2b-ui-languages">
+      <mat-form-field>
+        <ng-container [ngSwitch]="config.locale">
+          <span class="e-flag"
+                *ngSwitchCase="'Ru'"><img src="assets/img/svg-icons/Flag_of_Russia.svg"
+                                          width="40"></span>
+          <span class="e-flag"
+                *ngSwitchCase="'En'"><img src="assets/img/svg-icons/Flag_of_United_Kingdom.svg"
+                                          width="40"></span>
+          <span class="e-flag"
+                *ngSwitchCase="'Cn'"><img src="assets/img/svg-icons/Flag_of_China.svg"
+                                          width="40"></span>
+        </ng-container>
+
+        <mat-select (selectionChange)="onUiLanguageChangedMobile($event)">
+          <mat-option value="Ru">
+            <span class="e-flag"><img src="assets/img/svg-icons/Flag_of_Russia.svg"
+                                      width="40"></span>
+          </mat-option>
+          <mat-option value="En">
+            <span class="e-flag"><img src="assets/img/svg-icons/Flag_of_United_Kingdom.svg"
+                                      width="40"></span>
+          </mat-option>
+          <mat-option value="Cn">
+            <span class="e-flag"><img src="assets/img/svg-icons/Flag_of_China.svg"
+                                      width="40"></span>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="footer--wrap-link">
+      <a [routerLink]="['/deal', lang]"
+         class="footer--link">{{'footer.deal' | translate}}</a>
+      <a [routerLink]="['/policy', lang]"
+         class="footer--link">{{'footer.policy' | translate}}</a>
+      <a [routerLink]="['/support', lang]"
+         class="footer--link mb-0">{{'footer.purchaseReturns' | translate}}</a>
+      <a [routerLink]="['/contacts']"
+         class="footer--link mb-0">{{'footer.contacts' | translate}}</a>
+    </div>
+  </div>
+  <div class="footer--item-2">
+    <div class="footer--phone">
+      <i class="bb bb-phone-2"></i>
+      <div>
+        8 800 551-15-10
+      </div>
+    </div>
+
+    <div class="footer--email">
+      <i class="bb bb-envelope-2"></i>
+      <a href="mailto:mailbox@support@scooter.cash">support@scooter.cash</a>
+    </div>
+  </div>
+  <div class="footer--item-3">
+    <div class="footer--text">
+      <span>&copy; 2011–{{currentYear}} B2B.CASH | </span>
+      {{'footer.addressRussia' | translate}}
+    </div>
+    <div class="footer--text">{{'footer.addressChina' | translate}}</div>
+  </div>
+  <div class="footer--item-4">
+    <a target="_blank"
+       href="https://www.facebook.com/b2bcash.ru/"><i class="fa fa-facebook"
+                                                      aria-hidden="true"></i></a>
+    <a target="_blank"
+       href="https://twitter.com/b2b_cash"><i class="fa fa-twitter"
+                                              aria-hidden="true"></i></a>
+    <a target="_blank"
+       href="https://www.youtube.com/channel/UC-jwLn3fUDhiGqbeRuVp0yg?view_as=subscriber"><i class="fa fa-youtube-play"
+                                                                                             aria-hidden="true"></i></a>
+    <a target="_blank"
+       href="https://www.instagram.com/b2bcash/"><i class="fa fa-instagram"
+                                                    aria-hidden="true"></i></a>
+    <a target="_blank"
+       href="https://vk.com/b2b_cash_limited"><i class="fa fa-vk"
+                                                 aria-hidden="true"></i></a>
+    <a target="_blank"
+       href="https://ok.ru/group/54724189946036"><i class="fa fa-odnoklassniki"
+                                                    aria-hidden="true"></i></a>
+  </div>
+
+</footer>

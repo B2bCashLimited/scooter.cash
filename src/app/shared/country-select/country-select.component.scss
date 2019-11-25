@@ -1,0 +1,110 @@
+@import "src/app/styles/variables";
+@import "src/app/styles/mixins";
+
+.mat-input-container {
+  width: 100%;
+}
+
+.signup-form {
+  .signup-field,
+  .signin-pass-field {
+    width: 100%;
+    font-size: .75rem;
+    color: #aaaaaa;
+
+    &.mat-focused{
+      ::ng-deep.mat-form-field-label,
+      ::ng-deep.mat-form-field-required-marker{
+        color: $color-default;
+      }
+
+      ::ng-deep.mat-form-field-ripple{
+        background-color: $color-default;
+      }
+    }
+  }
+
+
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus
+  input:-webkit-autofill,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover
+  textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus {
+    border: 1px solid transparent;
+    -webkit-text-fill-color: #2c2c2b;
+    box-shadow: 0 0 0px 1000px #ffffff inset;
+    transition: background-color 5000s ease-in-out 0s;
+    font-size: .875rem;
+  }
+
+  .e-input-find {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+
+    ::ng-deep .mat-form-field{
+      border: 1px solid #EEEEEE;
+      height: 40px;
+      width: 150px;
+      border-radius: 5px;
+      overflow: hidden;
+
+      &.mat-focused{
+        border: 1px solid $color-default;
+        width: 100%;
+      }
+    }
+
+    ::ng-deep.mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label,
+    ::ng-deep.mat-form-field-appearance-legacy.mat-form-field-can-float .mat-input-server:focus + .mat-form-field-label-wrapper .mat-form-field-label{
+      transform: translateY(-12px) scale(0.75) perspective(100px) translateZ(0.001px);
+    }
+
+    ::ng-deep .mat-form-field-underline{
+      display: none;
+    }
+
+    ::ng-deep .mat-form-field-infix{
+      padding: 0;
+      border: none;
+    }
+
+    ::ng-deep .mat-form-field-label-wrapper {
+      top: 0;
+      padding-top: 0;
+    }
+    ::ng-deep .mat-form-field-label{
+      @include rem(14);
+      line-height: 16px;
+      color: #cccccc;
+      font-style: italic;
+      padding-left: 10px;
+      top: 12px;
+    }
+
+    ::ng-deep .mat-form-field-wrapper{
+      padding-bottom: 0;
+    }
+
+    input{
+      height: 38px;
+      padding-left: 10px;
+      padding-right: 10px;
+      font-style: normal;
+      font-weight: normal;
+      @include rem(14);
+      line-height: 16px;
+      color: #000000;
+      background-color: #ffffff !important;
+      margin-top: 0;
+    }
+  }
+}

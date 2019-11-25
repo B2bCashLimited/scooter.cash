@@ -1,0 +1,131 @@
+<div class="popup-inner">
+  <div class="popup-close" (click)="close()">
+    <i class="material-icons">clear</i>
+  </div>
+  <div class="popup-title">
+    {{'chat.newChat' | translate}}
+  </div>
+  <section>
+    <div [hidden]="owner === 2" class="chat__select">
+      <div class="e-small-title">
+        {{'chat.categoryEnter' | translate}}
+      </div>
+      <mat-form-field>
+        <mat-select placeholder="" [(value)]="activeCategoryId" floatPlaceholder="never"
+                    (selectionChange)="changeCategory($event)">
+          <mat-option value="">
+            {{'chat.select' | translate}}
+          </mat-option>
+          <mat-option *ngFor="let category of categories" [value]="category.keyName">
+            {{category['nameRu']}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div [hidden]="!(activeCategoryId && owner === 1 || owner === 2)">
+      <div [hidden]="relations.length < 2">
+        <div class="chat__search row ml-0 mr-0 mb-3">
+          <div class="col-12 p-0">
+            <input type="text" class="chat__search-input" [(ngModel)]="chatName" placeholder="{{'chat.nameChat' | translate}}">
+          </div>
+        </div>
+      </div>
+      <div class="e-small-title">
+        {{'chat.selectUsers' | translate}}
+        <span *ngIf="relations.length">({{relations.length}} {{'chat.of' | translate}} 20)</span>
+      </div>
+      <div class="chat__search row ml-0 mr-0 mb-2">
+        <div class="col-12 p-0">
+          <input type="text" class="chat__search-input" [formControl]="searchInput"
+                 placeholder="{{'chat.findToCompany' | translate}}">
+          <i class="lupa material-icons">&#xE8B6;</i>
+        </div>
+      </div>
+      <div class="popup-list-wrap e-checkbox" infiniteScroll [infiniteScrollDistance]="5" [infiniteScrollThrottle]="0"
+           (scrolled)="getMoreCompanies()"
+           [scrollWindow]="false">
+        <div class="d-flex h-100 justify-content-center align-items-center" *ngIf="!companies.length">
+          <div *ngIf="empty">
+            {{'chat.noResults' | translate}}
+          </div>
+          <div *ngIf="!empty">
+            <i class="fa fa-refresh fa-spin fa-3x fa-fw fa-ico color-primary" aria-hidden="true"></i>
+            <span class="sr-only color-primary">
+              {{'chat.loading' | translate}}
+            </span>
+          </div>
+        </div>
+
+
+        <div *ngIf="companies.length && owner === 1">
+          <mat-list>
+            <mat-list-item class="selector b-list-item" [ngClass]="{'selector-active': checkout(company) }"
+                           *ngFor="let company of companies; let i = index;">
+              <mat-checkbox [disabled]="headerCompanyId == company._embedded.company.id" class="w-100"
+                            [checked]="checkout(company)" (change)="changeSelectionMyOrders(company)">
+                <img class="list_photo"
+                     [src]="getCompanyLogoUrl(company.logo)">
+                <div class="d-flex flex-column name-wrap">
+                  <div class="e-name">
+                    {{i+1}}. {{company._embedded.company.name}}
+                  </div>
+                  <span class="w-100 d-inline-flex align-items-center">
+                    <i *ngIf="activeCategoryId"
+                       matTooltip="{{activeCategoryId ? '&nbsp;' + getCompany(activeCategoryId) : ''}}"
+                       matTooltipPosition="above"
+                       class="{{OCCUPATION_CLASS[activeCategoryId]}}"></i> {{company.name}}</span>
+                  <span class="w-100 d-inline-flex align-items-center">
+                    <i class="material-icons icon-person color-1">person</i> {{company._embedded.company._embedded.user.firstName}} {{company._embedded.company._embedded.user.lastName}}</span>
+                </div>
+              </mat-checkbox>
+            </mat-list-item>
+          </mat-list>
+        </div>
+        <div *ngIf="companies.length && owner === 2">
+          <mat-list>
+            <mat-list-item class="selector b-list-item" [ngClass]="{'selector-active': checkout(company) }"
+                           *ngFor="let company of companies; let i = index;">
+              <mat-checkbox [disabled]="headerCompanyId == company.id" class="w-100" [checked]="checkout(company)"
+                            (change)="changeSelection(company)">
+                <img class="list_photo"
+                     [src]="getCompanyLogoUrl(company.logo)">
+                <div class="d-flex flex-wrap name-wrap">
+                  <div class="e-name">
+                    {{i+1}}. {{company.name}}
+                  </div>
+                  <span class="w-100">
+                    <i *ngIf="activeCategoryId"
+                       matTooltip="{{activeCategoryId ? '&nbsp;' + getCompany(activeCategoryId) : ''}}"
+                       matTooltipPosition="above" class="{{OCCUPATION_CLASS[activeCategoryId]}}"></i> {{activeCategoryId ? '&nbsp;' + getCompany(activeCategoryId) : ''}}</span>
+                  <span class="w-100">
+                    <i class="material-icons icon-person color-1">person</i> {{company._embedded.user.firstName}} {{company._embedded.user.lastName}}</span>
+                </div>
+              </mat-checkbox>
+            </mat-list-item>
+          </mat-list>
+        </div>
+
+        <div class="d-flex justify-content-center color-primary align-items-center" *ngIf="companies.length"
+             [hidden]="!loading">
+          <i class="fa fa-refresh fa-spin fa-3x fa-fw fa-ico" aria-hidden="true"></i>
+          <span class="sr-only">
+            {{'chat.loading' | translate}}
+          </span>
+        </div>
+      </div>
+      <div class="e-small-title" *ngIf="relations.length">
+        {{selectUsers( relations.length )}} {{'chat.of' | translate}} 20
+      </div>
+      <ul class="popup-marker d-flex flex-wrap justify-content-start m-0">
+        <li *ngFor="let c of relations" class="d-inline-flex align-items-center">
+          <span>{{c.name}}</span>
+        </li>
+      </ul>
+    </div>
+    </section>
+      <div class="popup-btn-wrap" [hidden]="!(activeCategoryId && owner === 1 || owner === 2)">
+        <button mat-raised-button class="popup-btn w-100" (click)="submit(owner)">
+          {{'chat.startChat' | translate}}
+        </button>
+      </div>
+</div>

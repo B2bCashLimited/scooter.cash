@@ -1,0 +1,248 @@
+<div class="chat__window" #List>
+  <mat-toolbar class="chat__window__heading">
+    <div class="chat__window__actions chat__btn__back" *ngIf="mobile === 1 && chatType !== 1">
+      <button mat-button class="chat__window__actions__buttons button-back" (click)="back()">
+        <i class="material-icons chat__window__summary__icons navigate_before active">navigate_before</i>
+      </button>
+    </div>
+    <div class="chat__sorting">
+      <mat-button-toggle-group #group="matButtonToggleGroup" matInput name="chatType" [(ngModel)]="chatType">
+        <mat-button-toggle (click)="filter(1)" [value]="1">
+          {{'chat.system' | translate}}
+        </mat-button-toggle>
+        <mat-button-toggle (click)="filter(2)" [value]="2" [disabled]="!companyId">
+          {{'chat.partners' | translate}}
+        </mat-button-toggle>
+        <mat-button-toggle (click)="filter(3)" [value]="3" [disabled]="!companyId">
+          {{'chat.platform' | translate}}
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+    <div class="chat__window__heading__summary heading-1" *ngIf="chat && loaded.messages !== -1 && chatType === 1 && !chatService.banned.value">
+      <div class="chat__window__heading__avatar">
+        <img [src]="consultantPhoto">
+      </div>
+      <div class="heading-link-wrap">
+        <a class="chat__window__heading__link">
+          {{consultantName}}
+        </a>
+      </div>
+      <p class="chat__window__heading__activity">
+        <span class="w-100 z-1">
+          <i class="material-icons" matTooltip="Consultant" matTooltipPosition="above">account_box</i>
+          {{'chat.consultant' | translate}}
+        </span>
+        <span class="w-100 flags">{{'chat.languages' | translate}}: <span class="flag flag-{{lang}}"
+                                                                          *ngFor="let lang of consultantLanguage"></span>
+        </span>
+      </p>
+    </div>
+    <div class="chat__window__heading__summary heading-2" *ngIf="chat && loaded.messages !== -1 && chatType !== 1"
+         (click)="infoDialogChat()">
+      <div class="chat__window__heading__avatar">
+        <img [src]="getChatLogoUrl()">
+      </div>
+      <div class="heading-link-wrap">
+        <a class="chat__window__heading__link">
+          {{chat.name ? chat.name : chat.relations[ownerRelation].companyName}}
+        </a>
+      </div>
+      <p class="chat__window__heading__activity">
+             <span class="w-100"><i class="material-icons icon-person">person</i>
+          {{chat.relations.length === 2 ? chat.relations[ownerRelation].userName + ' ' + chat.relations[ownerRelation].userSurname :
+          summary( chat.relations.length )}}</span>
+      </p>
+    </div>
+    <div class="chat__window__heading__summary" *ngIf="!chat && loaded.messages !== -1 && !chatService.banned.value">
+      <i class="fa fa-refresh fa-spin fa-3x fa-fw fa-ico" aria-hidden="true"></i>
+      <span class="sr-only">
+        {{'chat.loading' | translate}}
+      </span>
+    </div>
+    <div class="chat__window__actions" *ngIf="(chat && loaded.messages !== -1) && chatType !== 1">
+      <!--<button mat-button class="chat__window__actions__buttons">-->
+        <!--<i class="material-icons chat__window__summary__icons">videocam</i>-->
+      <!--</button>-->
+      <!--<button mat-button class="chat__window__actions__buttons">-->
+        <!--<i class="material-icons chat__window__summary__icons">call</i>-->
+      <!--</button>-->
+      <button mat-icon-button [matMenuTriggerFor]="menu" *ngIf="hasAdmin(chat.relations)">
+        <mat-icon class="grey">more_horiz</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="groupDialogChat()">
+          <mat-icon class="orange">person_add</mat-icon>
+          <span>{{'chat.addUsers' | translate}}</span>
+        </button>
+        <button mat-menu-item (click)="deleteChat()">
+          <mat-icon class="orange">close</mat-icon>
+          <span>{{'chat.deleteChat' | translate}}</span>
+        </button>
+      </mat-menu>
+    </div>
+  </mat-toolbar>
+  <div [hidden]="loaded.messages !== 1">
+    <div class="chat__messages" *ngIf="messages.length === 0">
+      <div class="chat__messages__empty__text">
+        {{'chat.emptyMessages' | translate}}
+      </div>
+    </div>
+    <div class="chat__messages" *ngIf="messages.length > 0">
+      <ul class="chat__messages__list" debounce infiniteScroll [infiniteScrollUpDistance]="2"
+          (scroll)="onScroll($event)" [infiniteScrollThrottle]="300" [scrollWindow]="false"
+          [style.height.px]="dimensions.ListCollection" #ListCollection>
+        <li class="chat__messages__preloader" [hidden]="loaded.loading !== true">
+          <i class="fa fa-refresh fa-spin fa-3x fa-fw fa-ico" aria-hidden="true"></i>
+          <span class="sr-only">
+            {{'chat.loading' | translate}}
+          </span>
+        </li>
+        <li class="chat__messages__list-{{nodeElement(message.type, message.user_id)}} message-{{message.id}}"
+            *ngFor="let message of messages" [ngClass]="{'mb-0': isBlacklisted(message)}"> <!--убрать маржин 20, при непоказе сообщения этого типа-->
+          <ng-container *ngIf="!isBlacklisted(message)"> <!--не показ сообщение этого типа-->
+            <div class="chat__messages__list-name"
+                 *ngIf="message.type !== 'callMissed' && message.type !== 'callEnded' && !isConsRate(message) && !isBan(message)">
+              <i *ngIf="message.activityId" class="icon-activities {{OCCUPATION_CLASS[message.activityKey]}}"
+                 matTooltip="{{activityName(message.activityKey)}}" matTooltipPosition="above"></i>
+              <i class="material-icons icon-person">person</i> {{message.firstname}} {{message.lastname}} <span
+              *ngIf="message.activityId || message.companyName">&nbsp; ({{message.activityName ? message.activityName : message.companyName}})</span>
+
+              <p class="chat__messages__list-time"
+                 *ngIf="isText(message) || isFile(message) || isImage(message) || isConsultantGreeting(message)">
+                {{time(message.date_send)}}
+              </p>
+
+            </div>
+            <div class="messages-wrap">
+              <p class="chat__messages__list-text">
+                <i *ngIf="message.type === 'callMissed'"
+                   class="material-icons chat__messages__icons missed">phone_missed</i>
+                <span *ngIf="isAddUser(message)">
+                {{'chat.newMemberWindow' | translate}}
+              </span>
+                <span *ngIf="isDeleteUser(message)">
+                {{'chat.leftChat' | translate}}
+              </span>
+                <span *ngIf="isConsRate(message)" class="text-center">
+                {{'chat.questionClosed' | translate}} <i
+                  class="bb bb-{{message.attributes.rate ? 'emoticon-excited' : 'emoticon-dead'}}"></i>
+              </span>
+                <span *ngIf="isBan(message) && user.bannedInChatTo" class="text-center">
+                {{'chat.youWereBannedTill' | translate}} {{user.bannedInChatTo.date | date:'dd.MM.yy HH:mm'}}
+              </span>
+                <span
+                  *ngIf="!isAddUser(message) && !isDeleteUser(message) && !isFile(message) && !isImage(message) && !isConsultantGreeting(message) && !isConsRate(message) && !isCloseQuestion(message) && !isBan(message)"
+                  [innerHTML]="nodeText(message.text ? (message.text | linkify) : ('chat.corruptMessage' | translate))"></span>
+                <span *ngIf="isConsultantGreeting(message)"
+                      [innerHTML]="'chat.consultantGreeting' | translate"></span>
+                <a [href]="_config.serverUrl + message.attributes.link" *ngIf="isImage(message)" target="_blank"><img
+                  [matTooltip]="message.attributes.name" matTooltipPosition="above"
+                  [src]="_config.serverUrl + message.attributes.link" class="e-item-img h-2"/></a>
+                <span *ngIf="isFile(message)" [matTooltip]="message.attributes.name" matTooltipPosition="above"
+                      class="e-item-file"><a [href]="_config.serverUrl + message.attributes.link" target="_blank">
+                <i class="material-icons">attach_file</i>{{message.attributes.name}}</a></span>
+              </p>
+              <p class="chat__messages__list-time"
+                 *ngIf="isText(message) || isFile(message) || isImage(message) || isConsultantGreeting(message)">
+                <i *ngIf="nodeElement(message.type, message.user_id) === 'to' && readMsg(message) === 'done_all'"
+                   class="material-icons chat__messages__icons read done_all readIcon msg-{{message.id}}"
+                   matTooltip="{{'chat.read' | translate}}" matTooltipPosition="above">{{readMsg(message)}}</i>
+                <i *ngIf="nodeElement(message.type, message.user_id) === 'to' && readMsg(message) === 'done'"
+                   class="material-icons chat__messages__icons read done readIcon msg-{{message.id}}"
+                   matTooltip="{{'chat.delivered' | translate}}" matTooltipPosition="above">{{readMsg(message)}}</i>
+              </p>
+            </div>
+          </ng-container>
+        </li>
+        <li *ngIf="chatType === 1 && showIsQuestionAnsweredDialog && !chatService.banned.value"
+            class="chat__messages__list-notifications text-center">
+          <p><span>{{'chat.didYouGetAnAnswer?' | translate}}</span></p>
+          <button mat-raised-button class="green-button" (click)="questionClosed(true)">{{'chat.yes' | translate}}</button>
+          <button mat-raised-button color="warn" class="float-right" (click)="questionClosed(false)">{{'chat.no' | translate}}
+          </button>
+        </li>
+        <li *ngIf="chatType === 1 && showRateConsultantDialog && !chatService.banned.value" class="chat__messages__list-notifications text-center">
+          <p>{{'chat.rateTheConsultant' | translate}}</p>
+          <button mat-raised-button class="green-button" (click)="rateConsultant(1)"><i
+            class="bb bb-emoticon-excited"></i></button>
+          <button mat-raised-button color="warn" class="float-right" (click)="rateConsultant(0)"><i
+            class="bb bb-emoticon-dead"></i></button>
+        </li>
+        <li *ngIf="chatType === 1 && showNextQuestionDialog && !chatService.banned.value"
+            class="chat__messages__list-notifications-transparent_back text-center">
+          <p>{{'chat.askOneMoreQuestion?' | translate}}</p>
+        </li>
+        <!--<li *ngIf="chatType === 1 && banned"
+            class="chat__messages__list-notifications text-center">
+          <p>Вы заблокированы до {{bannedTo}}</p>
+        </li>-->
+      </ul>
+    </div>
+    <div class="chat__bottomPanel d-flex" #ToolBar *ngIf="!chatService.banned.value">
+      <div class="chat__bottomPanel--switch d-flex align-items-end justify-content-center" *ngIf="chatType === 1">
+        <span class="title-switch">{{owner === 1 ? ('chat.iAmBuyer' | translate) : ('chat.iAmSeller' | translate)}}</span>
+        <button mat-button
+                class="d-flex align-items-center justify-content-center btn-switch {{owner === 1 ? 'select' : ''}}"
+                (click)="toggleSwitch(1)" [disabled]="chatService.banned.value"
+                matTooltip="{{'chat.buyer' | translate}}">
+          <i class="material-icons">person</i>
+        </button>
+        <button mat-button class="btn-switch {{owner === 2 ? 'select' : ''}}"
+                matTooltip="{{owner === 2 ? ('chat.switchActivity' | translate) : ('chat.seller' | translate)}}"
+                (click)="toggleSwitch(2)" [disabled]="chatService.banned.value">
+          <i class="bb bb-briefcase"></i>
+        </button>
+      </div>
+      <textarea class="chat__bottomPanel__area" matInput matTextareaAutosize matAutosizeMinRows="1" [disabled]="chatService.banned.value"
+                matAutosizeMaxRows="5" [appAutofocus] [(ngModel)]="textareaValue" (keydown.enter)="sendByBtn($event)"
+                placeholder="Message" #TextArea><!--{{textareaValue}}--></textarea>
+      <label for="upload"><span class="chat__bottomPanel--add d-flex align-items-center justify-content-center"><i
+        class="bb chat__window__summary__icons bb-image-plus"></i></span></label>
+      <input id="upload" type="file" ng2FileSelect [uploader]="uploader" class="d-none" [disabled]="chatService.banned.value">
+      <button mat-button class="chat__bottomPanel__button" (click)="sendByBtn($event)" [disabled]="chatService.banned.value">
+        <i class="material-icons chat__bottomPanel__button-send">send</i>
+      </button>
+    </div>
+  </div>
+  <div *ngIf="loaded.messages === 0">
+    <div class="chat__messages__empty">
+      <mat-spinner class="spinner" mode="indeterminate"></mat-spinner>
+    </div>
+  </div>
+  <div *ngIf="loaded.messages === -1">
+    <div class="chat__messages__empty">
+      <div class="chat__messages__empty__text">
+        <span *ngIf="chatType !== 1 && mobile === 0">{{'chat.selectChatToView' | translate}}</span>
+        <span *ngIf="chatType !== 1 && mobile === 1">
+          <mat-spinner class="spinner" mode="indeterminate"></mat-spinner>
+        </span>
+        <span *ngIf="chatType === 1">
+          <mat-spinner class="spinner" mode="indeterminate"></mat-spinner>
+          <div class="divider"></div>
+          <p>{{'chat.waitConsultant' | translate}}</p>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="loaded.messages === -2">
+    <div class="chat__messages__empty">
+      <div class="chat__messages__empty__text">
+        <span *ngIf="chatType === 1">
+          <div class="divider"></div>
+          <p>{{'chat.chatWasClosed' | translate}}</p>
+          <button mat-raised-button (click)="createSysChat()">{{'chat.askOneMoreQuestion?' | translate}}</button>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="loaded.messages === -3">
+    <div class="chat__messages__empty">
+      <div class="chat__messages__empty__text">
+        <span>
+          <div class="divider"></div>
+          <p>{{'chat.youAreBannedTill' | translate}} {{user.bannedInChatTo.date | date:'dd.MM.yy HH:mm'}}</p>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

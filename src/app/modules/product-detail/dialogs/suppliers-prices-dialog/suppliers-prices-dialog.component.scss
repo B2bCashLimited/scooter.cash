@@ -1,0 +1,101 @@
+@import "src/app/styles/variables";
+@import "src/app/styles/mixins";
+
+.prices-dialog-popup{
+  position: relative;
+  width: 312px;
+  margin: 0 auto;
+  max-height: 75vh;
+
+  .popup-close{
+    position: absolute;
+    top: -4px;
+    right: -4px;
+
+    i{
+      color: #BDBDBD;
+      font-size: 30px;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  h2{
+    font-weight: 500;
+    line-height: normal;
+    font-size:  1.5rem;
+    text-align: center;
+    color: #3C4858;
+    padding-top: 13px;
+    margin-bottom: 25px;
+  }
+
+  table{
+    width: 100%;
+    table-layout: fixed;
+    margin-bottom: 20px;
+
+    td{
+      border: none;
+      vertical-align: middle;
+      padding: 0 0 10px 0;
+
+      &:nth-child(2){
+        text-align: right;
+        padding-left: 10px;
+      }
+    }
+  }
+
+  ::ng-deep app-b2b-rating-star{
+    display: flex;
+    align-items: center;
+
+    .stars{
+      color: $default-color-text;
+      display: flex;
+      align-items: center;
+
+      i{
+        font-size: 10px;
+      }
+    }
+
+    .number{
+      display: none;
+    }
+  }
+
+  .b2b-btn{
+    height: 40px;
+    width: 174px;
+    font-size: 1.0625rem;
+
+    ::ng-deep.mat-button-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      line-height: 1;
+      white-space: normal;
+    }
+  }
+
+  .supplier-name{
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1;
+    font-size: .8125rem;
+    color: #868686;
+  }
+}
+
+@media only screen and (max-width: 479px){
+  .prices-dialog-popup{
+    width: 100%;
+  }
+}

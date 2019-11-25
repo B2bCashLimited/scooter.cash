@@ -1,0 +1,105 @@
+@import "src/app/styles/variables";
+@import "src/app/styles/mixins";
+
+:host {
+  display: block;
+  height: calc(100% - 140px);
+
+  h1 {
+    font-style: normal;
+    font-weight: bold;
+    @include rem(44);
+    line-height: 52px;
+    color: #333333;
+    margin-bottom: 60px;
+    text-align: center;
+  }
+
+  .b-icon {
+    margin-bottom: 58px;
+
+    i {
+      @include rem(75);
+      color: #3FC120;
+    }
+  }
+
+  p {
+    font-style: normal;
+    font-weight: normal;
+    @include rem(17);
+    line-height: 20px;
+    text-align: center;
+    color: #333333;
+    margin-bottom: 50px;
+  }
+
+  .btn-fill {
+    height: 50px;
+    width: 100%;
+    max-width: 315px;
+    @include rem(20);
+  }
+}
+
+.b-payment-success {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+@media only screen and (max-width: 1199px) {
+  :host {
+    h1 {
+      @include rem(34);
+      line-height: 42px;
+      margin-bottom: 30px;
+    }
+
+    .b-icon {
+      margin-bottom: 35px;
+
+      i {
+        @include rem(55);
+      }
+    }
+
+    p {
+      margin-bottom: 30px;
+    }
+
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  :host {
+    height: auto;
+
+    h1 {
+      @include rem(24);
+      line-height: 32px;
+      margin-bottom: 20px;
+    }
+
+    .b-icon {
+      margin-bottom: 25px;
+
+      i {
+        @include rem(40);
+      }
+    }
+
+    p {
+      @include rem(15);
+      line-height: 17px;
+      margin-bottom: 26px;
+    }
+
+    .btn-fill {
+      height: 40px;
+      @include rem(16);
+    }
+  }
+}

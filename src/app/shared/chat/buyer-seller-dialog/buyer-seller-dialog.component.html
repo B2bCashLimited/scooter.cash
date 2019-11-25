@@ -1,0 +1,18 @@
+<h5>{{'chat.youAre' | translate}}</h5>
+<div class="d-flex ml-1 flex-nowrap position-relative justify-content-center">
+  <div class="d-flex flex-column align-items-center py-2 my-auto mr-3"
+       matTooltip="{{'chat.buyer' | translate}}"
+       matTooltipPosition="above">
+    <span class="b2b-chat-btn bb bb-person"
+          (click)="choose(BUYER_RESULT)"></span>
+    <span>{{'chat.buyer' | translate}}</span>
+  </div>
+  <div class="d-flex flex-column align-items-center py-2 my-auto ml-3"
+       matTooltip="{{'chat.seller' | translate}}"
+       matTooltipPosition="above"
+       *ngIf="companyHasActivities()">
+    <span class="b2b-chat-btn bb bb-briefcase"
+          (click)="choose(SELLER_RESULT)"></span>
+    <span>{{'chat.seller' | translate}}</span>
+  </div>
+</div>

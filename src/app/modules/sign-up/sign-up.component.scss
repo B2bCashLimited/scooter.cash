@@ -1,0 +1,509 @@
+@import "src/app/styles/variables";
+@import "src/app/styles/mixins";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  height: calc(100vh - 100px - 180px);
+  justify-content: center;
+  align-items: center;
+}
+
+.reg-tabs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f9f9f9;
+  border-left: 1px solid #ececec;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  max-width: 300px;
+  width: 100%;
+}
+
+.reg-tabs .reg-r-t {
+  display: inline-block;
+  font-size: 18px;
+  color: #3c4858;
+  line-height: 24px;
+  width: 80%;
+  text-align: center;
+  margin-top: 5rem;
+  font-weight: 400;
+}
+
+.reg-tabs .reg-r-icon,
+.reg-tabs .reg-p-icon {
+  width: 60px;
+  height: 60px;
+  margin-top: 38px;
+  border: 2px solid $color-default;
+  border-radius: 50%;
+  background-color: #ffffff;
+
+  .bb-mat-data{
+    height: 28px;
+    font-size: 1.75rem;
+    color: $default-color-text;
+  }
+}
+
+.reg-tabs .reg-r-text {
+  font-size: 13px;
+  color: #3c4858;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.reg-tabs .tabs-circles {
+  margin: 3rem 0 5.5rem 0;
+}
+
+.reg-tabs .tabs-circles .reg-tab-i {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #e0e0e0;
+  cursor: pointer;
+  margin: 0 4px;
+}
+
+.reg-tabs .tabs-circles .reg-active-tab {
+  background-color: $color-default;
+}
+
+.reg-tabs .tabs-circles .reg-previous-tab {
+  border: 1px solid $color-default;
+  background-color: #fff;
+}
+
+// new styles
+.full-width-wrap {
+  min-width: 670px;
+  position: relative;
+  padding: 0;
+  background-color: #ffffff;
+
+  .signup-block {
+    max-width: 670px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    padding: 0;
+    border: 1px solid $color-default;
+    border-radius: 6px;
+
+    .signup-field {
+      margin-bottom: 20px;
+      width: 100%;
+    }
+
+    .signup-form{
+      margin: 0;
+      padding: 30px;
+      width: 100%;
+    }
+  }
+
+  .checkbox-wrap{
+    ::ng-deep.mat-checkbox-inner-container{
+      margin: 0 8px 0 0;
+    }
+
+    ::ng-deep.mat-checkbox-layout{
+      white-space: normal;
+      font-size: 13px;
+      color: #3c4858;
+      align-items: flex-start;
+    }
+
+    ::ng-deep.mat-ripple-element{
+      background-color: $color-default !important;
+    }
+
+    ::ng-deep.mat-checkbox-inner-container{
+      width: 20px;
+      height: 20px;
+    }
+
+    ::ng-deep.mat-checkbox-frame{
+      border-width: 1px;
+      border-radius: 5px;
+      border-color: #DDDDDD;
+    }
+
+    &::ng-deep.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
+    &::ng-deep.mat-checkbox-checked.mat-accent .mat-checkbox-background{
+      background-color: #ffffff !important;
+      border-radius: 5px;
+      border: 1px solid #DDDDDD;
+
+      &:before{
+        content: "\e9f5";
+        font-family: 'b2bcash';
+        color: $default-color-text;
+        font-size: .5rem;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        width: 20px;
+        min-width: 20px;
+        height: 20px;
+      }
+    }
+
+    ::ng-deep.mat-checkbox-checkmark{
+      display: none !important;
+    }
+
+    &--text{
+      display: inline-block;
+      margin-right: 5px;
+    }
+
+    &--text-wrap{
+      line-height: 1.1;
+      letter-spacing: -.6px;
+
+      a{
+        color: $default-color-text;
+      }
+    }
+  }
+
+  .e-btn-text{
+    color: $default-color-text;
+
+    ::ng-deep.mat-button-ripple,
+    ::ng-deep.mat-button-focus-overlay{
+      display: none;
+    }
+  }
+
+  .m-code-phone{
+    margin-bottom: 20px;
+    position: relative;
+
+    ::ng-deep.ng-dropdown-panel{
+      width: 100% !important;
+    }
+  }
+
+  .e-input-find {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+
+    &.m-margin-input{
+      margin-bottom: 35px;
+    }
+
+    ::ng-deep .mat-icon{
+      color: rgb(170, 170, 170);
+      width: 18px;
+      font-size: 18px;
+      position: relative;
+      top: -6px;
+      right: 8px;
+    }
+
+    ::ng-deep .mat-form-field{
+      border: 1px solid #EEEEEE;
+      height: 40px;
+      width: 150px;
+      border-radius: 5px;
+
+      &.mat-focused{
+        border: 1px solid $color-default;
+        width: 100%;
+      }
+    }
+
+    ::ng-deep.mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label,
+    ::ng-deep.mat-form-field-appearance-legacy.mat-form-field-can-float .mat-input-server:focus + .mat-form-field-label-wrapper .mat-form-field-label{
+      transform: translateY(-12px) scale(0.75) perspective(100px) translateZ(0.001px);
+      font-style: normal;
+    }
+
+    ::ng-deep .mat-form-field-underline{
+      display: none;
+    }
+
+    ::ng-deep .mat-form-field-infix{
+      padding: 0;
+      border: none;
+      width: 100%;
+    }
+
+    ::ng-deep .mat-form-field-label-wrapper {
+      top: 0;
+      padding-top: 0;
+    }
+    ::ng-deep .mat-form-field-label{
+      @include rem(14);
+      line-height: 16px;
+      color: #cccccc;
+      font-style: italic;
+      padding-left: 10px;
+      top: 12px;
+    }
+
+    ::ng-deep .mat-error{
+      margin-top: 15px;
+    }
+
+    ::ng-deep .mat-form-field-wrapper{
+      padding-bottom: 0;
+    }
+
+    input{
+      height: 38px;
+      padding-left: 10px;
+      padding-right: 10px;
+      font-style: normal;
+      font-weight: normal;
+      @include rem(14);
+      line-height: 16px;
+      color: #000000;
+      background-color: #ffffff !important;
+      margin-top: 0;
+      border-radius: 5px;
+    }
+
+
+  }
+
+  .ng-select-wrap{
+    width: 120px;
+    margin-right: 20px;
+    min-width: 120px;
+  }
+
+}
+
+.signup-form {
+  margin-right: 1.25rem;
+}
+
+.signup-btn {
+  color: #ffffff;
+  margin: 1rem 0 0 0;
+  background-color: $color-default;
+  box-shadow: none !important;
+
+  &:hover{
+    background-color: $color-default-hover;
+  }
+}
+
+.form-wrap {
+  max-width: 300px;
+  width: 100%;
+  position: relative;
+}
+
+.form-error {
+  color: #f44336;
+  font-size: 12px;
+  text-align: left;
+  word-wrap: break-word;
+  text-overflow: ellipsis;
+}
+
+.select-phone-code{
+  font-size: .75rem;
+  max-width: 300px;
+  width: 120px;
+  margin-top: 9px;
+  margin-right: 5px;
+
+  ::ng-deep.ng-dropdown-panel{
+    width: 300px;
+  }
+
+  ::ng-deep.ng-placeholder{
+    bottom: 9px;
+  }
+
+  ::ng-deep.ng-value-container{
+    padding-bottom: 5px;
+  }
+  ::ng-deep.ng-select-container{
+    min-height: 42.5px;
+    &:after{
+      bottom: 6px;
+    }
+  }
+
+  &.ng-select-focused{
+    ::ng-deep.ng-select-container{
+      &:after{
+        border-color: $color-default;
+      }
+
+      ::ng-deep.ng-placeholder,
+      ::ng-deep.ng-arrow{
+        color: $default-color-text;
+      }
+    }
+  }
+}
+
+.a-link-home{
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1rem;
+  line-height: normal;
+  color: $default-color-text;
+}
+
+.signup-form {
+  .signup-field,
+  .signin-pass-field {
+    width: 100%;
+    font-size: .75rem;
+    color: #aaaaaa;
+
+    &.mat-focused{
+      ::ng-deep.mat-form-field-label,
+      ::ng-deep.mat-form-field-required-marker{
+        color: $color-default;
+      }
+
+      ::ng-deep.mat-form-field-ripple{
+        background-color: $color-default;
+      }
+    }
+  }
+
+
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus
+  input:-webkit-autofill,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover
+  textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus {
+    border: 1px solid transparent;
+    -webkit-text-fill-color: #2c2c2b;
+    box-shadow: 0 0 0px 1000px #ffffff inset;
+    transition: background-color 5000s ease-in-out 0s;
+    font-size: .875rem;
+  }
+}
+
+
+@media (max-height: 650px){
+  :host {
+    height: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+}
+
+@media only screen and (max-width: 1199px){
+  :host {
+    height: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+}
+
+@media only screen and (max-width: 767px){
+
+  .full-width-wrap{
+    min-width: 260px;
+    width: 100%;
+
+    .signup-block{
+      flex-flow: column;
+      padding: 0;
+      margin: 24px auto;
+
+      .signup-field{
+        max-width: 100%;
+      }
+    }
+  }
+
+  .reg-tabs{
+    order: 1;
+    max-width: 100%;
+
+    .reg-r-t{
+      margin-top: 1rem;
+    }
+
+    .reg-p-icon{
+      margin-top: 5px;
+    }
+
+    .tabs-circles{
+      margin: 1rem 0 1.5rem 0;
+    }
+  }
+
+  .signup-form {
+    order: 2;
+    max-width: 100%;
+    margin-right: 0;
+  }
+
+  .form-wrap{
+    max-width: 100%;
+  }
+}
+
+@media only screen and (max-width: 479px) {
+  .reg-tabs {
+    .tabs-circles{
+      display: none;
+    }
+
+    .reg-r-text{
+      margin-bottom: 1rem;
+    }
+  }
+
+  .full-width-wrap {
+    padding: 0;
+
+    .signup-block {
+      .signup-form{
+        padding: 20px;
+      }
+    }
+  }
+  .signup-form {
+    margin: 0;
+    width: 100%;
+
+    .form-wrap {
+      display: flex;
+      flex-direction: column;
+      button {
+        margin: 1rem 0 0 0
+      }
+    }
+  }
+
+  .signin-form-title {
+    font-size: 26px;
+  }
+}

@@ -1,0 +1,30 @@
+<div class="popup-activity-select">
+  <div class="row justify-content-start mb-2">
+    <div class="col-12">
+      <h5>{{'chat.pleaseEnterYourActivity' | translate}}</h5>
+    </div>
+    <div class="col-12">
+      <app-activity-select
+        [activities]="activities"
+        [onlyActivitiesWithIds]="data ? data.activities : null"
+        (activityEditChange)="initalState()"
+        (activityNameChange)="fdListener($event)"
+      ></app-activity-select>
+    </div>
+  </div>
+  <div class="row mb-4"
+       *ngIf="confirmOrder">
+    <div class="col-12 d-flex">
+      <mat-checkbox class="text-checkbox"
+                    (change)="confirmed = !confirmed;">{{'chat.iConfirmAllOfThis' | translate}}</mat-checkbox>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center">
+    <button mat-raised-button
+            color="primary"
+            (click)="submit()"
+            [disabled]="!chosenActivityId || (confirmOrder && !confirmed)">
+      {{confirmOrder ? ('chat.confirmOrder' | translate) : ('chat.buttonContinue' | translate)}}
+    </button>
+  </div>
+</div>

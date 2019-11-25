@@ -1,0 +1,80 @@
+<div class="b-signup">
+  <form [formGroup]="regForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div [class]="!individual ? 'col-lg-8 col-xl-6' : 'col-lg-12 col-xl-12'">
+        <h3 *ngIf="!individual">{{'signup.singUp' | translate}}</h3>
+        <div class="row"
+             *ngIf="!noCountryMode">
+          <div class="col-sm-6">
+            <app-country-select
+              placeholder="{{'global.country' | translate}}"
+              formControlName="locationCtrl"
+              required
+            ></app-country-select>
+            <mat-error *ngIf="regForm.get('locationCtrl').invalid && regForm.get('locationCtrl').touched">
+              {{'signup.errCorrectField' | translate}}
+            </mat-error>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6 mb-3">
+            <div class="signup-field">
+              <mat-form-field class="w-100" floatLabel="never">
+                <input matInput
+                       formControlName="firstName"
+                       maxlength="20"
+                       type="text"
+                       placeholder="{{'signup.name' | translate}}"
+                       autocomplete="off"
+                       required>
+                <mat-error *ngFor="let err of keys(regForm.get('firstName').errors)">
+                  {{'signup.errors.' + err | translate}}
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="col-sm-6 mb-3">
+            <div class="signup-field mr-0">
+              <mat-form-field class="w-100" floatLabel="never">
+                <input matInput
+                       formControlName="phone"
+                       type="tel"
+                       placeholder="{{'signup.phone' | translate}}"
+                       autocomplete="off"
+                       required>
+                <mat-error *ngFor="let err of keys(regForm.get('phone').errors)">
+                  {{'signup.phoneErrors.' + err | translate}}
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+           <div class="signup-field">
+             <mat-form-field class="w-100" floatLabel="never">
+               <input matInput
+                      formControlName="email"
+                      type="email"
+                      placeholder="{{'signup.email' | translate}}"
+                      autocomplete="off"
+                      required>
+               <mat-error *ngFor="let err of keys(regForm.get('email').errors)">
+                 {{'signup.emailErrors.' + err | translate}}
+               </mat-error>
+             </mat-form-field>
+           </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="!noButtonMode" class="d-flex justify-content-center mb-4">
+      <button mat-raised-button
+              class="signup-btn"
+              type="submit"
+              [disabled]="regForm.invalid">{{'send' | translate}}</button>
+    </div>
+  </form>
+</div>

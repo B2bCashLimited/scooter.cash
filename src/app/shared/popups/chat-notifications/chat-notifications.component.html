@@ -1,0 +1,27 @@
+<h5 class="mb-5">
+  <i class="bb bb-sms"></i> {{'chat.chatNotifications' | translate}}
+</h5>
+
+<section *ngIf="counter.newSellersMessages?.length">
+  <h6>{{'chat.newSellersMessages' | translate}}</h6>
+  <ul class="list-unstyled counters">
+    <li *ngFor="let note of counter.newSellersMessages">
+      <span class="count">{{note[counter.counterParamName]}}</span>
+      <button class="btn-link" mat-dialog-close (click)="openChat(note)">
+        {{note.attributes?.message?.companyName}} ({{note.attributes?.message?.activityName}})
+      </button>
+    </li>
+  </ul>
+</section>
+
+<section *ngIf="counter.newBuyersMessages?.length">
+  <h6>{{'chat.newBuyersMessages' | translate}}</h6>
+  <ul class="list-unstyled counters">
+    <li *ngFor="let note of counter.newBuyersMessages">
+      <span class="count">{{note[counter.counterParamName]}}</span>
+      <button class="btn-link" mat-dialog-close (click)="openChat(note)">
+        {{note.attributes?.message?.companyName}}
+      </button>
+    </li>
+  </ul>
+</section>

@@ -1,0 +1,377 @@
+.lupa {
+  cursor: pointer;
+}
+
+.popup-inner {
+  width: 50vw;
+  max-height: 80vh;
+  position: relative;
+  overflow-y: auto;
+  padding-top: 10px;
+
+  > section {
+    overflow-y: auto;
+  }
+}
+
+.popup-title {
+  font-family: Roboto;
+  font-size: 1.125rem;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #3c4858;
+  margin-top: 0;
+  margin-bottom: 25px;
+
+  span {
+    display: block;
+  }
+}
+
+.chat__select {
+  padding: 0;
+
+  &::ng-deep.mat-select-arrow {
+    font-family: FontAwesome;
+    position: relative;
+    width: 12px;
+    height: 7px;
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+    margin: 0 4px;
+
+    &:before {
+      content: "\F107";
+      color: #3c4858;
+      font-size: 18px;
+      position: absolute;
+      top: -6px;
+      font-weight: bold;
+    }
+  }
+
+  &::ng-deep.mat-form-field-label {
+    font-family: Roboto;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #3c4858;
+  }
+
+  &::ng-deep.mat-form-field-infix {
+    width: 100%;
+    border-top: 0;
+  }
+
+  &::ng-deep.mat-form-field-wrapper {
+  }
+
+  &::ng-deep.mat-form-field {
+    width: 100%;
+  }
+}
+
+.chat__search {
+  position: relative;
+  margin-bottom: 0.625rem;
+  padding: 0;
+
+  &.e-radio-button {
+    padding-top: 5px;
+  }
+
+  &-input {
+    width: 100%;
+    height: 35px;
+    font-family: Roboto;
+    font-style: italic;
+    font-size: 0.875rem;
+    font-weight: normal;
+    line-height: 1.39;
+    color: #a4abb3;
+    background-color: #ffffff;
+    border: solid 1px #e4e4e4;
+    padding-left: 0.625rem;
+    padding-right: 2.125rem;
+
+    &::-webkit-input-placeholder {
+      color: #a4abb3;
+    }
+
+    &::-moz-placeholder {
+      color: #a4abb3;
+    }
+
+    &:-moz-placeholder {
+      color: #a4abb3;
+    }
+
+    &:-ms-input-placeholder {
+      color: #a4abb3;
+    }
+  }
+
+  .material-icons {
+    position: absolute;
+    right: 1.313rem;
+    top: 0.4375rem;
+    bottom: 0;
+    color: #a4abb3;
+    font-size: 1.375rem;
+  }
+
+  .material-icons.center {
+    right: 0;
+    left: 0;
+    top: 0;
+    padding: 6px 0 0;
+    bottom: 0;
+    margin: 0 auto;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .material-icons.center:hover {
+    color: #fa7500;
+  }
+}
+
+.e-small-title {
+  font-family: Roboto;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #3c4858;
+  margin-bottom: 2px;
+}
+
+.list_photo {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.e-checkbox {
+  ::ng-deep.mat-checkbox-frame {
+    border-width: 1px;
+    border-color: #a4abb3;
+  }
+
+  ::ng-deep.mat-checkbox-label {
+    line-height: 1rem;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+  }
+
+  ::ng-deep.mat-checkbox-layout {
+    margin-bottom: 0;
+    display: flex;
+    width: 100%;
+    align-items: center;
+  }
+
+  ::ng-deep.mat-checkbox-inner-container {
+    width: 13px;
+    height: 13px;
+    margin: 0 9px 0 0;
+  }
+}
+
+.popup-list-wrap {
+  height: 206px;
+  background-color: #fcfcfc;
+  border: solid 1px #e4e4e4;
+  overflow: auto;
+  margin-bottom: 10px;
+
+  &::ng-deep.mat-list {
+    padding-top: 0;
+  }
+
+  &::ng-deep.mat-list-item-content {
+    padding: 0 5px 0 10px;
+  }
+
+  .e-name {
+    padding-left: 7px;
+    font-family: Roboto;
+    font-size: 0.875rem;
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #3c4858;
+  }
+}
+
+.popup-btn {
+  box-shadow: none !important;
+  height: 40px;
+  background-color: #fa7500;
+  font-family: Roboto;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
+
+  ::ng-deep.mat-button-wrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.popup-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  user-select: none;
+
+  i {
+    color: #3c4858;
+    font-size: 2rem;
+  }
+}
+
+.selector:hover {
+  background-color: #fa750045;
+  cursor: pointer;
+}
+
+.selector.selector-active {
+  background-color: #fa7500;
+}
+
+.selector.selector-active .e-name {
+  color: #fff;
+}
+
+.name-wrap {
+
+
+  span {
+    line-height: 1;
+    font-size: .75rem;
+    margin-bottom: 2px;
+    padding-left: 7px;
+    color: #8A8A8A;
+
+    i {
+      margin-right: 6px;
+      margin-left: 0;
+      font-size: 12px;
+
+      &.bb {
+        color: #9E9E9E;
+      }
+
+      &.icon-person {
+        font-size: 14px;
+        margin-right: 4px;
+      }
+    }
+  }
+}
+
+.b-list-item {
+  margin-bottom: 15px;
+}
+
+.popup-marker {
+  list-style: none;
+  padding: 0;
+
+  li {
+    margin-bottom: 6px;
+    margin-right: 10px;
+
+  }
+
+  span {
+    border: 1px solid #F8731E;
+    padding: 4px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    line-height: normal;
+    font-size: 11px;
+    color: #F8731E;
+    max-width: 230px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .clear {
+    color: #F8731E;
+    cursor: pointer;
+    margin-left: 3px;
+    font-size: 14px;
+  }
+}
+
+.popup-btn-wrap {
+  padding: 20px 0 0;
+  background: #ffffff;
+}
+
+@media only screen and (max-width: 991px) {
+  .popup-inner {
+    width: 70vw;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .popup-inner {
+    width: 85vw;
+  }
+}
+
+@media only screen and (max-width: 479px) {
+  .popup-inner {
+    width: calc(100vw - 32px);
+  }
+}
+
+@media only screen and (max-width: 414px) {
+
+  .name-wrap {
+
+    span {
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      max-width: 180px;
+    }
+  }
+
+  .popup-list-wrap {
+    .e-name {
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      max-width: 180px;
+    }
+  }
+}

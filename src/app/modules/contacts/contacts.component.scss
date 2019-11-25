@@ -1,0 +1,172 @@
+@import "src/app/styles/variables";
+@import "src/app/styles/mixins";
+
+:host{
+  h1{
+    font-style: normal;
+    font-weight: bold;
+    @include rem(21);
+    line-height: 25px;
+    color: #333333;
+    padding-top: 12px;
+    margin-bottom: 23px;
+  }
+
+  .b-inner{
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+}
+
+.b-map-info{
+  position: absolute;
+  top: 110px;
+  left: 80px;
+  background-color: #ffffff;
+  padding: 17px 24px 30px 40px;
+  z-index: 1;
+
+  &--body{
+    p{
+      font-style: normal;
+      font-weight: normal;
+      @include rem(15);
+      line-height: 18px;
+      color: #333333;
+      margin-bottom: 7px;
+
+      a{
+        color: $default-color-text;
+        text-decoration: none !important;
+
+        &:hover{
+          color: $default-color-text;
+          text-decoration: none !important;
+        }
+      }
+    }
+
+    h3{
+      font-style: normal;
+      font-weight: 500;
+      @include rem(15);
+      line-height: 18px;
+      color: #333333;
+    }
+  }
+
+  ::ng-deep.mat-ink-bar{
+    display: none;
+  }
+
+  ::ng-deep.mat-tab-label-container{
+    margin-bottom: 5px;
+    flex-grow: initial;
+  }
+
+  ::ng-deep.mat-tab-header{
+    border-bottom: none;
+  }
+
+  ::ng-deep.mat-tab-label{
+    padding: 0;
+    margin-right: 40px;
+    justify-content: flex-start;
+    min-width: 80px;
+    opacity: 1;
+
+    + ::ng-deep.mat-tab-label{
+      margin-right: 0;
+    }
+  }
+
+  ::ng-deep.mat-tab-label-content{
+    font-style: normal;
+    font-weight: 500;
+    @include rem(17);
+    line-height: 20px;
+    color: #333333;
+    border-bottom: 2px solid transparent;
+  }
+
+  ::ng-deep.mat-tab-label-active{
+    .mat-tab-label-content{
+      color: $default-color-text;
+      border-bottom: 2px solid rgba(32, 67, 181, 0.5);
+    }
+  }
+
+  ::ng-deep.mat-tab-header-pagination{
+    min-width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-top: 4px;
+    background-color: #ffffff;
+    position: absolute;
+
+    &.mat-tab-header-pagination-before{
+      left: 5px;
+      padding: 0;
+    }
+
+    &.mat-tab-header-pagination-after{
+      padding: 0;
+      right: 5px;
+    }
+  }
+
+  ::ng-deep.mat-tab-header-pagination-chevron{
+    border-color: $color-default;
+  }
+
+}
+
+.map {
+  width: 100%;
+  height: 540px;
+}
+
+::ng-deep agm-map {
+  height: 540px;
+}
+
+@media only screen and (max-width: 991px){
+  .map {
+    height: 500px;
+  }
+
+  .b-map-info{
+    top: 40px;
+    left: 40px;
+    width: 100%;
+    max-width: 560px;
+  }
+}
+
+@media only screen and (max-width: 767px){
+  .map {
+    height: 440px;
+  }
+
+  .b-map-info{
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-width: 100%;
+    position: relative;
+    padding: 0;
+    margin-bottom: 18px;
+  }
+}
+
+@media only screen and (max-width: 767px){
+  .b-map-info{
+    ::ng-deep.mat-tab-labels{
+      padding: 0 40px;
+    }
+
+    ::ng-deep.mat-tab-label{
+      margin-right: 20px;
+    }
+  }
+}

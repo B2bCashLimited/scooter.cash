@@ -1,0 +1,34 @@
+<div class="d-flex flex-column">
+  <form class="signin-form">
+    <ng-template [ngIf]="!isEmailSent">
+      <h2 class="signin-form-title">{{'restore.restorePass' | translate}}</h2>
+      <div class="form-group signin-from-group">
+        <p>{{'restore.restoreDesc' | translate}}</p>
+      </div>
+      <div class="e-input-find">
+        <mat-form-field class="w-100">
+          <input matInput type="email" placeholder="Email" [formControl]="emailControl">
+          <mat-error *ngIf="emailControl.hasError('required')">
+            {{'restore.restoreErrReqEmail' | translate}} <strong>{{'restore.required' | translate}}</strong>
+          </mat-error>
+          <mat-error *ngIf="emailControl.hasError('email')">
+            {{'restore.restoreErrValidEmail' | translate}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="d-flex pt-2">
+        <button class="b2b-btn b2b-btn--medium" mat-raised-button
+                [disabled]="loading || emailControl.invalid"
+                (click)="onRestorePasswordClick()">{{'restore.restoreSend' | translate}}
+        </button>
+      </div>
+      <div class="form-error" *ngIf="formError">
+        <div class="form-error-text">{{'restore.restoreErrTitle' | translate}}!: {{formError}}</div>
+      </div>
+    </ng-template>
+    <div class="form-group signin-from-group" *ngIf="isEmailSent">
+      <h2 class="signin-form-title">{{'restore.restorePass' | translate}}</h2>
+      <p>{{'restore.restoreInstruction' | translate}}</p>
+    </div>
+  </form>
+</div>

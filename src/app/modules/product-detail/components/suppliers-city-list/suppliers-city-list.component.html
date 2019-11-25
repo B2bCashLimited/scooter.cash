@@ -1,0 +1,26 @@
+<div class="b-price-info">
+  <div class="b-price-info--title">
+    {{'bestPriceInYourCity.promo' | translate}}:
+  </div>
+
+  <div class="b-price-info--section" *ngIf="suppliers && suppliers.length > 0">
+    <div class="row align-items-center" *ngFor="let item of suppliers | paginate: { itemsPerPage: 10, currentPage: page }">
+      <div class="col b-price-info--text">
+        {{item.city[config.name]}} <span>({{item.prices.length}})</span>
+      </div>
+      <div class="col-auto" (click)="openPricesList(item.prices)">
+        <div class="b-price-info--btn">
+          {{'bestPriceInYourCity.viewPrices' | translate}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="b-pagination">
+    <pagination-controls
+      (pageChange)="page = $event"
+      previousLabel=""
+      nextLabel=""
+      [autoHide]="true"></pagination-controls>
+  </div>
+</div>

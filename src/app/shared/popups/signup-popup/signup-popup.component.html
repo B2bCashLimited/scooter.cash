@@ -1,0 +1,23 @@
+<mat-dialog-content>
+  <div class="popup-icon">
+    <i class="bb bb-ic-check"></i>
+  </div>
+  <div *ngIf="data.title"
+       class="popup-title mb-3 text-center">
+    {{data.title | translate}}
+  </div>
+  <div *ngIf="data.subtitle"
+       class="popup-text mb-6">
+    {{data.subtitle | translate}}
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button *ngIf="data.button"
+          mat-raised-button
+          (click)="confirm()"
+          class="ml-auto mr-auto w-100"
+          type="button">
+    <span>{{data.button | translate}}</span>
+  </button>
+</mat-dialog-actions>

@@ -1,0 +1,30 @@
+<div [ngSwitch]="type">
+  <div *ngSwitchCase="acquiringTypes.TYPE_TINKOFF">
+    <!--<script src="https://securepay.tinkoff.ru/html/payForm/js/tinkoff_v2.js"></script>-->
+    <!--<form name="TinkoffPayForm" onsubmit="pay(this); return false;" *ngIf="data.terminalKey">
+      <input class="tinkoffPayRow" type="hidden" name="terminalkey" [value]="data.terminalKey || 'TinkoffBankTest'">
+      <input class="tinkoffPayRow" type="hidden" name="frame" value="true">
+      <input class="tinkoffPayRow" type="hidden" name="language" value="ru">
+      <input class="tinkoffPayRow" type="text" placeholder="Сумма заказа" name="amount" [value]="data.amount" required hidden>
+      <input class="tinkoffPayRow" type="text" placeholder="Номер заказа" name="order" [value]="data.order" hidden>
+      <input class="tinkoffPayRow" type="text" placeholder="Описание заказа" name="description" [value]="data.description" hidden>
+      <input class="tinkoffPayRow" type="text" placeholder="ФИО плательщика" name="name" [value]="data.name" hidden>
+      <input class="tinkoffPayRow" type="text" placeholder="E-mail" name="email" [value]="data.email" hidden>
+      <input class="tinkoffPayRow" type="text" placeholder="Контактный телефон" name="phone" [value]="data.phone" hidden>
+      <input class="tinkoffPayRow input-submit" type="submit" value="Оплатить">
+    </form>-->
+    <button mat-raised-button class="btn-fill"
+      *ngIf="allowedCurrency && acquiring && !data.paid"
+      [disabled]="isPending || statusId !== '6'"
+      (click)="onPay()">
+      {{'payform.pay' | translate}}
+    </button>
+    <div *ngIf="data.paid">{{'payform.orderPaid' | translate}}</div>
+  </div>
+  <div *ngSwitchCase="acquiringTypes.TYPE_ALPHABANK">
+
+  </div>
+  <div *ngSwitchCase="acquiringTypes.TYPE_SBERBANK">
+
+  </div>
+</div>

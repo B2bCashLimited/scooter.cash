@@ -1,0 +1,614 @@
+<div class="b-container">
+  <div class="b-inner">
+    <div class="b-top-wrap">
+      <div class="row">
+        <div class="col-auto it-1">
+          <div class="b-title">{{'profile.myOrders' | translate}}</div>
+        </div>
+        <div class="col-auto it-2">
+          <div class="row">
+            <div class="col-auto">
+              <div class="p-text">{{'profile.sort' | translate}}:</div>
+            </div>
+            <div class="col-auto">
+              <div class="row">
+                <div class="col-auto">
+                  <div class="ng-select-wrap width-1">
+                    <ng-select class="w-100"
+                               placeholder="{{'profile.byStatus' | translate}}"
+                               dropdownPosition="bottom"
+                               [(ngModel)]="selectedStatus"
+                               (change)="onStatusFilterChanged($event)">
+                      <ng-option [value]="-1">Все</ng-option>
+                      <ng-option *ngFor="let status of statuses"
+                                 [value]="status.value">{{status.label | translate}}</ng-option>
+                    </ng-select>
+                  </div>
+                </div>
+                <div class="col-auto mb-0">
+                  <div class="ng-select-wrap width-2">
+                    <ng-select
+                      class="w-100"
+                      placeholder="{{'profile.byCategory' | translate}}"
+                      bindLabel="nameRu"
+                      bindValue="id"
+                      dropdownPosition="bottom"
+                      [addTag]="false"
+                      [markFirst]="true"
+                      [items]="categories"
+                      [(ngModel)]="selectedCategory"
+                      (change)="onSelectedCategoryChanged()">
+                    </ng-select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-auto">
+              <div class="text-sort"
+                   (click)="sortByDate()"
+                   [class.choose]="!sortDateNew">
+                {{'profile.byDate' | translate}}
+                <i class="bb bb-sort-amount-down"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-auto it-3">
+          <div class="row">
+            <div class="col-auto">
+              <div class="b-select-date" [owlDateTimeTrigger]="dtRange">
+                <span *ngIf="!dateFrom || !dateTo">{{'profile.choosePeriod' | translate}}</span>
+                <span *ngIf="dateFrom && dateTo">{{dateFrom}} - {{dateTo}}</span>
+                <input placeholder="Date Time Range:"
+                       style="visibility: hidden; width: 0;"
+                       [min]="minDate"
+                       [max]="maxDate"
+                       [selectMode]="'range'"
+                       [owlDateTimeTrigger]="dtRange"
+                       [owlDateTime]="dtRange"
+                       (dateTimeChange)="onDateChanged($event)">
+                <owl-date-time
+                  pickerType="calendar"
+                  pickerMode="dialog"
+                  firstDayOfWeek="1"
+                  #dtRange
+                ></owl-date-time>
+                <i class="bb bb-calendar-alt"></i>
+              </div>
+            </div>
+            <div class="col-auto">
+              <a href="#"
+                 class="btn-print">
+                <i class="bb bb-print-2"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="isLoading" class="d-flex justify-content-center">
+      <mat-spinner></mat-spinner>
+    </div>
+
+    <ng-container *ngIf="!isLoading">
+      <ng-container
+        [ngTemplateOutlet]="orderCard"
+        [ngTemplateOutletContext]="{myOrder: myOrder}"
+        *ngFor="let myOrder of myOrders | paginate: {id: 'main_pagination',
+                                                    itemsPerPage: pageEvent.pageSize,
+                                                    currentPage: pageEvent.pageIndex,
+                                                    totalItems: pageEvent.length }">
+      </ng-container>
+    </ng-container>
+
+    <div class="b-pagination" *ngIf="myOrders.length > 0">
+      <nav aria-label="...">
+        <pagination-controls
+          id="main_pagination"
+          (pageChange)="pageChanged($event)"
+          [maxSize]="15"
+          [directionLinks]="true"
+          [responsive]="true"
+          [autoHide]="true"
+          previousLabel="{{'profile.back' | translate}}"
+          nextLabel="{{'profile.next' | translate}}"
+          screenReaderPaginationLabel="Pagination"
+          screenReaderPageLabel="page"
+          screenReaderCurrentLabel="You're on page"
+        ></pagination-controls>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<ng-template #orderCard let-myOrder="myOrder">
+  <div class="b-card-order">
+    <div class="b-card-order--head">
+      <div class="row">
+        <div class="col-auto d-flex align-items-center">
+          <mat-checkbox class="b-checkbox"></mat-checkbox>
+          <div class="b-card-order--title"
+               *ngIf="myOrder.category">{{myOrder.category[config.name]}}</div>
+          <div *ngIf="myOrder.takenCompany" class="d-flex align-items-center">
+            <div class="b-card-order--title color-orange">{{myOrder.takenCompany[config.name]}}</div>
+            <button mat-raised-button
+                    (click)="onChatButtonClick(myOrder)"
+                    class="e-btn-icon">
+              <i class="bb bb-comment-alt"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="col-auto d-flex align-items-center">
+          <div class="b-card-order--status"
+               [ngClass]="{'status-success': myOrder.status.id === '6', 'status-wait': myOrder.status.id === '2' || myOrder.status.id === '10'}">
+            <span *ngIf="myOrder.status.id === '6'">{{'profile.confirmed' | translate}}</span>&nbsp;
+            <span *ngIf="myOrder.status.id === '2' || myOrder.status.id === '10'">{{'profile.waiting' | translate}}</span>&nbsp;
+            <i></i>
+          </div>
+
+          <div class="b-card-order--date">
+            <span>{{myOrder.dateUpdated?.date | date: 'dd.MM.yyyy'}}</span>
+            <span>№ {{myOrder.id}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="b-card-order--body">
+      <div class="b-wrap-cards"
+           [class.open]="myOrder['isCardOpened']">
+        <div *ngIf="myOrder['isLoading']"
+             class="d-flex justify-content-center">
+          <mat-spinner></mat-spinner>
+        </div>
+
+        <!--Свёрнутый вариант-->
+        <div *ngIf="!myOrder['isCardOpened']"
+             class="table-wrap">
+          <table class="mb-0">
+            <tr>
+              <td *ngFor="let product of myOrder.previewProducts"
+                  class="td-top-border">
+                <div class="b-image">
+                  <img *ngIf="product.photos && product.photos.length > 0"
+                       alt=""
+                       [src]="serverUrl + product.photos[0].link">
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td *ngFor="let product of myOrder.previewProducts"
+                  class="td-not-border">
+                <div class="b-title mb-0">{{product && product[config.name]}}</div>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <!--Развёрнутый вариант-->
+        <div *ngIf="myOrder['isCardOpened'] && !myOrder['isLoading']"
+             class="table-wrap">
+          <table *ngIf="myOrder.products.length > 0; else noProducts;">
+            <tr>
+              <th *ngFor="let prod of myOrder.products"></th>
+            </tr>
+            <tr>
+              <td *ngFor="let prod of myOrder.products">
+                <div class="b-image">
+                  <img *ngIf="prod.product.photos && prod.product.photos.length > 0"
+                       alt=""
+                       [src]="serverUrl + prod.product.photos[0].link">
+                </div>
+
+                <div class="b-image color-orange"
+                     *ngIf="myOrder.status.id === '6' && prod.alternativeProduct?.photos?.length">
+                  <img alt=""
+                       [src]="serverUrl + prod.alternativeProduct.photos[0].link">
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td *ngFor="let prod of myOrder.products">
+                <div class="b-title">
+                  {{prod.product[config.name]}}
+                  <span *ngIf="prod.product.productModel"
+                        class="b-title">&nbsp;{{prod.product.productModel[config.name]}}</span>
+                </div>
+                <div class="b-title color-orange"
+                     *ngIf="myOrder.status.id === '6' && prod.alternativeProduct">
+                  {{prod.alternativeProduct.product[config.name]}}
+                  <span *ngIf="prod.alternativeProduct.product.productModel"
+                        class="b-title color-orange">&nbsp;{{prod.alternativeProduct.product.productModel[config.name]}}</span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td *ngFor="let prod of myOrder.products">
+                <div class="b-label">{{'profile.manufacturer' | translate}}</div>
+                <div class="b-text">{{prod.product?.productManufacturerData[config.name]}}</div>
+                <div class="b-text color-orange"
+                     *ngIf="myOrder.status.id === '6' && prod.alternativeProduct">
+                  {{prod.alternativeProduct.product?.productManufacturerData[config.name]}}
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td *ngFor="let prod of myOrder.products">
+                <div class="b-label">{{'profile.country' | translate}}</div>
+                <div class="b-text">{{prod.product.country && prod.product.country[config.name] || ''}}</div>
+                <div class="b-text color-orange"
+                     *ngIf="myOrder.status.id === '6' && prod.alternativeProduct">
+                  {{prod.alternativeProduct.product.country && prod.alternativeProduct.product.country[config.name] || ''}}
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td *ngFor="let prod of myOrder.products"
+                  class="pb-0">
+                <div *ngFor="let prop of prod.freeProductProperties"
+                     class="product-properties">
+                  <div class="b-label">{{prop.categoryProperty[config.name]}}</div>
+                  <div class="b-text">
+                    {{(prop['value' + config.locale] && (prop['value' + config.locale].value || prop['value' + config.locale].display)) || prop.value || '-'}}
+                  </div>
+                </div>
+
+                <ng-container *ngIf="myOrder.status.id === '6' && prod.alternativeProduct">
+                  <ng-container *ngFor="let prop of prod.alternativeProduct.freeProductProperties">
+                    <div class="b-text">
+                      {{(prop['value' + config.locale] && (prop['value' + config.locale].value || prop['value' + config.locale].display)) || prop.value || '-'}}
+                    </div>
+                  </ng-container>
+                </ng-container>
+              </td>
+            </tr>
+
+            <tr>
+              <td *ngFor="let prod of myOrder.products">
+                <div class="b-label">{{'profile.net' | translate}}</div>
+                <div class="b-text">{{prod.product.net}}&nbsp;{{prod.product.showcaseUnits.weight[config.name]}}</div>
+                <div class="b-text color-orange"
+                     *ngIf="myOrder.status.id === '6' && prod.alternativeProduct">
+                  {{prod.alternativeProduct.product.net}}&nbsp;{{prod.alternativeProduct.product.showcaseUnits.weight[config.name]}}
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td *ngFor="let prod of myOrder.products">
+                <div class="b-label">{{'profile.gross' | translate}}</div>
+                <div class="b-text">{{prod.product.gross}}&nbsp;{{prod.product.showcaseUnits.weight[config.name]}}</div>
+                <div class="b-text color-orange"
+                     *ngIf="myOrder.status.id === '6' && prod.alternativeProduct">
+                  {{prod.alternativeProduct.product.gross}}&nbsp;{{prod.alternativeProduct.product.showcaseUnits.weight[config.name]}}
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td *ngFor="let prod of myOrder.products">
+                <div class="b-label">{{'profile.volume' | translate}}</div>
+                <div class="b-text">{{prod.product.volume}}&nbsp;{{prod.product.showcaseUnits.volume[config.name]}}</div>
+                <div class="b-text color-orange"
+                     *ngIf="myOrder.status.id === '6' && prod.alternativeProduct">
+                  {{prod.alternativeProduct.product.volume}}&nbsp;{{prod.alternativeProduct.product.showcaseUnits.volume[config.name]}}
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td *ngFor="let prod of myOrder.products">
+                <div class="b-label">{{'profile.clientCount' | translate}}</div>
+                <div class="b-text">{{prod.count}}&nbsp;{{prod.product.showcaseUnits.priceFor[config.name]}}</div>
+                <div class="b-text color-orange"
+                     *ngIf="myOrder.status.id === '6' && prod.alternativeProduct">
+                  {{prod.alternativeProduct.count}}&nbsp;{{prod.alternativeProduct.product.showcaseUnits.priceFor[config.name]}}
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td *ngFor="let prod of myOrder.products">
+                <section [ngClass]="{'flex-column align-items-start': prod.alternativeProduct}">
+                  <div class="b-text">{{prod.paymentOption[config.name]}}</div>
+                  <div class="b-text color-orange"
+                       *ngIf="myOrder.status.id === '6' && prod.alternativeProduct">
+                    {{prod.alternativeProduct.paymentOption[config.name]}}
+                  </div>
+                </section>
+              </td>
+            </tr>
+            <tr>
+              <td *ngFor="let prod of myOrder.products">
+                <div class="b-label">
+                  {{'profile.clientPrice' | translate}}&nbsp;{{prod.product.price}}&nbsp;
+                  {{prod.product.showcaseUnits.currency[config.name]}}
+                  /{{prod.product.showcaseUnits.priceFor[config.name]}}
+                </div>
+                <div class="b-text color-orange">{{prod.product.price}}&nbsp;{{prod.product.showcaseUnits.currency[config.name]}}</div>
+              </td>
+            </tr>
+            <tr>
+              <td *ngFor="let prod of myOrder.products">
+                <div class="b-label">
+                  {{'profile.supplierPrice' | translate}}&nbsp;{{prod.price}}&nbsp;
+                  {{prod.product.showcaseUnits.currency[config.name]}}
+                  /{{prod.product.showcaseUnits.priceFor[config.name]}}
+                </div>
+                <div class="b-text color-orange">{{prod.price}}&nbsp;{{prod.product.showcaseUnits.currency[config.name]}}</div>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="b-wrap-cards--btn"
+             (click)="showCards(myOrder)">
+          <span>{{myOrder['isCardOpened'] ? ('profile.rollUp' | translate) : ('profile.disclose' | translate)}}</span>
+          <i class="bb bb-angle-double-down"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="b-card-order--footer">
+      <div class="row">
+        <div class="col-auto d-flex align-items-center">
+          <div class="icon-wrap">
+            <i *ngIf="myOrder.paymentTypeOptions?.cashlessPaymentsOnCard" class="bb bb-credit-card"></i>
+            <i *ngIf="myOrder.paymentTypeOptions?.cashPayments" class="bb bb-money-bill"></i>
+          </div>
+          <div class="e-text">
+            <span *ngIf="myOrder.deliveryAddress?.locality" class="w-100 d-block">
+              {{myOrder.deliveryAddress.locality[config.name]}},&nbsp;
+              {{myOrder.deliveryAddress.locality.region[config.name]}},&nbsp;
+              {{myOrder.deliveryAddress.locality.region?.country[config.name]}}
+            </span>
+            <span *ngIf="myOrder.deliveryAddress" class="w-100 d-block">{{myOrder.deliveryAddress.address}}</span>
+          </div>
+        </div>
+        <!-- вариант две кнопки -->
+        <div class="col-auto">
+          <div class="row">
+            <div class="col-auto text-right">
+              <div class="e-text">{{'profile.count' | translate}}
+                . {{myOrder.totalCount}} {{myOrder.countMe[config.name]}}</div>
+              <div class="b-card-order--title ml-0">{{myOrder.totalPrice}} {{myOrder.currency[config.name]}}</div>
+            </div>
+
+            <div class="col-auto">
+              <app-acquiring-payform
+                [statusId]="myOrder.status.id"
+                [data]="myOrder['payformData']"></app-acquiring-payform>
+            </div>
+
+            <div *ngIf="myOrder.status.id !== '6'" class="col-auto">
+              <button class="btn-del" mat-raised-button (click)="deleteOrder(myOrder)">
+                <i class="bb bb-trash-alt"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="myOrder.alternative" class="b-more-orders"
+       [class.open]="isAlternativesOpened">
+    <div class="b-more-orders--button"
+         (click)="openAlternatives()">
+      <section>
+        <div class="b-title">
+          {{'profile.alternativeOffers' | translate}}&nbsp;<span>(569)</span>
+        </div>
+      </section>
+
+      <section>
+        <div class="b-price d-flex align-items-center">
+          <div class="e-text">{{'profile.bestPrice' | translate}}</div>
+          <div class="b-card-order--title">1 760.00 RUB</div>
+        </div>
+
+        <div class="e-icon">
+          <i class="bb bb-angle-double-down"></i>
+        </div>
+      </section>
+    </div>
+
+    <!-- альтернатива-->
+    <div *ngFor="let alternativeOrder of alternatives"
+         class="b-more-orders--body">
+      <div class="b-card-order">
+        <div class="b-card-order--head">
+          <div class="row align-items-start">
+            <div class="col-auto">
+              <div class="b-card-order--title ml-0 mb-1"
+                   *ngIf="alternativeOrder.company">
+                {{alternativeOrder.company[config.name]}}
+                <button mat-raised-button
+                        class="e-btn-icon">
+                  <i class="bb bb-comment-alt"></i>
+                </button>
+              </div>
+
+              <div *ngIf="alternativeOrder.category" class="e-text">{{alternativeOrder.category[config.name]}}</div>
+            </div>
+
+            <div class="col-auto d-flex align-items-center">
+              <div class="b-card-order--date">
+                <span>{{alternativeOrder.dateUpdated?.date | date: 'dd.MM.yyyy'}}</span>
+                <span>№ {{alternativeOrder.id}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="b-card-order--body">
+          <div class="b-wrap-cards"
+               [class.open]="alternativeOrder['isCardOpened']">
+            <div *ngIf="alternativeOrder['isLoading']"
+                 class="d-flex justify-content-center">
+              <mat-spinner></mat-spinner>
+            </div>
+
+            <!--Свёрнутый вариант-->
+            <div *ngIf="!alternativeOrder['isCardOpened']"
+                 class="table-wrap">
+              <table class="mb-0">
+                <tr>
+                  <td *ngFor="let product of alternativeOrder.previewProducts"
+                      class="td-top-border">
+                    <div class="b-image">
+                      <img *ngIf="product.photos && product.photos.length > 0"
+                           alt=""
+                           [src]="serverUrl + product.photos[0].link">
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td *ngFor="let product of alternativeOrder.previewProducts"
+                      class="td-not-border">
+                    <div class="b-title mb-0">{{product && product[config.name] || ''}}</div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+
+            <!--Развёрнутый вариант-->
+            <div *ngIf="alternativeOrder['isCardOpened'] && !alternativeOrder['isLoading']"
+                 class="table-wrap">
+              <table>
+                <tr>
+                  <th *ngFor="let prod of alternativeOrder.products">
+                    <div class="b-text text-center">
+                      {{'profile.buyer' | translate}}
+                      <em>//</em><span class="color-orange">{{'profile.supplier' | translate}}</span>
+                    </div>
+                  </th>
+                </tr>
+                <tr>
+                  <td *ngFor="let prod of alternativeOrder.products">
+                    <div class="b-image">
+                      <img *ngIf="prod.product.photos && prod.product.photos.length > 0"
+                           alt=""
+                           [src]="serverUrl + prod.product.photos[0].link">
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td *ngFor="let prod of alternativeOrder.products">
+                    <div class="b-title">
+                      {{prod.product[config.name]}}
+                      <span *ngIf="prod.product.productModel"
+                            class="b-title">&nbsp;{{prod.product.productModel[config.name]}}</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td *ngFor="let prod of alternativeOrder.products">
+                    <div class="b-label">{{'profile.manufacturer' | translate}}</div>
+                    <div class="b-text">{{prod.product?.productManufacturerData[config.name]}}</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td *ngFor="let prod of alternativeOrder.products">
+                    <div class="b-label">{{'profile.country' | translate}}</div>
+                    <div class="b-text">{{prod.product.country && prod.product.country[config.name] || ''}}</div>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td *ngFor="let prod of alternativeOrder.products"
+                      class="pb-0">
+                    <div *ngFor="let prop of prod.freeProductProperties"
+                         class="product-properties">
+                      <div class="b-label">{{prop.categoryProperty[config.name]}}</div>
+                      <div class="b-text">{{(prop['value' + config.locale] && (prop['value' + config.locale].value || prop['value' + config.locale].display)) || prop.value}}</div>
+                    </div>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td *ngFor="let prod of alternativeOrder.products">
+                    <div class="b-label">{{'profile.net' | translate}}</div>
+                    <div class="b-text">{{prod.product.net}} {{prod.product.showcaseUnits.weight[config.name]}}</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td *ngFor="let prod of alternativeOrder.products">
+                    <div class="b-label">{{'profile.gross' | translate}}</div>
+                    <div class="b-text">{{prod.product.gross}} {{prod.product.showcaseUnits.weight[config.name]}}</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td *ngFor="let prod of alternativeOrder.products">
+                    <div class="b-label">{{'profile.volume' | translate}}</div>
+                    <div class="b-text">{{prod.product.volume}} {{prod.product.showcaseUnits.volume[config.name]}}</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td *ngFor="let prod of alternativeOrder.products">
+                    <div class="b-label">{{'profile.clientCount' | translate}}</div>
+                    <div class="b-text">{{prod.count}} {{prod.product.showcaseUnits.priceFor[config.name]}}</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td *ngFor="let prod of alternativeOrder.products">
+                    <section>
+                      <div class="b-text">{{prod.paymentOption[config.name]}}</div>
+                    </section>
+                  </td>
+                </tr>
+                <tr>
+                  <td *ngFor="let prod of alternativeOrder.products">
+                    <div class="b-label">
+                      {{'profile.clientPrice' | translate}}&nbsp;{{prod.product.price}}&nbsp;
+                      {{prod.product.showcaseUnits.currency[config.name]}}
+                      /{{prod.product.showcaseUnits.priceFor[config.name]}}
+                    </div>
+                    <div class="b-text color-orange">{{prod.product.price}}&nbsp;{{prod.product.showcaseUnits.currency[config.name]}}</div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+
+            <div class="b-wrap-cards--btn"
+                 (click)="showAlternativeCards(alternativeOrder)">
+              <span>{{alternativeOrder['isCardOpened'] ? ('profile.rollUp' | translate) : ('profile.disclose' | translate)}}</span>
+              <i class="bb bb-angle-double-down"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="b-card-order--footer">
+          <div class="row">
+            <div class="col-auto">
+              <div class="e-text">{{'profile.count' | translate}}
+                . {{alternativeOrder.totalCount}} {{alternativeOrder.countMe[config.name]}}</div>
+              <div class="b-card-order--title">{{alternativeOrder.totalPrice}} {{alternativeOrder.currency[config.name]}}</div>
+            </div>
+
+            <div class="col-auto"
+                 *ngIf="alternativeOrder.status.id !== '6'">
+              <button class="btn-fill btn-fill--large"
+                      (click)="confirmAlternativeOrder(alternativeOrder)"
+                      mat-raised-button>
+                {{'profile.confirm' | translate}}
+              </button>
+            </div>
+
+            <div class="col-auto"
+                 *ngIf="alternativeOrder.status.id !== '6'">
+              <button class="btn-del"
+                      (click)="deleteOrder(alternativeOrder)"
+                      mat-raised-button>
+                <i class="bb bb-trash-alt"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #noProducts>
+  <div class="d-flex justify-content-center">{{'profile.noProducts' | translate}}</div>
+</ng-template>

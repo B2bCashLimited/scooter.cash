@@ -1,0 +1,37 @@
+<div class="prices-list-popup">
+  <div class="prices-list-popup--title">
+    {{'priceList.allProposals' | translate}}
+  </div>
+  <!--кнопка закрытия-->
+  <div class="popup-close"
+       (click)="close()">
+    <i class="bb bb-clear-black"></i>
+  </div>
+  <div class="b-radio-group w-100"
+       *ngIf="item.productPrices"
+       infiniteScroll
+       [infiniteScrollDistance]="2"
+       [infiniteScrollThrottle]="50"
+       [scrollWindow]="false">
+    <div class="e-radio-button">
+      <mat-radio-group class="w-100 d-block"
+                       [(ngModel)]="item.price">
+        <mat-radio-button class="w-100"
+                          *ngFor="let map of item.productPrices; index as i"
+                          [value]="map.price"
+                          (click)="onPriceClick(item, map.price)">
+          <div class="row align-items-center">
+            <div class="col">
+              {{map.price}} {{item.currency[config.name]}}/{{item.priceFor[config.name]}}
+            </div>
+            <div class="col-auto">
+              <app-b2b-rating-star [rating]="map.rating"></app-b2b-rating-star>
+            </div>
+          </div>
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+</div>
+
+

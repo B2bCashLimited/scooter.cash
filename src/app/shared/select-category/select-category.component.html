@@ -1,0 +1,17 @@
+<div class="ng-select-wrap w-100">
+  <ng-select
+    class="w-100"
+    [(ngModel)]="selectedCategoryId"
+    clearAllText="{{'filters.clear' | translate}}"
+    notFoundText="{{'filters.notResult' | translate}}"
+    placeholder="{{'category.category' | translate}}"
+    typeToSearchText="{{'filters.typeToSearch' | translate}}"
+    dropdownPosition="bottom"
+    (change)="onCategoryChanged($event)"
+    [selectOnTab]="true"
+    [hideSelected]="true">
+    <ng-option value="-1">{{'category.allCategories' | translate}}</ng-option>
+    <ng-option *ngFor="let category of categories"
+               [value]="category.categoryId">{{category[config.name]}}</ng-option>
+  </ng-select>
+</div>

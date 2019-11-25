@@ -1,0 +1,14 @@
+<div class="d-flex flex-column popup position-relative">
+  <div class="popup-close"
+       (click)="onCloseDialogButtonClick()">
+    <i class="bb bb-clear-black"></i>
+  </div>
+  <div class="popup--title">{{'orderShippingDialog.thankYouForOrder' | translate}}!</div>
+  <div class="popup-icon">
+    <i class="bb bb-ic-check"></i>
+  </div>
+  <div class="">
+    <p innerHtml="{{'orderShippingDialog.text1' | translate}}"></p>
+    <p class="mb-2">{{'orderShippingDialog.text2' | translate}}</p>
+  </div>
+</div>

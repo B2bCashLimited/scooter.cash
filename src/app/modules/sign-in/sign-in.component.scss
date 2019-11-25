@@ -1,0 +1,205 @@
+@import "src/app/styles/variables";
+@import "src/app/styles/mixins";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  height: calc(100vh - 100px - 180px);
+  justify-content: center;
+  align-items: center;
+}
+
+.signin-form {
+  max-width: 420px;
+  width: 100%;
+  padding: 2.5rem;
+  border: 1px solid $color-default;
+  border-radius: 6px;
+  background-color: #ffffff;
+
+  .signin-form-title {
+    font-weight: 400;
+    color: #3c4858;
+  }
+
+  button{
+    border-radius: 5px;
+  }
+}
+
+.signin-from-group {
+  .signin-email-field,
+  .signin-pass-field {
+    width: 100%;
+    font-size: .75rem;
+    color: #aaaaaa;
+
+    &.mat-focused{
+      ::ng-deep.mat-form-field-label{
+        color: $color-default;
+      }
+
+      ::ng-deep.mat-form-field-ripple{
+        background-color: $color-default;
+      }
+    }
+  }
+
+  .e-input-find {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+
+    ::ng-deep .mat-icon{
+      color: rgb(170, 170, 170);
+      width: 18px;
+      font-size: 18px;
+      position: relative;
+      top: -6px;
+      right: 8px;
+    }
+
+    ::ng-deep .mat-form-field{
+      border: 1px solid #EEEEEE;
+      height: 40px;
+      width: 150px;
+      border-radius: 5px;
+
+      &.mat-focused{
+        border: 1px solid $color-default;
+        width: 100%;
+      }
+    }
+
+    ::ng-deep.mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label,
+    ::ng-deep.mat-form-field-appearance-legacy.mat-form-field-can-float .mat-input-server:focus + .mat-form-field-label-wrapper .mat-form-field-label{
+      transform: translateY(-12px) scale(0.75) perspective(100px) translateZ(0.001px);
+      font-style: normal;
+    }
+
+    ::ng-deep .mat-form-field-underline{
+      display: none;
+    }
+
+    ::ng-deep .mat-form-field-infix{
+      padding: 0;
+      border: none;
+      width: 100%;
+    }
+
+    ::ng-deep .mat-form-field-label-wrapper {
+      top: 0;
+      padding-top: 0;
+    }
+    ::ng-deep .mat-form-field-label{
+      @include rem(14);
+      line-height: 16px;
+      color: #cccccc;
+      font-style: italic;
+      padding-left: 10px;
+      top: 12px;
+    }
+
+    ::ng-deep .mat-error{
+      margin-top: 15px;
+    }
+
+    ::ng-deep .mat-form-field-wrapper{
+      padding-bottom: 0;
+    }
+
+    input{
+      height: 38px;
+      padding-left: 10px;
+      padding-right: 10px;
+      font-style: normal;
+      font-weight: normal;
+      @include rem(14);
+      line-height: 16px;
+      color: #000000;
+      background-color: #ffffff !important;
+      margin-top: 0;
+      border-radius: 5px;
+    }
+
+
+  }
+
+
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus
+  input:-webkit-autofill,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover
+  textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus {
+    border: 1px solid transparent;
+    -webkit-text-fill-color: #2c2c2b;
+    box-shadow: 0 0 0px 1000px #ffffff inset;
+    transition: background-color 5000s ease-in-out 0s;
+    font-size: .875rem;
+  }
+}
+
+.signin-btn {
+  color: #ffffff;
+}
+
+.form-error {
+  height: 0;
+  overflow-y: visible;
+  width: 100%;
+}
+
+.form-error-text {
+  color: #f44336;
+  font-size: 12px;
+  text-align: left;
+  white-space: nowrap;
+  padding-top: 8px;
+  text-overflow: ellipsis;
+}
+
+.link {
+  cursor: pointer;
+  color: $default-color-text;
+  text-transform: uppercase;
+  float: right;
+}
+
+.a-link-home{
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1rem;
+  line-height: normal;
+  color: $default-color-text;
+}
+
+@media (max-height: 650px){
+  :host {
+    height: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+}
+
+@media only screen and (max-width: 1199px){
+  :host {
+    height: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+}
+
+@media only screen and (max-width: 479px){
+  .signin-form{
+    padding: 20px;
+  }
+}

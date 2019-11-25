@@ -1,0 +1,218 @@
+@import "src/app/styles/variables";
+@import "src/app/styles/mixins";
+
+:host{
+  h1{
+    font-style: normal;
+    font-weight: bold;
+    @include rem(21);
+    line-height: 25px;
+    color: #333333;
+    margin: 0 0 0 22px;
+  }
+}
+
+.wrap-select-category{
+  width: 300px;
+}
+
+.b-compare{
+  display: flex;
+
+  &--sidebar{
+    margin-right: 20px;
+    width: 160px;
+    min-width: 160px;
+    padding-top: 248px;
+  }
+
+  &--content{
+    width: calc(100% - 180px);
+  }
+
+  &--item{
+    height: 50px;
+    font-style: normal;
+    font-weight: normal;
+    @include rem(13);
+    line-height: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: #3C4858;
+  }
+}
+
+.b-compare-slider{
+  position: relative;
+
+  ::ng-deep.swiper-container {
+    width: 100%;
+
+    .swiper-button-prev,
+    .swiper-button-next {
+      display: none;
+    }
+
+    .swiper-wrapper{
+      padding: 15px 0;
+    }
+  }
+
+  .swiper-button-prev{
+    left: -40px;
+    i {
+      position: relative;
+      width: 12px;
+      height: 12px;
+      display: block;
+      border-top: 2px solid $color-default;
+      border-left: 2px solid $color-default;
+      transform: rotate(-45deg);
+      left: 2px;
+    }
+  }
+
+  .swiper-button-next{
+    right: -18px;
+
+    i {
+      position: relative;
+      width: 12px;
+      height: 12px;
+      display: block;
+      border-top: 2px solid $color-default;
+      border-right: 2px solid $color-default;
+      transform: rotate(45deg);
+      right: 2px;
+    }
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next{
+    background: transparent;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    outline: none;
+    top: 115px;
+
+    span {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  &--item{
+    flex: 0 0 auto;
+    width: auto!important;
+    max-width: 100%;
+    padding-left: 5px;
+    padding-right: 5px;
+    overflow: visible !important;
+  }
+}
+
+.b-compare-card{
+  background: #FFFFFF;
+  border: 1px solid #EEEEEE;
+  box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  width: 310px;
+  position: relative;
+
+  .b-close{
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 15px;
+    right: 17px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    i{
+      @include rem(26);
+      color: #999999;
+    }
+  }
+
+  .b-image{
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    height: 232px;
+
+    img{
+      width: 290px;
+      height: 222px;
+      object-fit: cover;
+    }
+  }
+
+  .b-item{
+    height: 50px;
+    font-style: normal;
+    font-weight: 500;
+    @include rem(12);
+    line-height: 14px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #333333;
+    justify-content: center;
+    padding: 2px 10px;
+
+    &:nth-child(odd){
+      background: #F9F9F9;
+    }
+
+    &.not-bg{
+      background: #ffffff !important;
+    }
+  }
+}
+
+@media only screen and (max-width: 575px){
+  .b-compare{
+    &--sidebar{
+      width: 100px;
+      min-width: 100px;
+      padding-top: 156px;
+    }
+
+    &--content{
+      width: calc(100% - 120px);
+    }
+  }
+
+  .b-compare-card{
+    width: 150px;
+
+    .b-image{
+      height: 140px;
+
+      img{
+        width: 100%;
+        height: 130px;
+      }
+    }
+
+  }
+
+  :host{
+    h1{
+    flex: 0 0 100%;
+      padding-top: 15px;
+      margin: 0;
+    }
+  }
+}
+
+

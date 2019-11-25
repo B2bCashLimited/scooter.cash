@@ -1,0 +1,84 @@
+@import "src/app/styles/variables";
+
+:host {
+  display: block;
+}
+
+.popup {
+  max-width: 510px;
+  width: 100%;
+
+  &--title{
+    font-family: $default-font-family;
+    font-weight: bold;
+    font-size:  1.313rem;
+    line-height: 25px;
+    text-align: center;
+    color: #333333;
+    padding-top: 18px;
+    margin-bottom: 30px;
+  }
+
+  p{
+    font-family: $default-font-family;
+    font-style: normal;
+    font-weight: normal;
+    font-size: .9375rem;
+    line-height: 18px;
+    text-align: center;
+    color: #333333;
+    margin-bottom: 17px;
+  }
+}
+
+.popup-icon {
+  margin: 0 auto 17px;
+  display: block;
+  i {
+    color: #3FC120;
+    font-size: 45px;
+
+  }
+}
+
+.popup-close {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+
+  i {
+    color: #BDBDBD;
+    font-size: 30px;
+  }
+}
+
+
+a {
+  color: $default-color-text;
+}
+
+@media only screen and (max-width: 479px) {
+  .popup {
+    max-width: 100%;
+
+    &--title{
+      margin-bottom: 20px;
+    }
+
+    p{
+      font-size: .875rem;
+      line-height: 17px;
+      margin-bottom: 15px;
+    }
+  }
+  .popup-icon {
+    margin: 0 auto 15px;
+    i {
+      font-size: 40px;
+
+    }
+  }
+}

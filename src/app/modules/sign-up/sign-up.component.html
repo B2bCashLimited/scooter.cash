@@ -1,0 +1,218 @@
+<div class="full-width-wrap justify-content-center align-items-center">
+  <div class="signup-block">
+    <form class="signup-form"
+          [ngClass]="{'d-none' : first}"
+          [formGroup]="firstStepForm"
+          (ngSubmit)="checkFirstForm()">
+      <div [hidden]="first"
+           class="form-wrap">
+       <div class="e-input-find">
+         <mat-form-field class="w-100">
+           <input matInput
+                  formControlName="lastName"
+                  maxlength="20"
+                  type="text"
+                  placeholder="{{'signup.surname' | translate}}"
+                  autocomplete="off"
+                  required>
+           <mat-error *ngFor="let err of keys(firstStepForm.get('lastName').errors)">
+             {{'signup.errors.' + err | translate}}
+           </mat-error>
+         </mat-form-field>
+       </div>
+
+        <div class="e-input-find">
+          <mat-form-field class="w-100">
+            <input matInput
+                   formControlName="firstName"
+                   maxlength="20"
+                   type="text"
+                   placeholder="{{'signup.name' | translate}}"
+                   autocomplete="off"
+                   required>
+            <mat-error *ngFor="let err of keys(firstStepForm.get('firstName').errors)">
+              {{'signup.errors.' + err | translate}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="d-flex align-items-center m-code-phone">
+          <div class="ng-select-wrap">
+            <ng-select class=""
+                       (blur)="onPhoneCodeBlur()"
+                       bindValue="phoneCode"
+                       bindLabel="phoneCode"
+                       [items]="phoneCodes"
+                       [placeholder]="('signup.phoneCode' | translate)"
+                       [typeahead]="phoneCodeInput$"
+                       formControlName="phoneCode"
+                       appendTo=".m-code-phone">
+              <ng-template ng-label-tmp
+                           let-item="item">
+                <span>+{{item.phoneCode}}</span>
+              </ng-template>
+              <ng-template
+                ng-option-tmp
+                let-item="item">
+                <div class="d-flex align-items-center">
+                  <span class="flag flag-{{item.countryCode}}"></span>
+                  <span class="px-3">+{{item.phoneCode}}</span>
+                  <span style="width: 140px;">{{item[config.name]}}</span>
+                </div>
+              </ng-template>
+            </ng-select>
+          </div>
+
+          <div class="e-input-find mb-0">
+            <mat-form-field class="w-100">
+              <input matInput
+                     formControlName="phone"
+                     type="text"
+                     placeholder="{{'signup.phone' | translate}}"
+                     autocomplete="off"
+                     required>
+              <mat-error *ngFor="let err of keys(firstStepForm.get('phone').errors)">
+                {{'signup.phoneErrors.' + err | translate}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="e-input-find">
+          <mat-form-field class="w-100">
+            <input matInput
+                   formControlName="email"
+                   type="email"
+                   placeholder="{{'signup.email' | translate}}"
+                   autocomplete="off"
+                   required>
+            <mat-error *ngFor="let err of keys(firstStepForm.get('email').errors)">
+              {{'signup.emailErrors.' + err | translate}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+
+
+        <div class="signup-field">
+          <app-country-select
+            placeholder="{{'signup.country' | translate}}"
+            formControlName="locationCtrl"
+            required
+          ></app-country-select>
+          <mat-error *ngIf="firstStepForm.get('locationCtrl').invalid && firstStepForm.get('locationCtrl').dirty">
+            {{'signup.errField' | translate}}
+          </mat-error>
+        </div>
+
+        <button type="submit"
+                [disabled]="firstStepForm.invalid"
+                mat-raised-button
+                class="btn-fill btn-fill--large">
+          {{'signup.nextStep' | translate}}
+        </button>
+      </div>
+    </form>
+
+    <form class="signup-form"
+          [formGroup]="secondStepForm"
+          [ngClass]="{'d-none' : !first}"
+          (ngSubmit)="onSubmit()">
+      <div [hidden]="!first"
+           class="form-wrap">
+      <div class="e-input-find m-margin-input">
+        <mat-form-field class="w-100">
+          <input matInput
+                 formControlName="password"
+                 [type]="showPassword ? 'text' : 'password'"
+                 (keyup)="confirmPass($event, 'confirmPassword')"
+                 placeholder="{{'signup.createPass' | translate}}"
+                 autocomplete="off">
+          <mat-icon matSuffix
+                    (click)="showHidePassword($event)"
+                    style="cursor: pointer">{{showPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+          <mat-error *ngIf="secondStepForm.get('password').invalid">
+            {{'signup.recommendedPass' | translate}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+        <div class="e-input-find">
+          <mat-form-field class="w-100">
+            <input matInput
+                   formControlName="confirmPassword"
+                   [type]="showConfirmPassword ? 'text' : 'password'"
+                   (keyup)="confirmPass($event, 'password')"
+                   placeholder="{{'signup.repeatPass' | translate}}"
+                   autocomplete="off">
+            <mat-icon matSuffix
+                      (click)="showHideConfirmPassword($event)"
+                      style="cursor: pointer">{{showConfirmPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+            <mat-error *ngIf="secondStepForm.get('confirmPassword').invalid">
+              {{'signup.notMatchPass' | translate}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="d-flex w-100 my-4 checkbox-wrap">
+          <mat-checkbox formControlName="isAgree">
+            <div class=" checkbox-wrap--text-wrap">
+              <span class="checkbox-wrap--text">{{'signup.acceptConditions' | translate}}</span>
+              <a [routerLink]="['/deal', lang]"
+                 target="_blank">{{'signup.userAgreement' | translate}}</a>
+              <span class="checkbox-wrap--text ml-1">{{'signup.and' | translate}}</span>
+              <a [routerLink]="['/policy', lang]"
+                 target="_blank">{{'signup.privacyPolicy' | translate}}</a>.
+            </div>
+          </mat-checkbox>
+        </div>
+
+        <button class="btn-fill btn-fill--large"
+                type="submit"
+                mat-raised-button
+                [disabled]="firstStepForm.valid && secondStepForm.invalid">
+          {{'signup.completeSingUp' | translate}}
+        </button>
+
+        <button type="button" class="e-btn-text"
+                mat-button
+                color="primary"
+                (click)="trig()">{{'signup.backStep' | translate}}</button>
+
+        <div class="form-error"
+             *ngIf="formError">
+          {{'signup.dangerAlredyHave' | translate}}
+        </div>
+      </div>
+    </form>
+
+    <div class="reg-tabs"
+         [hidden]="first">
+      <h3 class="reg-r-t">{{'signup.singUp' | translate}}</h3>
+      <span class="reg-p-icon d-flex align-items-center justify-content-center"><i class="bb bb-mat-data"></i></span>
+      <span class="reg-r-text">{{'signup.personalData' | translate}}</span>
+      <div class="tabs-circles">
+        <span class="reg-tab-i reg-active-tab"></span>
+        <span class="reg-tab-i"></span>
+      </div>
+    </div>
+
+    <div class="reg-tabs"
+         [hidden]="!first">
+      <h3 class="reg-r-t">{{'signup.singUp' | translate}}</h3>
+      <span class="reg-p-icon d-flex align-items-center justify-content-center"><i class="bb bb-mat-data"></i></span>
+      <span class="reg-r-text">{{'signup.makePass' | translate}}</span>
+      <div class="tabs-circles">
+        <span class="reg-tab-i"></span>
+        <span class="reg-tab-i reg-active-tab"></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="d-flex justify-content-center mt-3">
+  <a routerLink="/"
+     class="a-link-home d-inline-flex align-items-center justify-content-center">
+    <i class="bb bb-new-search mr-2"></i>
+    <span>{{'signup.goToMain' | translate}}</span>
+  </a>
+</div>

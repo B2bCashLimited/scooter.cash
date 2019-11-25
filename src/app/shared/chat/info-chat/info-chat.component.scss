@@ -1,0 +1,146 @@
+.popup-inner {
+  max-width: 300px;
+  position: relative;
+}
+
+.popup-title {
+  font-family: Roboto;
+  font-size: 1.125rem;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #3c4858;
+  margin-top: 0;
+  margin-bottom: 25px;
+
+  span {
+    display: block;
+  }
+}
+
+.list_photo {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.list-wrap {
+  height: 242px;
+  overflow: auto;
+  margin-bottom: 25px;
+
+  &::ng-deep.mat-list {
+    padding-top: 0;
+  }
+
+  &::ng-deep.mat-list-item-content {
+    padding: 0;
+  }
+
+  .e-name {
+    padding-left: 7px;
+    padding-right: 5px;
+    font-family: Roboto;
+    font-size: 0.875rem;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #3c4858;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+  }
+}
+
+.name-wrap{
+  max-width: 160px;
+}
+
+.b-list-item {
+  cursor: pointer;
+  margin-bottom: 18px;
+
+  i {
+    position: relative;
+    margin-left: -4px;
+    margin-right: 2px;
+
+    &.clear{
+      color: #d60f05;
+    }
+  }
+
+  span{
+    line-height: 1;
+    font-size: .75rem;
+    margin-bottom: 2px;
+    padding-left: 7px;
+    color: #8A8A8A;
+
+    i{
+      margin-right: 6px;
+      margin-left: 0;
+      font-size: 12px;
+
+      &.bb{
+        color: #9E9E9E;
+      }
+
+      &.icon-person{
+        font-size: 14px;
+        margin-right: 4px;
+      }
+    }
+  }
+}
+
+.popup-btn {
+  box-shadow: none !important;
+  height: 40px;
+  background-color: #fa7500;
+  font-family: Roboto;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
+
+  ::ng-deep.mat-button-wrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.popup-close {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  cursor: pointer;
+  user-select: none;
+
+  i {
+    color: #3c4858;
+    font-size: 2rem;
+  }
+}
+
+.popup-btn-wrap{
+  padding: 20px 0 0;
+  background: #ffffff;
+}
+

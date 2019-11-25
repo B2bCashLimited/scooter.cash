@@ -1,0 +1,69 @@
+<div class="d-flex w-100">
+  <div class="d-flex flex-column w-100">
+    <ng-template [ngIf]="(!multiple) ? !currentActivityName : true">
+      <div class="d-flex flex-column" *ngIf="activeCompanyActivities && activeCompanyActivities.length > 0">
+        <span class="mb-2 title-activity">{{'activitySelect.typeActivity' | translate}}</span>
+        <div class="d-flex b2b-activities w-100">
+          <div class="d-flex flex-column align-items-center b2b-activity mr-4"
+               *ngIf="multiple">
+            <button class="b2b-activity-btn bb bb-check"
+                    (click)="onSelectAllActivitiesClick()" matTooltip="{{'activitySelect.selectYourActivity' | translate}}" matTooltipPosition="above"></button>
+            <span class="b2b-activity-label">{{'activitySelect.selectAll' | translate}}</span>
+          </div>
+          <ng-template ngFor let-item [ngForOf]="activeCompanyActivities">
+            <div class="d-flex flex-column align-items-center b2b-activity relative">
+              <button class="b2b-activity-btn {{item.icon}}" matTooltip="{{'activitySelect.selectYourActivity' | translate}}" matTooltipPosition="above"
+                      [class.active]="item.selected"
+                      (click)="onActivityClick(item)"></button>
+              <span class="activity-counter align-items-center justify-content-center d-flex"
+                    *ngIf="item.ordersCount && item.ordersCount > 0">{{item.ordersCount > 99 ? '99+' : item.ordersCount}}</span>
+              <span class="b2b-activity-label">{{item.shortName | translate}}</span>
+            </div>
+          </ng-template>
+          <div class="flex-grow-1"></div>
+        </div>
+      </div>
+      <div class="d-flex flex-column mt-5" *ngIf="activityNames && activityNames.length > 0">
+        <span class="mb-2 title-activity">{{'activitySelect.typeActivityName' | translate}}</span>
+        <div class="d-flex b2b-activities w-100">
+          <div class="d-flex flex-column align-items-center b2b-activity mr-4"
+               *ngIf="multiple">
+            <button class="b2b-activity-btn bb bb-check"
+                    (click)="onSelectAllActivityNamesClick()" matTooltip="{{'activitySelect.selectYourActivityName' | translate}}" matTooltipPosition="above"></button>
+            <span class="b2b-activity-label">{{'activitySelect.selectAll' | translate}}</span>
+          </div>
+          <ng-template ngFor let-item [ngForOf]="activityNames">
+            <div class="d-flex flex-column align-items-center b2b-activity" *ngIf="item.status == 1">
+              <div class="b2b-activity-btn activity-name relative"
+                   [class.active]="item.selected"
+                   (click)="onActivityNameClick(item)">
+                <img [src]="item | partnerLogo" matTooltip="{{'activitySelect.selectYourActivityName' | translate}}" matTooltipPosition="above"/>
+                <span class="activity-counter align-items-center justify-content-center d-flex"
+                      *ngIf="item.ordersCount && item.ordersCount > 0">{{item.ordersCount > 99 ? '99+' : item.ordersCount}}</span>
+              </div>
+
+              <span class="b2b-activity-label">{{item.name || '&nbsp;'}}</span>
+            </div>
+          </ng-template>
+          <div class="flex-grow-1"></div>
+        </div>
+      </div>
+    </ng-template>
+    <div class="d-flex align-items-center mt-5 mb-3 flex-wrap" *ngIf="!multiple && currentActivity && currentActivityName">
+      <div class="d-flex flex-column align-items-center b2b-activity ml-0 mr-0 mb-2">
+        <div class="b2b-activity-btn activity-name"
+             [class.active]="currentActivityName.selected">
+          <img [src]="currentActivityName | partnerLogo"/>
+        </div>
+      </div>
+      <div class="d-flex flex-column justify-content-center align-items-center ml-2 mr-3 mb-2">
+        <span class="b2b-activity__label">{{currentActivity.shortName | translate}}</span>
+        <span class="text-center lh-1">{{currentActivityName.name}}</span>
+      </div>
+      <button class="mb-2 b2b-btn b2b-btn--medium b2b-btn--transparent min-w-130" mat-button color="accent"
+              matTooltip="{{'activitySelect.editYourActivity' | translate}}" matTooltipPosition="above" (click)="onEditActivityClick()">
+        {{'activitySelect.change' | translate}} <i class="fa fa-edit ml-2"></i>
+      </button>
+    </div>
+  </div>
+</div>

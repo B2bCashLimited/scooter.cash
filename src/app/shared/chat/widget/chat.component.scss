@@ -1,0 +1,82 @@
+html,
+body {
+  height: 100%;
+}
+
+.widget__chat__wrap {
+  width: 75vw;
+  height: 80.1vh;
+  display: block;
+
+  ::ng-deep app-chat-window .chat__window,
+  ::ng-deep app-chat-contacts .chat__contacts {
+    height: 80vh;
+  }
+}
+
+.chat__container {
+  position: relative;
+  height: 100%;
+
+  &:after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+}
+
+.chat-contacts-wrap {
+  width: 30%;
+}
+
+.chat-contacts-window {
+  width: 70%;
+}
+
+@media only screen and (max-width: 1199px) {
+  .widget__chat__wrap {
+    width: 90vw;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .chat-contacts-wrap {
+    width: 265px;
+  }
+
+  .chat-contacts-window {
+    width: 70%;
+  }
+
+  .widget__chat__wrap {
+    width: 92vw;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .chat__container {
+    display: block;
+    height: auto;
+  }
+
+  .chat-contacts-wrap {
+    width: 100%;
+  }
+
+  .chat-contacts-window {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 479px) {
+  .widget__chat__wrap {
+    width: 100vw;
+    height: 87.1vh;
+
+    ::ng-deep app-chat-window .chat__window,
+    ::ng-deep app-chat-contacts .chat__contacts {
+      height: 87vh;
+    }
+  }
+}
+

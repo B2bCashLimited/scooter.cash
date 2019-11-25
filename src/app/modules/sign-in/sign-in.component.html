@@ -1,0 +1,65 @@
+<form class="signin-form">
+  <h2 class="signin-form-title">{{'login.entry' | translate}}</h2>
+  <div class="form-group signin-from-group">
+    <div class="e-input-find">
+      <mat-form-field class="w-100">
+        <input matInput
+               placeholder="Email"
+               [formControl]="email">
+        <mat-error *ngIf="email.hasError('email')">
+          {{'login.errValidEmail' | translate}}
+        </mat-error>
+        <mat-error *ngIf="email.hasError('required')">
+          {{'login.errReqEmail' | translate}} <strong>{{'login.required' | translate}}</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="form-group signin-from-group">
+    <div class="e-input-find">
+      <mat-form-field class="w-100">
+        <input matInput
+               [type]="showPassword ? 'text' : 'password'"
+               autocomplete="off"
+               placeholder="Password"
+               [formControl]="password">
+        <mat-icon matSuffix
+                  (click)="showHidePassword($event)"
+                  style="cursor: pointer">{{showPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+        <mat-error *ngIf="password.hasError('required')">
+          {{'login.errReqPass' | translate}} <strong>{{'login.required' | translate}}</strong>
+        </mat-error>
+        <mat-error *ngIf="password.hasError('minlength')">
+          {{'login.errShortPass' | translate}}
+        </mat-error>
+        <mat-error *ngIf="password.hasError('maxlength')">
+          {{'login.errLongPass' | translate}}
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="d-flex flex-column flex-sm-row align-items-center justify-content-between">
+    <button class="b2b-btn b2b-btn--medium mb-3 mb-sm-0"
+            mat-raised-button
+            [disabled]="isLoading || email.invalid || password.invalid"
+            (click)="onLoginClick()">
+      {{'login.enter' | translate}}
+    </button>
+    <span class="link"
+          (click)="onRestorePasswordClick()">{{'login.forgottenPass' | translate}}</span>
+  </div>
+  <div class="form-error"
+       *ngIf="errorMessage">
+    <div class="form-error-text">{{'login.error' | translate}}: {{errorMessage}}</div>
+  </div>
+</form>
+
+<div class="d-flex justify-content-center mt-3">
+  <a routerLink="/"
+     class="a-link-home d-inline-flex align-items-center justify-content-center">
+    <i class="bb bb-new-search mr-2"></i>
+    <span>{{'login.goToMain' | translate}}</span>
+  </a>
+</div>

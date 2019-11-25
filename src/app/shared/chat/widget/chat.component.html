@@ -1,0 +1,31 @@
+<div class="widget__chat__wrap">
+  <app-activity-select
+    *ngIf="!activityId && owner === 2"
+    [activities]="companyActivities"
+    (activityEditChange)="initalState()"
+    (activityNameChange)="fdListener($event)">
+  </app-activity-select>
+
+  <div class="chat__container d-flex" *ngIf="activities && readyToOpenSysChat"
+       [hidden]="(owner === 2 && companyId && (!activity || !activityId))">
+    <app-chat-contacts
+      class="chat-contacts-wrap"
+      [companyId]="companyId"
+      [activityKey]="activity"
+      [activityId]="activityId"
+      [activities]="activities"
+      (activitySwitch)="activitySwitch()"
+      *ngIf="chatType !== 1"
+      [hidden]="!(chatType !== 1 && mobile === 0 || (chatType !== 1 && mobile === 1 && step === 1))">
+    </app-chat-contacts>
+    <app-chat-window
+      class="chat-contacts-window"
+      [companyId]="companyId"
+      [activityKey]="activity"
+      [activityId]="activityId"
+      [activities]="activities"
+      [style.width.%]="chatType === 1 ? '100' : ''"
+      [hidden]="!( mobile === 0 || (mobile === 1 && step === 2))">
+    </app-chat-window>
+  </div>
+</div>

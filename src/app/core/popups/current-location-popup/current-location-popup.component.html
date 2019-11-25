@@ -1,0 +1,43 @@
+<mat-dialog-content>
+  <!--кнопка закрытия-->
+  <div class="popup-close"
+       (click)="close()">
+    <i class="bb bb-clear-black"></i>
+  </div>
+  <div class="popup-title">{{'locationPopup.yourCity' | translate}}?</div>
+  <div *ngIf="!showForm && selectedCity">{{selectedCity['fullName' + config.locale]}}</div>
+  <div *ngIf="showForm"
+       class="ng-select-wrap">
+    <ng-select class="w-100"
+               [items]="cities"
+               [formControl]="location"
+               [bindLabel]="'fullName' + config.locale"
+               [virtualScroll]="true"
+               clearAllText="{{'locationPopup.clear' | translate}}"
+               notFoundText="{{'locationPopup.notResult' | translate}}"
+               placeholder="{{!location.value ? ('locationPopup.city' | translate) : ''}}"
+               typeToSearchText="{{'locationPopup.typeToSearch' | translate}}"
+               [typeahead]="cityName$"
+    ></ng-select>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions class="row justify-content-between">
+  <div class="col">
+    <button mat-button
+            class="e-btn btn-gray"
+            type="button"
+            (click)="toggleLocation()">
+      <span>{{(showForm ? 'locationPopup.cancel' : 'locationPopup.selectAnother') | translate}}</span>
+    </button>
+  </div>
+  <div class="col">
+    <button [disabled]="!location.value"
+            mat-raised-button
+            type="button"
+            class="e-btn"
+            (click)="close(true)">
+      <span>{{'locationPopup.yes' | translate}}</span>
+    </button>
+  </div>
+</mat-dialog-actions>
